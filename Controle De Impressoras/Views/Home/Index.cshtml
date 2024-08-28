@@ -1,0 +1,247 @@
+﻿@model List<Controle_De_Impressoras.Models.PrintersModel>
+@{
+    ViewBag.Title = "Controle De Impressoras";
+}
+<style>
+    #grid_cadastro > thead > tr th:nth-child(2) {
+        width: 110px;
+    }
+
+    #grid_cadastro > thead > tr th:nth-child(3) {
+        width: 210px;
+    }
+    .container-impressoras{
+        border: 1px solid;
+    }
+
+    #corpo_tabela{
+        max-height:700px;
+        overflow: auto;
+        display: block;
+        
+    }
+    #corpo_tabela tr{
+        table-layout: fixed;
+        width: 100%;
+        display: table;
+    }
+    thead, tbody tr{
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+    thead{
+        width: calc(100% - 1em);
+        border-bottom: 1px solid;
+    }
+    td, th {
+        text-align: center;
+        vertical-align: middle; /* Alinha o texto verticalmente ao centro */
+    }
+
+    .ink-level {
+        border: solid 2px black;
+        width: 30px;
+        height: 50px;
+        background-color: #e0e0e0;
+        position: relative;
+        margin: 0 auto; /* Centralizar horizontalmente */
+    }
+
+    .ink-fill {
+        position: absolute;
+        bottom: 0; /* Alinha ao fundo para que o preenchimento cresça para cima */
+        width: 100%;
+    }
+    .btn-drop {
+        cursor: pointer;
+        border: none;
+        transition: transform 0.3s;
+    }
+    #pesquisas{
+        display:flex;
+        justify-content: center;
+    }
+    .filtro{
+        padding-left: 80px;
+    }
+    .filtros{
+        margin-bottom: 50px;
+    }
+    #btn-filter{
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+
+    
+</style>
+<main>
+    <section>
+        <div class="filtros">
+            <h2>Filtros</h2>
+                <form method="get" action="@Url.Action("Index")" id="pesquisas">
+                    <div class="filtro">
+                        <label class="text-filter">Tipo:</label>
+                        <select class="form-select" name="tipo" aria-label="Default select example">
+                            <option selected value=""></option>
+                            <option value="Mono">Mono</option>
+                            <option value="Color">Color</option>
+                        </select>
+                    </div>
+                    <div class="filtro">
+                        <label class="text-filter">Marca:</label>
+                        <select class="form-select" name="marca" aria-label="Default select example">
+                            <option selected value=""></option>
+                            <option value="Epson">Epson</option>
+                            <option value="Lexmark">Lexmark</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Brother">Brother</option>
+                        </select>
+                    </div>
+                    <div class="filtro">
+                        <label class="text-filter">Modelo:</label>
+                        <input class="form-control me-2" type="search" name="modelo" placeholder="Pesquisar" aria-label="Search">
+                    </div>
+                    <div class="filtro">
+                        <label class="text-filter">Patrimônio:</label>
+                        <input class="form-control me-2" type="search" name="patrimonio" placeholder="Pesquisar" aria-label="Search">
+                    </div>
+                    <div id="btn-filter">
+                        <button type="submit" class="btn btn-outline-primary">Filtrar<i class="bi bi-funnel"></i></button>
+                        <a href="@Url.Action("Index")" class="btn btn-outline-danger">Limpar<i class="bi bi-x-lg"></i></a>
+                    </div>
+                </form>
+            </div>
+        <div class="container-impressoras">
+            <table id="grid_cadastro" class="table table-bordered table-striped table-striped-columns">
+                <thead>
+                    <tr>
+                        <th>Serial</th>
+                        <th>Fabricante</th>
+                        <th>Modelo</th>
+                        <th>Impressão Total</th>
+                        <th></th>
+                        <th>Kit Manutenção</th>
+                        <th>Preto</th>
+                        <th>Ciano</th>
+                        <th>Amarelo</th>
+                        <th>Magenta</th>
+                        <th>Fusor</th>
+                        <th>Belt</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo_tabela">
+                    @foreach (var item in Model)
+                    {
+                        <tr data-id="@item.Id">
+                            <td>@item.SerialImpressora</td>
+                            <td>@item.DeviceManufacturer</td>
+                            <td>@item.PrinterModel</td>
+                            <td>@item.QuantidadeImpressaoTotal</td>
+                            <td>
+                                <div>
+                                    <button id="icon_@item.Id" class="btn-drop" onclick="abrirInfo(@item.Id)">
+                                        <i class="bi bi-caret-down-fill teste"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemKitManutencao, '%') ; background-color: gray"></div> <!-- Substitua 50% pela porcentagem desejada -->
+                                </div>
+                                <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
+                            </td>
+                            <td>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%') ; background-color: black "></div> <!-- Substitua 50% pela porcentagem desejada -->
+                                </div>
+                                <p style="font-weight: bold">@item.PorcentagemBlack%</p>
+                            </td>
+                            <td>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemCyan, '%'); background-color: cyan "></div> <!-- Substitua 50% pela porcentagem desejada -->
+                                </div>
+                                <p style="font-weight: bold">@item.PorcentagemCyan%</p>
+                            </td>
+                            <td>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemYellow, '%'); background-color: yellow "></div> <!-- Substitua 50% pela porcentagem desejada -->
+                                </div>
+                                <p style="font-weight: bold">@item.PorcentagemYellow%</p>
+                            </td>
+                            <td>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemMagenta, '%'); background-color: magenta "></div> <!-- Substitua 50% pela porcentagem desejada -->
+                                </div>
+                                <p style="font-weight: bold">@item.PorcentagemMagenta%</p>
+                            </td>
+                            <td>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemFusor, '%'); background-color: gray "></div> <!-- Substitua 50% pela porcentagem desejada -->
+                                </div>
+                                <p style="font-weight: bold">@item.PorcentagemFusor%</p>
+                            </td>
+                            <td>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBelt, '%'); background-color: gray "></div> <!-- Substitua 50% pela porcentagem desejada -->
+                                </div>
+                                <p style="font-weight: bold">@item.PorcentagemFusor%</p>
+                            </td>
+                        
+                        </tr>
+                        <tr id="info_impressora_@item.Id" style="display:none; width:95%">
+                            <td>
+                                <div class="row" style="font-weight: bold">
+                                    <div class="col-3">
+                                        Serial Uni. Imagem
+                                    </div>
+                                    <div class="col-3">
+                                        Status
+                                    </div>
+                                    <div class="col-3">
+                                        Modelo Do Dispositivo
+                                    </div>
+                                    <div class="col-3">
+                                        Data e Hora De Busca
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-3">
+                                        @item.SerialUniImage
+                                    </div>
+                                    <div class="col-3">
+                                        @item.PrinterStatus
+                                    </div>
+                                    <div class="col-3">
+                                        @item.DeviceModel
+                                    </div>
+                                    <div class="col-3">
+                                        @item.DataHoraDeBusca
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+<script>
+    function abrirInfo(id) {
+        var div_info = document.getElementById("info_impressora_" + id)
+        var i_icon = document.getElementById("icon_" + id)
+
+        if (div_info.style.display == "none") {
+            div_info.style.display = "table";
+            i_icon.style.transform = "rotate(180deg)"
+
+        }
+        else {
+            div_info.style.display = "none";
+            i_icon.style.transform = "rotate(0deg)"
+        }
+
+    }
+</script>
