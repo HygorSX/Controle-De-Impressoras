@@ -103,6 +103,7 @@
     .containerImpressoras {
         display: grid;
         grid-template-columns:3fr 3fr 3fr 4fr;
+        padding: 1rem;
     }
 
     .alinharTintas {
@@ -166,7 +167,7 @@
                     {
                         <div class="containerImpressoras">
                             <div class="header">
-                                <img src="~/Imagens/Imagem EPSON.png" alt="Alternate Text" class="img_impressoras" />
+                                <img src="~/Imagens/Impressoras/@(item.DeviceManufacturer + ".png")" alt="Alternate Text" class="img_impressoras" />
                                 <p style="margin-left: 2rem;">@item.DataHoraDeBusca</p>
                             </div>
 
@@ -289,10 +290,7 @@
                         </div>
                         <hr class="separator" />
                     }
-
-
-
-</main>
+        </main>
     <script>
         function abrirInfo(id) {
             var div_info = document.getElementById("info_impressora_" + id)
