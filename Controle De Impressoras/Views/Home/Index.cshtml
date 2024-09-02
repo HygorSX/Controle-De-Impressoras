@@ -36,23 +36,31 @@
     }
     td, th {
         text-align: center;
-        vertical-align: middle; /* Alinha o texto verticalmente ao centro */
+        vertical-align: middle;
+    }
+
+    .container-capacidade {
+        display: flex;
+        gap: 5px; 
+        margin-bottom: 10px; 
     }
 
     .ink-level {
         border: solid 1.5px black;
         width: 30px;
         height: 50px;
-        background-color: #e0e0e0;
+        background-color: #F6F7F8;
         position: relative;
-        margin: 0 auto; /* Centralizar horizontalmente */
+        border-radius: 4px;
     }
 
     .ink-fill {
         position: absolute;
-        bottom: 0; /* Alinha ao fundo para que o preenchimento cresça para cima */
+        bottom: 0;
         width: 100%;
+        border-radius: 4px;
     }
+
     .btn-drop {
         cursor: pointer;
         border: none;
@@ -79,7 +87,7 @@
     .container-impressoras-2 {
         display: flex;
         text-align: center;
-        vertical-align: middle; /* Alinha o texto verticalmente ao centro */
+        vertical-align: middle;
         align-content: center;
         justify-content: center;
         border-bottom: 1px solid;
@@ -91,10 +99,26 @@
         display: flex;
         justify-content: center;
     }
-    .container-capacidade{
-        margin-left: 10px;
+
+    .containerImpressoras {
+        display: grid;
+        grid-template-columns:3fr 3fr 3fr 4fr;
+    }
+
+    .alinharTintas {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .extraInformation {
+        display: flex;
+        gap: 1rem;
     }
     
+    p {
+        margin-bottom: .5rem;
+    }
+
 </style>
 <main>
     <section>
@@ -135,230 +159,140 @@
         </div>
         <div class="container-impressoras">
             <table id="grid_cadastro" class="table table-bordered table-striped table-striped-columns">
-                <thead>
-                    <tr>
-                        <th>Serial</th>
-                        <th>Fabricante</th>
-                        <th>Modelo</th>
-                        <th>Impressão Total</th>
-                        <th></th>
-                        <th>Kit Manutenção</th>
-                        <th>Preto</th>
-                        <th>Ciano</th>
-                        <th>Amarelo</th>
-                        <th>Magenta</th>
-                        <th>Fusor</th>
-                        <th>Belt</th>
-                    </tr>
-                </thead>
-                <tbody id="corpo_tabela">
+
+
+                <section>
                     @foreach (var item in Model)
                     {
-                        <tr data-id="@item.Id">
-                            <td>@item.SerialImpressora</td>
-                            <td>@item.DeviceManufacturer</td>
-                            <td>@item.PrinterModel</td>
-                            <td>@item.QuantidadeImpressaoTotal Impressões</td>
-                            <td>
-                                <div>
-                                    <button id="icon_@item.Id" class="btn-drop" onclick="abrirInfo(@item.Id)">
-                                        <i class="bi bi-caret-down-fill teste"></i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="ink-level">
-                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemKitManutencao, '%') ; background-color: gray"></div> <!-- Substitua 50% pela porcentagem desejada -->
-                                </div>
-                                <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
-                            </td>
-                            <td>
-                                <div class="ink-level">
-                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%') ; background-color: black "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                                </div>
-                                <p style="font-weight: bold">@item.PorcentagemBlack%</p>
-                            </td>
-                            <td>
-                                <div class="ink-level">
-                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemCyan, '%'); background-color: cyan "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                                </div>
-                                <p style="font-weight: bold">@item.PorcentagemCyan%</p>
-                            </td>
-                            <td>
-                                <div class="ink-level">
-                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemYellow, '%'); background-color: yellow "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                                </div>
-                                <p style="font-weight: bold">@item.PorcentagemYellow%</p>
-                            </td>
-                            <td>
-                                <div class="ink-level">
-                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemMagenta, '%'); background-color: magenta "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                                </div>
-                                <p style="font-weight: bold">@item.PorcentagemMagenta%</p>
-                            </td>
-                            <td>
-                                <div class="ink-level">
-                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemFusor, '%'); background-color: gray "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                                </div>
-                                <p style="font-weight: bold">@item.PorcentagemFusor%</p>
-                            </td>
-                            <td>
-                                <div class="ink-level">
-                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBelt, '%'); background-color: gray "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                                </div>
-                                <p style="font-weight: bold">@item.PorcentagemBelt%</p>
-                            </td>
+                        <div class="containerImpressoras">
+                            <div class="header">
+                                <img src="~/Imagens/Imagem EPSON.png" alt="Alternate Text" class="img_impressoras" />
+                                <p style="margin-left: 2rem;">@item.DataHoraDeBusca</p>
+                            </div>
 
-                        </tr>
-                        <tr id="info_impressora_@item.Id" style="display:none; width:95%">
-                            <td>
-                                <div class="row" style="font-weight: bold">
-                                    <div class="col-3">
-                                        Serial Uni. Imagem
-                                    </div>
-                                    <div class="col-3">
-                                        Status
-                                    </div>
-                                    <div class="col-3">
-                                        Modelo Do Dispositivo
-                                    </div>
-                                    <div class="col-3">
-                                        Data e Hora De Busca
+                            @if (item.Tipo == "COLOR")
+                            {
+                                <div class="info">
+                                    <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
+                                    <p>@item.QuantidadeImpressaoTotal Impressões</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
+                                    <p>@item.PrinterStatus</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
+                                    <p>@item.SerialImpressora</p>
+                                </div>
+                                <div class="fabricante">
+                                    <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
+                                    <p>@item.DeviceManufacturer</p>
+                                    <p style="font-weight: bold">Status Tintas</p>
+                                    <div class="container-capacidade">
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%'); background-color: black;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemBlack%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemCyan, '%'); background-color: cyan;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemCyan%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemYellow, '%'); background-color: yellow;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemYellow%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemMagenta, '%'); background-color: magenta;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemMagenta%</p>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-2">
-                                        @item.SerialUniImage
-                                    </div>
-                                    <div class="col-2">
-                                        @item.PrinterStatus
-                                    </div>
-                                    <div class="col-4">
-                                        @item.DeviceModel
-                                    </div>
-                                    <div class="col-2">
-                                        @item.DataHoraDeBusca
+                                <div class="modelo">
+                                    <p style="font-weight: bold; margin-top: 1rem">Modelo do dispositivo</p>
+                                    <p>@item.DeviceModel</p>
+                                    <p style="font-weight: bold">Fusor, Belt e Kit de Manutenção</p>
+                                    <div class="container-capacidade">
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemFusor, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemFusor%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBelt, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemBelt%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemKitManutencao, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </td>
-                        </tr>
+                            }
+                            else if (item.Tipo == "MONO")
+                            {
+                                <div class="info">
+                                    <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
+                                    <p>@item.QuantidadeImpressaoTotal Impressões</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
+                                    <p>@item.PrinterStatus</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
+                                    <p>@item.SerialImpressora</p>
+                                </div>
+                                <div class="fabricante">
+                                    <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
+                                    <p>@item.DeviceManufacturer</p>
+                                    <p style="font-weight: bold">Status Tinta</p>
+                                    <div class="container-capacidade">
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%'); background-color: black;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemBlack%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modelo">
+                                    <p style="font-weight: bold; margin-top: 1rem">Modelo do dispositivo</p>
+                                    <p>@item.DeviceModel</p>
+                                    <p style="font-weight: bold">Fusor, Belt e Kit de Manutenção</p>
+                                    <div class="container-capacidade">
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemFusor, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemFusor%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBelt, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemBelt%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemKitManutencao, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <hr class="separator" />
                     }
-                </tbody>
-            </table>
-        </div>
-        @foreach (var item in Model)
-        {
-            <div class="container-impressoras-2" style="margin-top: 20px">
-                <div class="col-1">
-                    <img src="~/Imagens/Imagem EPSON.png" alt="Alternate Text" class="img_impressoras" />
-                </div>
-                <div class="col-2">
-                    <p style="font-weight: bold">Fabricante</p>
-                    <p>@item.DeviceManufacturer</p>
-                </div>
-                
-                <div class="col-2">
-                    <p style="font-weight: bold">Modelo</p>
-                    <p>@item.DeviceModel</p>
-                </div>
-                <div class="col-2">
-                    <p style="font-weight: bold">Impressões Totais</p>
-                    <p>@item.QuantidadeImpressaoTotal Impressões</p>
-                </div>
-                <div class="col-1">
-                    <p style="font-weight: bold">Kit Manutenção</p>
-                    <div class="ink-level">
-                        <div class="ink-fill" style="height: @String.Concat(item.PorcentagemKitManutencao, '%') ; background-color: gray"></div> <!-- Substitua 50% pela porcentagem desejada -->
-                    </div>
-                    <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
-                </div>
-                <div class="col-2">
-                    <p style="font-weight: bold"> Capacidade</p>
-                    <div id="capacidade">
-                        <div class="container-capacidade">
-                            <div class="ink-level">
-                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%') ; background-color: black "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                            </div>
-                            <p style="font-weight: bold">@item.PorcentagemBlack%</p>
-                        </div>
-                        <div class="container-capacidade">
-                            <div class="ink-level">
-                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemCyan, '%'); background-color: cyan "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                            </div>
-                            <p style="font-weight: bold">@item.PorcentagemCyan%</p>
-                        </div>
-                        <div class="container-capacidade">
-                            <div class="ink-level">
-                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemYellow, '%'); background-color: yellow "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                            </div>
-                            <p style="font-weight: bold">@item.PorcentagemYellow%</p>
-                        </div>
-                        <div class="container-capacidade">
-                            <div class="ink-level">
-                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemMagenta, '%'); background-color: magenta "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                            </div>
-                            <p style="font-weight: bold">@item.PorcentagemMagenta%</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <p style="font-weight: bold">Fusor</p>
-                    <div class="ink-level">
-                        <div class="ink-fill" style="height: @String.Concat(item.PorcentagemFusor, '%'); background-color: gray "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                    </div>
-                    <p style="font-weight: bold">@item.PorcentagemFusor%</p>
-                </div>
-                <div class="col-1">
-                    <p style="font-weight: bold">Belt</p>
-                    <div class="ink-level">
-                        <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBelt, '%'); background-color: gray "></div> <!-- Substitua 50% pela porcentagem desejada -->
-                    </div>
-                    <p style="font-weight: bold">@item.PorcentagemBelt%</p>
-                </div>
-            </div>
-            <div class="wrapper" style="display: flex; justify-content: center; padding-top: 20px; padding-bottom: 20px; background-color: lightgray">
-                <div class="container-impressoras-3" style="width: 100%; max-width: 1200px;">
-                    <div class="row" style="font-weight: bold">
-                        <div class="col-2">
-                            Serial
-                        </div>
-                        <div class="col-2">
-                            Serial Uni. Imagem
-                        </div>
-                        <div class="col-2">
-                            Status
-                        </div>
-                        <div class="col-2">
-                            Modelo Do Dispositivo
-                        </div>
-                        <div class="col-2">
-                            Data e Hora De Busca
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-2">
-                            @item.SerialImpressora
-                        </div>
-                        <div class="col-2">
-                            @item.SerialUniImage
-                        </div>
-                        <div class="col-2">
-                            @item.PrinterStatus
-                        </div>
-                        <div class="col-2">
-                            @item.DeviceModel
-                        </div>
-                        <div class="col-2">
-                            @item.DataHoraDeBusca
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    </section>
-    </main>
+
+
+</main>
     <script>
         function abrirInfo(id) {
             var div_info = document.getElementById("info_impressora_" + id)
