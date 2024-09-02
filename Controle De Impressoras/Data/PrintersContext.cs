@@ -14,5 +14,6 @@ namespace Controle_De_Impressoras.Data
 
         }
         public DbSet<PrintersModel> Printers { get; set; }
+        public DbSet<LoginViewModel> User { get; set; }
     }
 }
