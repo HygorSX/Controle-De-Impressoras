@@ -145,6 +145,7 @@
     <Compile Include="Helpers\CryptoHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PrintersModel.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2263,6 +2264,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Backup.cshtml" />
     <Content Include="Views\Conta\Login.cshtml" />
+    <Content Include="Views\Conta\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

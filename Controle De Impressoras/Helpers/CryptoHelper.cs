@@ -1,16 +1,13 @@
-﻿public static class CryptoHelper
+﻿using System;
+
+public static class CryptoHelper
 {
-    public static string HashMD5(string input)
+    public static string HashSHA256(string input)
     {
-        using (var md5 = System.Security.Cryptography.MD5.Create())
+        using (var sha256 = System.Security.Cryptography.SHA256.Create())
         {
-            var bytes = md5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(input));
-            var sb = new System.Text.StringBuilder();
-            foreach (var @byte in bytes)
-            {
-                sb.Append(@byte.ToString("x2"));
-            }
-            return sb.ToString();
+            var bytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(input));
+            return BitConverter.ToString(bytes).Replace("-", "").ToLower();
         }
     }
 }
