@@ -1,8 +1,15 @@
 ﻿using Controle_De_Impressoras.Data;
+<<<<<<< HEAD
 using System;
+=======
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+>>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
 
+[Table("UserPrinters")]
 public class UserModel
 {
+<<<<<<< HEAD
     // Método para verificar se o usuário existe com o login e senha fornecidos
     public static bool VerificarUsuarioComSenha(string login, string senha)
     {
@@ -52,4 +59,9 @@ public class UserModel
             return false;
         }
     }
+=======
+    public int Id { get; set; }
+    public string Usuario { get; set; }
+    public string Senha { get; set; }
+>>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
 }

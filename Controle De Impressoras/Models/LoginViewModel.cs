@@ -23,6 +23,7 @@ namespace Controle_De_Impressoras.Models
         [Display(Name = "Senha:")]
         public string Senha { get; set; }
 
+
         [Display(Name = "Lembrar-me")]
         public bool LembrarMe { get; set; }
     }
