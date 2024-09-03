@@ -27,6 +27,22 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Conta", FormMethod.Post, new { id = "logoffForm" }))
+                {
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Olá @User.Identity.Name</a></li>
+                        <li><a class="nav-link" href="javascript:document.getElementById('logoffForm').submit()">Sair</a></li>
+                    </ul>
+                }
+            }
+            else
+            {
+                <ul class="navbar-nav ms-auto">
+                    <li>@Html.ActionLink("Login", "Login", "Conta")</li>
+                </ul>
+            }
         </div>
     </nav>
     <div class="container body-content" style="min-width: 90%">

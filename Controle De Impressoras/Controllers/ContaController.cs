@@ -66,6 +66,7 @@ public class ContaController : Controller
     }
 
     [HttpPost]
+    [AllowAnonymous]
     [ValidateAntiForgeryToken]
     public ActionResult Registrar(RegistrarViewModel model)
     {
