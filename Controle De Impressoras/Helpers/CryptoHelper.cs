@@ -1,16 +1,14 @@
 ﻿public static class CryptoHelper
 {
-    public static string HashMD5(string input)
+    // Método para gerar o hash da senha
+    public static string HashPassword(string password)
     {
-        using (var md5 = System.Security.Cryptography.MD5.Create())
-        {
-            var bytes = md5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(input));
-            var sb = new System.Text.StringBuilder();
-            foreach (var @byte in bytes)
-            {
-                sb.Append(@byte.ToString("x2"));
-            }
-            return sb.ToString();
-        }
+        return BCrypt.Net.BCrypt.HashPassword(password);
+    }
+
+    // Método para verificar a senha
+    public static bool VerifyPassword(string password, string hashedPassword)
+    {
+        return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
     }
 }

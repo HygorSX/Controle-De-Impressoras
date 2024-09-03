@@ -10,7 +10,9 @@
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Conta", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
+                @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                 <div class="form-group">
                     @Html.LabelFor(m => m.Usuario, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
@@ -18,6 +20,7 @@
                         @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     @Html.LabelFor(m => m.Senha, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
@@ -25,15 +28,23 @@
                         @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         @Html.CheckBoxFor(m => m.LembrarMe)
                         @Html.LabelFor(m => m.LembrarMe)
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" class="btn btn-success" value="Entrar" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a href="@Url.Action("Registrar", "Conta")">Cadastrar-se</a>
                     </div>
                 </div>
             }
