@@ -14,6 +14,7 @@ namespace Controle_De_Impressoras.Controllers
             var impressoras = PrintersModel.RecuperarImpressoras(tipo, marca, modelo, patrimonio);
             return View(impressoras);
         }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
