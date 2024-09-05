@@ -268,6 +268,98 @@ C:\Users\PMB\Documents\Controle-De-Impressoras-decc399329144e955cd904c5279f8b764
 C:\Users\PMB\Documents\Controle-De-Impressoras-decc399329144e955cd904c5279f8b76471886a1\Controle De Impressoras\obj\Debug\Controle.C76E2D28.Up2Date
 C:\Users\PMB\Documents\Controle-De-Impressoras-decc399329144e955cd904c5279f8b76471886a1\Controle De Impressoras\obj\Debug\Controle De Impressoras.dll
 C:\Users\PMB\Documents\Controle-De-Impressoras-decc399329144e955cd904c5279f8b76471886a1\Controle De Impressoras\obj\Debug\Controle De Impressoras.pdb
+<<<<<<< HEAD
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\Controle De Impressoras.dll.config
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\Controle De Impressoras.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\Controle De Impressoras.pdb
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\csc.exe
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\csc.exe.config
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\csc.rsp
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\csi.exe
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\csi.exe.config
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\csi.rsp
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.AppContext.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Console.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.IO.Compression.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Net.Http.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Net.Sockets.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.ValueTuple.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Xml.XPath.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\vbc.exe
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\vbc.exe.config
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\vbc.rsp
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\VBCSCompiler.exe
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\Antlr3.Runtime.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\EntityFramework.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\EntityFramework.SqlServer.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\Newtonsoft.Json.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.Helpers.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.Mvc.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.Optimization.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.Razor.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.WebPages.Deployment.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.WebPages.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.WebPages.Razor.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\WebGrease.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\EntityFramework.xml
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\EntityFramework.SqlServer.xml
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.Helpers.xml
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.Mvc.xml
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.Optimization.xml
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.Razor.xml
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.WebPages.xml
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.WebPages.Deployment.xml
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\System.Web.WebPages.Razor.xml
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\Newtonsoft.Json.xml
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\Antlr3.Runtime.pdb
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\pt-br\System.Web.Helpers.resources.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\pt-br\System.Web.Mvc.resources.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\pt-br\System.Web.Optimization.resources.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\pt-br\System.Web.Razor.resources.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\pt-br\System.Web.WebPages.resources.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\pt-br\System.Web.WebPages.Deployment.resources.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\bin\pt-br\System.Web.WebPages.Razor.resources.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\obj\Debug\Controle De Impressoras.csproj.AssemblyReference.cache
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\obj\Debug\Controle De Impressoras.csproj.CoreCompileInputs.cache
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\obj\Debug\Controle.C76E2D28.Up2Date
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\obj\Debug\Controle De Impressoras.dll
+C:\Users\PMB\Controle-De-Impressoras\Controle De Impressoras\obj\Debug\Controle De Impressoras.pdb
+=======
 C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\Controle De Impressoras.dll.config
 C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\Controle De Impressoras.dll
 C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\Controle De Impressoras.pdb
@@ -368,6 +460,7 @@ C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\Syste
 C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\System.Memory.xml
 C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\System.Numerics.Vectors.xml
 C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\System.Runtime.CompilerServices.Unsafe.xml
+<<<<<<< HEAD
 C:\Users\PMB\Documents\CNTLIMP-backup\Controle De Impressoras\bin\Controle De Impressoras.dll.config
 C:\Users\PMB\Documents\CNTLIMP-backup\Controle De Impressoras\bin\Controle De Impressoras.dll
 C:\Users\PMB\Documents\CNTLIMP-backup\Controle De Impressoras\bin\Controle De Impressoras.pdb
@@ -468,3 +561,6 @@ C:\Users\PMB\Documents\CNTLIMP-backup\Controle De Impressoras\obj\Debug\Controle
 C:\Users\PMB\Documents\CNTLIMP-backup\Controle De Impressoras\obj\Debug\Controle.C76E2D28.Up2Date
 C:\Users\PMB\Documents\CNTLIMP-backup\Controle De Impressoras\obj\Debug\Controle De Impressoras.dll
 C:\Users\PMB\Documents\CNTLIMP-backup\Controle De Impressoras\obj\Debug\Controle De Impressoras.pdb
+=======
+>>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
+>>>>>>> 14c1b048c17d96b1be5402272852a8b9041339f4

@@ -162,7 +162,11 @@
     <Compile Include="Helpers\CryptoHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PrintersModel.cs" />
+<<<<<<< HEAD
+    <Compile Include="Models\RegisterViewModel.cs" />
+=======
     <Compile Include="Models\RegistrarViewModel.cs" />
+>>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validations\FutureDateAttribute.cs" />
@@ -2282,8 +2286,15 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Backup.cshtml" />
     <Content Include="Views\Conta\Login.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Conta\Register.cshtml" />
+=======
     <Content Include="Views\Conta\Registrar.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Cadastro\CadastrarImpressora.cshtml" />
+=======
+>>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
+>>>>>>> 14c1b048c17d96b1be5402272852a8b9041339f4
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
