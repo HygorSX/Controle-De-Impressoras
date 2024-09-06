@@ -15,6 +15,8 @@ namespace Controle_De_Impressoras.Controllers
             return View(impressoras);
         }
 
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
