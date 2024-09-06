@@ -1,198 +1,122 @@
 {
   "Version": 1,
-<<<<<<< HEAD
-  "WorkspaceRootPath": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\",
-=======
-<<<<<<< HEAD
-  "WorkspaceRootPath": "C:\\Users\\PMB\\Controle-De-Impressoras\\",
+  "WorkspaceRootPath": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\models\\printersmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\models\\printersmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\data\\printerscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\data\\printerscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\views\\conta\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\conta\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\models\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\models\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|c:\\users\\pmb\\controle-de-impressoras\\controle de impressoras\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|c:\\users\\pmb\\controle-de-impressoras\\controle de impressoras\\helpers\\cryptohelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\helpers\\cryptohelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\controllers\\contacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\controllers\\contacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\views\\conta\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\conta\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\app_start\\bundleconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\app_start\\bundleconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\models\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\models\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Controle-De-Impressoras\\controle de impressoras\\views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-=======
-  "WorkspaceRootPath": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\",
->>>>>>> 14c1b048c17d96b1be5402272852a8b9041339f4
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|c:\\users\\pmb\\documents\\cntlimp-backup\\controle de impressoras\\validations\\futuredateattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\validations\\futuredateattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|c:\\users\\pmb\\documents\\cntlimp-backup\\controle de impressoras\\views\\cadastro\\cadastrarimpressora.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\views\\cadastro\\cadastrarimpressora.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\cadastro\\cadastrarimpressora.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Controllers\\HomeController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:Controle De Impressoras\\Controllers\\HomeController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\models\\printersmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\models\\printersmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\models\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\models\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|c:\\users\\pmb\\documents\\cntlimp-backup\\controle de impressoras\\controllers\\cadastrocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|c:\\users\\pmb\\documents\\cntlimp-backup - copia\\controle de impressoras\\validations\\futuredateattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\validations\\futuredateattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Controllers\\HomeController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:Controle De Impressoras\\Controllers\\HomeController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\models\\printersmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\models\\printersmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\models\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\models\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\controllers\\cadastrocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\controllers\\cadastrocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\controllers\\contacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\controllers\\contacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\controllers\\contacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\models\\registrarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\models\\registrarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\models\\registrarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\views\\conta\\registrar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\views\\conta\\registrar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\conta\\registrar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\data\\printerscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\data\\printerscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\data\\printerscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\views\\conta\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\views\\conta\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\conta\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\_ViewStart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\_ViewStart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:Controle De Impressoras\\Views\\_ViewStart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\scripts\\jquery-3.4.1.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\scripts\\jquery-3.4.1.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\scripts\\jquery-3.4.1.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:Controle De Impressoras\\Views\\Web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\helpers\\cryptohelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\helpers\\cryptohelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\helpers\\cryptohelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Home\\Contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Home\\Contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:Controle De Impressoras\\Views\\Home\\Contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\views\\home\\backup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\views\\home\\backup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\views\\home\\backup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\controle de impressoras\\content\\bootstrap-icons\\font\\bootstrap-icons.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\controle de impressoras\\content\\bootstrap-icons\\font\\bootstrap-icons.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:controle de impressoras\\content\\bootstrap-icons\\font\\bootstrap-icons.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Content\\bootstrap-grid.css.map||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Content\\bootstrap-grid.css.map||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:Controle De Impressoras\\Content\\bootstrap-grid.css.map||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\App_Start\\FilterConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\App_Start\\FilterConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:Controle De Impressoras\\App_Start\\FilterConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\App_Start\\RouteConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\App_Start\\RouteConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:Controle De Impressoras\\App_Start\\RouteConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\App_Start\\BundleConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\App_Start\\BundleConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:Controle De Impressoras\\App_Start\\BundleConfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Shared\\Error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Shared\\Error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:Controle De Impressoras\\Views\\Shared\\Error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Content\\Site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Content\\Site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{962C9713-7349-4F27-AF0E-28838401A3B8}|Controle De Impressoras\\Controle De Impressoras.csproj|solutionrelative:Controle De Impressoras\\Content\\Site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
->>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
     }
   ],
   "DocumentGroupContainers": [
@@ -202,168 +126,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-              "DocumentIndex": 5,
-              "Title": "CryptoHelper.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Helpers\\CryptoHelper.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Helpers\\CryptoHelper.cs",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Helpers\\CryptoHelper.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Helpers\\CryptoHelper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T17:24:42.253Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserModel.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\UserModel.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Models\\UserModel.cs",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\UserModel.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Models\\UserModel.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T17:00:56.103Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ContaController.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Controllers\\ContaController.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Controllers\\ContaController.cs",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Controllers\\ContaController.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Controllers\\ContaController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAArwBwAAAAAAAAAAAAAAA==",
-=======
-              "DocumentIndex": 4,
-              "Title": "ContaController.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Controllers\\ContaController.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Controllers\\ContaController.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Controllers\\ContaController.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Controllers\\ContaController.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAwwEQAAAAUAAAA",
->>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T19:32:29.42Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PrintersModel.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\PrintersModel.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Models\\PrintersModel.cs",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\PrintersModel.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Models\\PrintersModel.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T17:01:17.259Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PrintersContext.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Data\\PrintersContext.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Data\\PrintersContext.cs",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Data\\PrintersContext.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Data\\PrintersContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T19:43:14.679Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 3,
-              "Title": "RegisterViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\RegisterViewModel.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Models\\RegisterViewModel.cs",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\RegisterViewModel.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Models\\RegisterViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T17:05:36.193Z",
-=======
-              "DocumentIndex": 5,
-              "Title": "CryptoHelper.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Helpers\\CryptoHelper.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Helpers\\CryptoHelper.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Helpers\\CryptoHelper.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Helpers\\CryptoHelper.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T18:40:52.083Z",
->>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 2,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Conta\\Login.cshtml",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Conta\\Login.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Conta\\Login.cshtml",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\Conta\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-02T19:32:45.059Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAawBwAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-02T19:34:27.355Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAuwHwAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-02T19:33:53.243Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Conta\\Register.cshtml",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Conta\\Register.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Conta\\Register.cshtml",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\Conta\\Register.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-02T19:33:27.619Z"
-=======
->>>>>>> 14c1b048c17d96b1be5402272852a8b9041339f4
-              "DocumentIndex": 1,
               "Title": "CadastrarImpressora.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Cadastro\\CadastrarImpressora.cshtml",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Cadastro\\CadastrarImpressora.cshtml",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Cadastro\\CadastrarImpressora.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Cadastro\\CadastrarImpressora.cshtml",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Cadastro\\CadastrarImpressora.cshtml",
               "RelativeToolTip": "Controle De Impressoras\\Views\\Cadastro\\CadastrarImpressora.cshtml",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAIwIIAAAAeAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-09-05T16:14:56.163Z",
               "EditorCaption": ""
@@ -372,9 +145,9 @@
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "PrintersContext.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Data\\PrintersContext.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Data\\PrintersContext.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Data\\PrintersContext.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Data\\PrintersContext.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Data\\PrintersContext.cs",
               "RelativeToolTip": "Controle De Impressoras\\Data\\PrintersContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -382,238 +155,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Models\\LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Models\\LoginViewModel.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Models\\LoginViewModel.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Models\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Models\\LoginViewModel.cs",
               "RelativeToolTip": "Controle De Impressoras\\Models\\LoginViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T18:41:08.92Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-02T18:41:08.92Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "UserModel.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Models\\UserModel.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Models\\UserModel.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Models\\UserModel.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Models\\UserModel.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Models\\UserModel.cs",
               "RelativeToolTip": "Controle De Impressoras\\Models\\UserModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-<<<<<<< HEAD
               "WhenOpened": "2024-09-02T18:41:26.739Z"
-=======
-              "WhenOpened": "2024-09-02T18:41:26.739Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "RegistrarViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\RegistrarViewModel.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Models\\RegistrarViewModel.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\RegistrarViewModel.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Models\\RegistrarViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T17:13:40.469Z",
-              "EditorCaption": ""
->>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-<<<<<<< HEAD
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T19:34:58.672Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Models\\LoginViewModel.cs",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\LoginViewModel.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Models\\LoginViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T19:36:30.544Z"
-=======
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Conta\\Login.cshtml",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Conta\\Login.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Conta\\Login.cshtml",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\Conta\\Login.cshtml",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAcwBQAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-02T18:41:52.017Z",
-              "EditorCaption": ""
->>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-<<<<<<< HEAD
-              "Title": "BundleConfig.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\App_Start\\BundleConfig.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\App_Start\\BundleConfig.cs",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\App_Start\\BundleConfig.cs",
-              "RelativeToolTip": "Controle De Impressoras\\App_Start\\BundleConfig.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T17:02:59.245Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-02T19:34:09.78Z"
-=======
-              "Title": "Registrar.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Conta\\Registrar.cshtml",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Conta\\Registrar.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Conta\\Registrar.cshtml",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\Conta\\Registrar.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAQwBQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-03T16:31:23.817Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "PrintersModel.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\PrintersModel.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Models\\PrintersModel.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Models\\PrintersModel.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Models\\PrintersModel.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAA9wCEAAACRAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-30T16:57:30.726Z",
-              "EditorCaption": ""
->>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-<<<<<<< HEAD
-              "Title": "RouteConfig.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\App_Start\\RouteConfig.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\App_Start\\RouteConfig.cs",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\App_Start\\RouteConfig.cs",
-              "RelativeToolTip": "Controle De Impressoras\\App_Start\\RouteConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-02T19:35:19.597Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Web.config",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Web.config",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Web.config",
-              "RelativeToolTip": "Controle De Impressoras\\Web.config",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-09-02T19:34:18.895Z",
-=======
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-30T17:21:12.038Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "About.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Home\\About.cshtml",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Home\\About.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Home\\About.cshtml",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\Home\\About.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-29T19:08:28.715Z",
->>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-<<<<<<< HEAD
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Web.config",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Web.config",
-              "ToolTip": "C:\\Users\\PMB\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Web.config",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-09-02T19:34:12.317Z"
-=======
-              "Title": "Contact.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Home\\Contact.cshtml",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Home\\Contact.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Home\\Contact.cshtml",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\Home\\Contact.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-29T16:13:15.044Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\_ViewStart.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-29T16:08:20.896Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Backup.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Home\\Backup.cshtml",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Home\\Backup.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\Controle-De-Impressoras\\Controle De Impressoras\\Views\\Home\\Backup.cshtml",
-              "RelativeToolTip": "Controle De Impressoras\\Views\\Home\\Backup.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-29T18:58:55.406Z",
-              "EditorCaption": ""
->>>>>>> 14c1b048c17d96b1be5402272852a8b9041339f4
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Conta\\Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Conta\\Login.cshtml",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Conta\\Login.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Conta\\Login.cshtml",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Conta\\Login.cshtml",
               "RelativeToolTip": "Controle De Impressoras\\Views\\Conta\\Login.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -623,61 +193,58 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Controle De Impressoras\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAACAAAACCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-29T16:08:33.222Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T16:08:33.222Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Home\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Controle De Impressoras\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAAAIIAAAAjAAAA",
+              "ViewState": "AQIAAMwAAAAAAAAAAAAAAO0AAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-07-29T16:13:17.554Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "PrintersModel.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Models\\PrintersModel.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Models\\PrintersModel.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Models\\PrintersModel.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Models\\PrintersModel.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Models\\PrintersModel.cs",
               "RelativeToolTip": "Controle De Impressoras\\Models\\PrintersModel.cs",
               "ViewState": "AQIAAFMAAAAAAAAAAAAAAFYAAABPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-04T20:02:31.103Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-04T20:02:31.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controle De Impressoras\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controle De Impressoras\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-30T17:21:12.038Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controle De Impressoras\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controle De Impressoras\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-30T17:21:12.038Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "FutureDateAttribute.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Validations\\FutureDateAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Validations\\FutureDateAttribute.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Validations\\FutureDateAttribute.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Validations\\FutureDateAttribute.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Validations\\FutureDateAttribute.cs",
               "RelativeToolTip": "Controle De Impressoras\\Validations\\FutureDateAttribute.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -688,9 +255,9 @@
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "Registrar.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Conta\\Registrar.cshtml",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Conta\\Registrar.cshtml",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Conta\\Registrar.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Conta\\Registrar.cshtml",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Conta\\Registrar.cshtml",
               "RelativeToolTip": "Controle De Impressoras\\Views\\Conta\\Registrar.cshtml",
               "ViewState": "AQIAABUAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -698,11 +265,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Web.config",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Web.config",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Web.config",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Web.config",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Web.config",
               "RelativeToolTip": "Controle De Impressoras\\Web.config",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
@@ -713,9 +280,9 @@
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "RegistrarViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Models\\RegistrarViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Models\\RegistrarViewModel.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Models\\RegistrarViewModel.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Models\\RegistrarViewModel.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Models\\RegistrarViewModel.cs",
               "RelativeToolTip": "Controle De Impressoras\\Models\\RegistrarViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -725,22 +292,21 @@
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "CadastroController.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Controllers\\CadastroController.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Controllers\\CadastroController.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Controllers\\CadastroController.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Controllers\\CadastroController.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Controllers\\CadastroController.cs",
               "RelativeToolTip": "Controle De Impressoras\\Controllers\\CadastroController.cs",
               "ViewState": "AQIAACEAAAAAAAAAAAAowBYAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-04T17:37:54.389Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-04T17:37:54.389Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "ContaController.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Controllers\\ContaController.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Controllers\\ContaController.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Controllers\\ContaController.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Controllers\\ContaController.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Controllers\\ContaController.cs",
               "RelativeToolTip": "Controle De Impressoras\\Controllers\\ContaController.cs",
               "ViewState": "AQIAAEYAAAAAAAAAAAA0wEUAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -750,9 +316,9 @@
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\_ViewStart.cshtml",
               "RelativeToolTip": "Controle De Impressoras\\Views\\_ViewStart.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -762,9 +328,9 @@
               "$type": "Document",
               "DocumentIndex": 17,
               "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Web.config",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Web.config",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Web.config",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Web.config",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Web.config",
               "RelativeToolTip": "Controle De Impressoras\\Views\\Web.config",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
@@ -774,9 +340,9 @@
               "$type": "Document",
               "DocumentIndex": 16,
               "Title": "jquery-3.4.1.js",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Scripts\\jquery-3.4.1.js",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Scripts\\jquery-3.4.1.js",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Scripts\\jquery-3.4.1.js",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Scripts\\jquery-3.4.1.js",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Scripts\\jquery-3.4.1.js",
               "RelativeToolTip": "Controle De Impressoras\\Scripts\\jquery-3.4.1.js",
               "ViewState": "AQIAAJ0HAAAAAAAAAAAAwOsHAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -786,9 +352,9 @@
               "$type": "Document",
               "DocumentIndex": 18,
               "Title": "CryptoHelper.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Helpers\\CryptoHelper.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Helpers\\CryptoHelper.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Helpers\\CryptoHelper.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Helpers\\CryptoHelper.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Helpers\\CryptoHelper.cs",
               "RelativeToolTip": "Controle De Impressoras\\Helpers\\CryptoHelper.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -798,9 +364,9 @@
               "$type": "Document",
               "DocumentIndex": 20,
               "Title": "About.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Home\\About.cshtml",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Home\\About.cshtml",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Home\\About.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Home\\About.cshtml",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Home\\About.cshtml",
               "RelativeToolTip": "Controle De Impressoras\\Views\\Home\\About.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -810,9 +376,9 @@
               "$type": "Document",
               "DocumentIndex": 19,
               "Title": "Contact.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Home\\Contact.cshtml",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Home\\Contact.cshtml",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Home\\Contact.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Home\\Contact.cshtml",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Home\\Contact.cshtml",
               "RelativeToolTip": "Controle De Impressoras\\Views\\Home\\Contact.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -822,9 +388,9 @@
               "$type": "Document",
               "DocumentIndex": 21,
               "Title": "Backup.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Home\\Backup.cshtml",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Home\\Backup.cshtml",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Home\\Backup.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Home\\Backup.cshtml",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Home\\Backup.cshtml",
               "RelativeToolTip": "Controle De Impressoras\\Views\\Home\\Backup.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -834,9 +400,9 @@
               "$type": "Document",
               "DocumentIndex": 23,
               "Title": "bootstrap-grid.css.map",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Content\\bootstrap-grid.css.map",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Content\\bootstrap-grid.css.map",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Content\\bootstrap-grid.css.map",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Content\\bootstrap-grid.css.map",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Content\\bootstrap-grid.css.map",
               "RelativeToolTip": "Controle De Impressoras\\Content\\bootstrap-grid.css.map",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
@@ -846,9 +412,9 @@
               "$type": "Document",
               "DocumentIndex": 22,
               "Title": "bootstrap-icons.scss",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Content\\bootstrap-icons\\font\\bootstrap-icons.scss",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Content\\bootstrap-icons\\font\\bootstrap-icons.scss",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Content\\bootstrap-icons\\font\\bootstrap-icons.scss",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Content\\bootstrap-icons\\font\\bootstrap-icons.scss",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Content\\bootstrap-icons\\font\\bootstrap-icons.scss",
               "RelativeToolTip": "Controle De Impressoras\\Content\\bootstrap-icons\\font\\bootstrap-icons.scss",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002663|",
@@ -858,9 +424,9 @@
               "$type": "Document",
               "DocumentIndex": 24,
               "Title": "FilterConfig.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\App_Start\\FilterConfig.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\App_Start\\FilterConfig.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\App_Start\\FilterConfig.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\App_Start\\FilterConfig.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\App_Start\\FilterConfig.cs",
               "RelativeToolTip": "Controle De Impressoras\\App_Start\\FilterConfig.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -870,9 +436,9 @@
               "$type": "Document",
               "DocumentIndex": 25,
               "Title": "RouteConfig.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\App_Start\\RouteConfig.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\App_Start\\RouteConfig.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\App_Start\\RouteConfig.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\App_Start\\RouteConfig.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\App_Start\\RouteConfig.cs",
               "RelativeToolTip": "Controle De Impressoras\\App_Start\\RouteConfig.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -882,9 +448,9 @@
               "$type": "Document",
               "DocumentIndex": 26,
               "Title": "BundleConfig.cs",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\App_Start\\BundleConfig.cs",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\App_Start\\BundleConfig.cs",
               "RelativeDocumentMoniker": "Controle De Impressoras\\App_Start\\BundleConfig.cs",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\App_Start\\BundleConfig.cs",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\App_Start\\BundleConfig.cs",
               "RelativeToolTip": "Controle De Impressoras\\App_Start\\BundleConfig.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -894,9 +460,9 @@
               "$type": "Document",
               "DocumentIndex": 27,
               "Title": "Error.cshtml",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Shared\\Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Shared\\Error.cshtml",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Views\\Shared\\Error.cshtml",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Views\\Shared\\Error.cshtml",
               "RelativeToolTip": "Controle De Impressoras\\Views\\Shared\\Error.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -906,19 +472,13 @@
               "$type": "Document",
               "DocumentIndex": 28,
               "Title": "Site.css",
-              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Content\\Site.css",
+              "DocumentMoniker": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Content\\Site.css",
               "RelativeDocumentMoniker": "Controle De Impressoras\\Content\\Site.css",
-              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup\\Controle De Impressoras\\Content\\Site.css",
+              "ToolTip": "C:\\Users\\PMB\\Documents\\CNTLIMP-backup - Copia\\Controle De Impressoras\\Content\\Site.css",
               "RelativeToolTip": "Controle De Impressoras\\Content\\Site.css",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-<<<<<<< HEAD
               "WhenOpened": "2024-07-29T17:21:39.053Z"
-=======
-              "WhenOpened": "2024-07-29T17:21:39.053Z",
-              "EditorCaption": ""
->>>>>>> 297c4882d9430f81378aaa489324cdb928411be1
->>>>>>> 14c1b048c17d96b1be5402272852a8b9041339f4
             }
           ]
         }
