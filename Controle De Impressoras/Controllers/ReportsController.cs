@@ -11,9 +11,15 @@ namespace Controle_De_Impressoras.Controllers
         // GET: Reports
         public ActionResult Index(DateTime? startDate, DateTime? endDate, int? printerId)
         {
-            var reports = ReportModel.RecuperarRelatorios(startDate, endDate, printerId);
+            // Define um valor padrão para printerId se não for fornecido
+            int actualPrinterId = printerId ?? 0; // Define 0 como valor padrão
+
+            // Recupera os relatórios usando o valor de printerId
+            var reports = ReportModel.RecuperarRelatorios(startDate, endDate, actualPrinterId);
+
             return View(reports);
         }
+
 
         // GET: Reports/Details/5
         public ActionResult Details(int id)

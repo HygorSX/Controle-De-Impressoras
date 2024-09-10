@@ -2286,7 +2286,6 @@
     <Content Include="Views\Conta\Login.cshtml" />
     <Content Include="Views\Conta\Registrar.cshtml" />
     <Content Include="Views\Cadastro\CadastrarImpressora.cshtml" />
-    <Content Include="Views\Home\Reports.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

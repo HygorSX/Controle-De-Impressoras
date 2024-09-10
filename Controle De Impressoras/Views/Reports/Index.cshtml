@@ -1,13 +1,150 @@
+<style>
+    #grid_cadastro > thead > tr th:nth-child(2) {
+        width: 110px;
+    }
+
+    #grid_cadastro > thead > tr th:nth-child(3) {
+        width: 210px;
+    }
+
+    .container-impressoras {
+        border: 1px solid;
+    }
+
+    #corpo_tabela {
+        max-height: 700px;
+        overflow: auto;
+        display: block;
+    }
+
+        #corpo_tabela tr {
+            table-layout: fixed;
+            width: 100%;
+            display: table;
+        }
+
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    thead {
+        width: calc(100% - 1em);
+        border-bottom: 1px solid;
+    }
+
+    td, th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .container-capacidade {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .ink-level {
+        border: solid 1.5px black;
+        width: 30px;
+        height: 50px;
+        background-color: #F6F7F8;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .ink-fill {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .btn-drop {
+        cursor: pointer;
+        border: none;
+        transition: transform 0.3s;
+    }
+
+    #pesquisas {
+        display: flex;
+        justify-content: center;
+    }
+
+    .filtro {
+        padding-left: 80px;
+    }
+
+    .filtros {
+        margin-bottom: 50px;
+    }
+
+    #btn-filter {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+
+    .img_impressoras {
+        width: 100%;
+        margin: auto;
+    }
+
+    .container-impressoras-2 {
+        display: flex;
+        text-align: center;
+        vertical-align: middle;
+        align-content: center;
+        justify-content: center;
+        border-bottom: 1px solid;
+    }
+
+    .container-impressoras-3 {
+        text-align: center;
+    }
+
+    #capacidade {
+        display: flex;
+        justify-content: center;
+    }
+
+    .containerImpressoras {
+        display: grid;
+        grid-template-columns: 3fr 3fr 3fr 4fr;
+        padding: 1rem;
+    }
+
+    .alinharTintas {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .extraInformation {
+        display: flex;
+        gap: 1rem;
+    }
+
+    p {
+        margin-bottom: .5rem;
+    }
+
+
+    .printerInformation {
+        display: grid;
+        grid-template-columns: 1.5fr 2fr 3fr 3fr 3fr;
+        padding: 2rem 0
+    }
+</style>
+
 @model IEnumerable<Controle_De_Impressoras.Models.ReportModel>
+
 
 @{
     ViewBag.Title = "Relatórios";
 }
 
-<h2>Relatórios</h2>
-
 <!-- Formulário de filtro -->
-@using (Html.BeginForm("Index", "Reports", FormMethod.Get))
+@*@using (Html.BeginForm("Index", "Reports", FormMethod.Get))
 {
     <div class="form-group">
         <label for="startDate">Data Inicial:</label>
@@ -22,40 +159,162 @@
         @Html.TextBox("printerId", Request.QueryString["printerId"], new { @class = "form-control" })
     </div>
     <button type="submit" class="btn btn-primary">Filtrar</button>
-}
+}*@
 
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.First().ReportDate)</th>
-            <th>@Html.DisplayNameFor(model => model.First().DeviceManufacturer)</th>
-            <th>@Html.DisplayNameFor(model => model.First().PrinterModel)</th>
-            <th>@Html.DisplayNameFor(model => model.First().SerialImpressora)</th>
-            <th>@Html.DisplayNameFor(model => model.First().QuantidadeImpressaoTotal)</th>
-            <th>@Html.DisplayNameFor(model => model.First().PrinterStatus)</th>
-            <th>@Html.DisplayNameFor(model => model.First().Tipo)</th>
-            <th>@Html.DisplayNameFor(model => model.First().Patrimonio)</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var report in Model)
+
+    @{
+        bool isFirstReport = true; // Variável de controle para verificar o primeiro relatório
+    }
+
+    @foreach (var report in Model)
+    {
+        { Console.WriteLine(report); }
+        if (isFirstReport)
         {
-            <tr>
-                <td>@report.ReportDate.ToShortDateString()</td>
-                <td>@report.DeviceManufacturer</td>
-                <td>@report.PrinterModel</td>
-                <td>@report.SerialImpressora</td>
-                <td>@report.QuantidadeImpressaoTotal</td>
-                <td>@report.PrinterStatus</td>
-                <td>@report.Tipo</td>
-                <td>@report.Patrimonio</td>
-                <td>
-                    @Html.ActionLink("Detalhes", "Details", new { id = report.ReportId }) |
-                    @Html.ActionLink("Editar", "Edit", new { id = report.ReportId }) |
-                    @Html.ActionLink("Excluir", "Delete", new { id = report.ReportId })
-                </td>
-            </tr>
+            <div class="printerInformation">
+                <img src="~/Imagens/Impressoras/@(report.DeviceManufacturer + ".png")" alt="Alternate Text" class="img_impressoras" />
+                <div class="fabricante" style=" display: flex; align-items: center; align-content: stretch; flex-wrap: nowrap; flex-direction: column; justify-content: center;">
+                    <p style="font-weight: bold; margin-top: 1rem; font-size: 1.25rem;">Fabricante:</p>
+                    <p>@report.DeviceManufacturer</p>
+                </div>
+                <div class="modelo" style=" display: flex; align-items: center; align-content: stretch; flex-wrap: nowrap; flex-direction: column; justify-content: center;">
+                    <p style="font-weight: bold; margin-top: 1rem; font-size: 1.25rem;">Modelo do dispositivo: </p>
+                    <p>@report.DeviceModel</p>
+                </div>
+                <div class="serial" style=" display: flex; align-items: center; align-content: stretch; flex-wrap: nowrap; flex-direction: column; justify-content: center;">
+                    <p style="font-weight: bold; margin-top: 1rem; font-size: 1.25rem;">Serial Impressora </p>
+                    <p>@report.SerialImpressora</p>
+                </div>
+                <div class="patrimonio" style=" display: flex; align-items: center; align-content: stretch; flex-wrap: nowrap; flex-direction: column; justify-content: center;">
+                    <p style="font-weight: bold; margin-top: 1rem; font-size: 1.25rem;">Patrimônio Impressora </p>
+                    <p>@report.Patrimonio</p>
+                </div>
+            </div>
+
+            <hr class="separator" />
+
+            @* Marcar a primeira renderização como feita *@
+            isFirstReport = false;
         }
-    </tbody>
+
+        <div class="containerImpressoras">
+            @if (report.Tipo == "COLOR")
+            {
+                <div class="dataBusca">
+                    <p style="font-weight: bold; margin-top: 1rem;">Data da busca</p>
+                    <p>@report.ReportDate</p>
+                </div>
+
+                <div class="impressoesTotais">
+                    <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
+                    <p>@report.QuantidadeImpressaoTotal Impressões</p>
+                </div>
+
+                <div class="statusTintas">
+                    <p style="font-weight: bold">Status Tintas</p>
+                    <div class="container-capacidade">
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @String.Concat(report.PorcentagemBlack, '%'); background-color: black;"></div>
+                            </div>
+                            <p style="font-weight: bold">@report.PorcentagemBlack%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @String.Concat(report.PorcentagemCyan, '%'); background-color: cyan;"></div>
+                            </div>
+                            <p style="font-weight: bold">@report.PorcentagemCyan%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @String.Concat(report.PorcentagemYellow, '%'); background-color: yellow;"></div>
+                            </div>
+                            <p style="font-weight: bold">@report.PorcentagemYellow%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @String.Concat(report.PorcentagemMagenta, '%'); background-color: magenta;"></div>
+                            </div>
+                            <p style="font-weight: bold">@report.PorcentagemMagenta%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fusorBeltKit">
+                    <p style="font-weight: bold; margin-top: 1rem">Modelo do dispositivo</p>
+                    <p>@report.DeviceModel</p>
+                    <p style="font-weight: bold">Fusor, Belt e Kit de Manutenção</p>
+                    <div class="container-capacidade">
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @String.Concat(report.PorcentagemFusor, '%'); background-color: gray;"></div>
+                            </div>
+                            <p style="font-weight: bold">@report.PorcentagemFusor%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @String.Concat(report.PorcentagemBelt, '%'); background-color: gray;"></div>
+                            </div>
+                            <p style="font-weight: bold">@report.PorcentagemBelt%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @String.Concat(report.PorcentagemKitManutencao, '%'); background-color: gray;"></div>
+                            </div>
+                            <p style="font-weight: bold">@report.PorcentagemKitManutencao%</p>
+                        </div>
+                    </div>
+                </div>
+            }
+            else if (report.Tipo == "MONO")
+            {
+                <div class="dataBusca">
+                    <p style="font-weight: bold; margin-top: 1rem;">Data da busca</p>
+                    <p>@report.ReportDate</p>
+                </div>
+
+                <div class="impressoesTotais">
+                    <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
+                    <p>@report.QuantidadeImpressaoTotal Impressões</p>
+                </div>
+
+                <div class="statusTintas">
+                    <p style="font-weight: bold">Status Tinta</p>
+                    <div class="container-capacidade">
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @String.Concat(report.PorcentagemBlack, '%'); background-color: black;"></div>
+                            </div>
+                            <p style="font-weight: bold">@report.PorcentagemBlack%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fusorBeltKit">
+                    <p style="font-weight: bold">Fusor, Belt e Kit de Manutenção</p>
+                    <div class="container-capacidade">
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @String.Concat(report.PorcentagemFusor, '%'); background-color: gray;"></div>
+                            </div>
+                            <p style="font-weight: bold">@report.PorcentagemFusor%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @String.Concat(report.PorcentagemBelt, '%'); background-color: gray;"></div>
+                            </div>
+                            <p style="font-weight: bold">@report.PorcentagemBelt%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @String.Concat(report.PorcentagemKitManutencao, '%'); background-color: gray;"></div>
+                            </div>
+                            <p style="font-weight: bold">@report.PorcentagemKitManutencao%</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <hr class="separator" />
+    }
 </table>

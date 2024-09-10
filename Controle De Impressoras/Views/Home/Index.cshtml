@@ -104,6 +104,7 @@
         display: grid;
         grid-template-columns:3fr 3fr 3fr 4fr;
         padding: 1rem;
+        gap: .5rem;
     }
 
     .alinharTintas {
@@ -236,6 +237,8 @@
                                             <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
                                         </div>
                                     </div>
+                                    <a href="./Reports?printerId=@item.Id">Ver relatórios...</a>
+
                                 </div>
                             }
                             else if (item.Tipo == "MONO")
@@ -285,8 +288,11 @@
                                             <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
                                         </div>
                                     </div>
+                                    <a href="./Reports?printerId=@item.Id">Ver relatórios...</a>
+
                                 </div>
                             }
+
                         </div>
                         <hr class="separator" />
                     }
