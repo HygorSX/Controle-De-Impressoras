@@ -169,7 +169,7 @@
                         <div class="containerImpressoras">
                             <div class="header">
                                 <img src="~/Imagens/Impressoras/@(item.DeviceManufacturer + ".png")" alt="Alternate Text" class="img_impressoras" />
-                                <p style="margin-left: 2rem;">@item.DataHoraDeBusca</p>
+                                <p style="margin-left: 2rem; margin-top: 1rem;">@item.DataHoraDeBusca</p>
                             </div>
 
                             @if (item.Tipo == "COLOR")
@@ -297,6 +297,7 @@
                         <hr class="separator" />
                     }
         </main>
+
     <script>
         function abrirInfo(id) {
             var div_info = document.getElementById("info_impressora_" + id)
