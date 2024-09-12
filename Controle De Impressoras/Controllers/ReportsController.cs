@@ -111,24 +111,25 @@ namespace Controle_De_Impressoras.Controllers
         }
 
         // GET: Reports
-        public ActionResult Index(DateTime? startDate, DateTime? endDate, int? printerId)
+        public ActionResult Index(DateTime? startDate, DateTime? endDate, int printerId = 0)
         {
             using (var context = new PrintersContext())
             {
                 // Recupera relatórios com base nos filtros de datas e printerId
                 var reports = context.DailyReports
-                    .Where(r => (!printerId.HasValue || r.PrinterId == printerId) &&
+                    .Where(r => (printerId == 0 || r.PrinterId == printerId) &&
                                 (!startDate.HasValue || r.ReportDate >= startDate.Value) &&
                                 (!endDate.HasValue || r.ReportDate <= endDate.Value))
                     .ToList();
 
-                ViewBag.StartDate = startDate;
+                ViewBag.StartDate = startDate; 
                 ViewBag.EndDate = endDate;
                 ViewBag.PrinterId = printerId;
 
                 return View(reports);
             }
         }
+
 
         // GET: Reports/Details/5
         public ActionResult Details(int id)
