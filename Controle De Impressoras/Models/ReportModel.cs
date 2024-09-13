@@ -57,7 +57,9 @@ namespace Controle_De_Impressoras.Models
                     query = query.Where(r => r.PrinterId == printerId.Value);
                 }
 
-                return query.OrderBy(r => r.ReportDate).ToList();
+                    return query
+                    .OrderBy(r => r.PrinterId)
+                    .ToList();
             }
         }
     }

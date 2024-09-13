@@ -116,13 +116,20 @@ namespace Controle_De_Impressoras.Controllers
             using (var context = new PrintersContext())
             {
                 // Recupera relatórios com base nos filtros de datas e printerId
-                var reports = context.DailyReports
+                var reportsQuery = context.DailyReports
                     .Where(r => (printerId == 0 || r.PrinterId == printerId) &&
                                 (!startDate.HasValue || r.ReportDate >= startDate.Value) &&
-                                (!endDate.HasValue || r.ReportDate <= endDate.Value))
-                    .ToList();
+                                (!endDate.HasValue || r.ReportDate <= endDate.Value));
 
-                ViewBag.StartDate = startDate; 
+                // Adiciona ordenação condicional
+                if (printerId == 0)
+                {
+                    reportsQuery = reportsQuery.OrderBy(r => r.PrinterId);
+                }
+
+                var reports = reportsQuery.ToList();
+
+                ViewBag.StartDate = startDate;
                 ViewBag.EndDate = endDate;
                 ViewBag.PrinterId = printerId;
 

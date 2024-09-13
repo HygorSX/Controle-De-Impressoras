@@ -245,33 +245,46 @@
 
 @if (ViewBag.PrinterId == 0)
 {
+    int? currentPrinterId = null; 
     bool isFirstReport = true;
+
     foreach (var report in Model)
     {
-        <div class="printerInformation">
-            <img src="~/Imagens/Impressoras/@(report.DeviceManufacturer + ".png")" alt="@report.DeviceManufacturer" class="img_impressoras" />
-            <div class="fabricante">
-                <p class="title">Fabricante:</p>
-                <p>@report.DeviceManufacturer</p>
-            </div>
-            <div class="modelo">
-                <p class="title">Modelo do dispositivo:</p>
-                <p>@report.DeviceModel</p>
-            </div>
-            <div class="serial">
-                <p class="title">Serial Impressora</p>
-                <p>@report.SerialImpressora</p>
-            </div>
-            <div class="patrimonio">
-                <p class="title">Patrimônio Impressora</p>
-                <p>@report.Patrimonio</p>
-            </div>
-        </div>
+        if (currentPrinterId == null || currentPrinterId != report.PrinterId)
+        {
+            currentPrinterId = report.PrinterId;
 
-        <a class="btn btn-primary" onclick="window.open('@Url.Action("GenerateExcel", "Reports", new { printerId = @report.PrinterId })', '_blank')">
-            Gerar Planilha dos Relatórios
-        </a>
+            if (!isFirstReport)
+            {
+                <hr class="separator" />
+            }
 
+            <div class="printerInformation">
+                <img src="~/Imagens/Impressoras/@(report.DeviceManufacturer + ".png")" alt="@report.DeviceManufacturer" class="img_impressoras" />
+                <div class="fabricante">
+                    <p class="title">Fabricante:</p>
+                    <p>@report.DeviceManufacturer</p>
+                </div>
+                <div class="modelo">
+                    <p class="title">Modelo do dispositivo:</p>
+                    <p>@report.DeviceModel</p>
+                </div>
+                <div class="serial">
+                    <p class="title">Serial Impressora</p>
+                    <p>@report.SerialImpressora</p>
+                </div>
+                <div class="patrimonio">
+                    <p class="title">Patrimônio Impressora</p>
+                    <p>@report.Patrimonio</p>
+                </div>
+            </div>
+
+            <a class="btn btn-primary" onclick="window.open('@Url.Action("GenerateExcel", "Reports", new { printerId = @report.PrinterId })', '_blank')">
+                Gerar Planilha dos Relatórios
+            </a>
+
+            isFirstReport = false;
+        }
 
         <div class="containerImpressoras">
             <div class="dataBusca">
@@ -341,7 +354,6 @@
                 </div>
             </div>
         </div>
-        <hr class="separator" />
-
     }
 }
+
