@@ -1,0 +1,359 @@
+<style>
+    /* CSS separado */
+    #grid_cadastro > thead > tr th:nth-child(2) {
+        width: 110px;
+    }
+
+    #grid_cadastro > thead > tr th:nth-child(3) {
+        width: 210px;
+    }
+
+    .container-impressoras, .container-impressoras-2 {
+        border: 1px solid;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #corpo_tabela {
+        max-height: 700px;
+        overflow: auto;
+        display: block;
+    }
+
+        #corpo_tabela tr, thead, tbody tr {
+            table-layout: fixed;
+            width: 100%;
+            display: table;
+        }
+
+    thead {
+        width: calc(100% - 1em);
+        border-bottom: 1px solid;
+    }
+
+    td, th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .container-capacidade {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .ink-level {
+        border: solid 1.5px black;
+        width: 30px;
+        height: 50px;
+        background-color: #F6F7F8;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .ink-fill {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .btn-drop {
+        cursor: pointer;
+        border: none;
+        transition: transform 0.3s;
+    }
+
+    #pesquisas {
+        display: flex;
+        justify-content: center;
+    }
+
+    .filtro {
+        padding-left: 80px;
+    }
+
+    .filtros {
+        margin-bottom: 50px;
+    }
+
+    #btn-filter {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+
+    .img_impressoras {
+        width: 100%;
+        margin: auto;
+    }
+
+    #capacidade, .extraInformation {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    p {
+        margin-bottom: .5rem;
+    }
+
+    .printerInformation {
+        display: grid;
+        grid-template-columns: 1.5fr 2fr 3fr 3fr 3fr;
+        padding: 2rem 0;
+    }
+
+    .containerImpressoras {
+        display: grid;
+        grid-template-columns: 3fr 3fr 3fr 4fr;
+        padding: 1rem;
+    }
+
+    .alinharTintas {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+</style>
+
+@model IEnumerable<Controle_De_Impressoras.Models.ReportModel>
+
+@{
+    ViewBag.Title = "Relatórios";
+}
+
+@using (Html.BeginForm("Index", "Reports", FormMethod.Get))
+{
+    <div>
+        <label for="startDate">Data de Início:</label>
+        <input type="date" name="startDate" value="@ViewBag.StartDate?.ToString(" yyyy-MM-dd")" />
+
+        <label for="endDate">Data de Fim:</label>
+        <input type="date" name="endDate" value="@ViewBag.EndDate?.ToString(" yyyy-MM-dd")" />
+
+        <input type="number" name="printerId" value="@ViewBag.PrinterId" />
+
+        <button type="submit">Filtrar</button>
+    </div>
+}
+
+@if (ViewBag.PrinterId != 0)
+{
+    bool isFirstReport = true;
+    foreach (var report in Model)
+    {
+        if (isFirstReport)
+        {
+            <div class="printerInformation">
+                <img src="~/Imagens/Impressoras/@(report.DeviceManufacturer + ".png")" alt="@report.DeviceManufacturer" class="img_impressoras" />
+                <div class="fabricante">
+                    <p class="title">Fabricante:</p>
+                    <p>@report.DeviceManufacturer</p>
+                </div>
+                <div class="modelo">
+                    <p class="title">Modelo do dispositivo:</p>
+                    <p>@report.DeviceModel</p>
+                </div>
+                <div class="serial">
+                    <p class="title">Serial Impressora</p>
+                    <p>@report.SerialImpressora</p>
+                </div>
+                <div class="patrimonio">
+                    <p class="title">Patrimônio Impressora</p>
+                    <p>@report.Patrimonio</p>
+                </div>
+            </div>
+
+            <a class="btn btn-primary" onclick="window.open('@Url.Action("GenerateExcel", "Reports", new { printerId = @report.PrinterId })', '_blank')">
+                Gerar Planilha dos Relatórios
+            </a>
+
+            isFirstReport = false;
+            <hr class="separator" />
+        }
+
+        <div class="containerImpressoras">
+            <div class="dataBusca">
+                <p class="title">Data da busca</p>
+                <p>@report.ReportDate</p>
+            </div>
+
+            <div class="impressoesTotais">
+                <p class="title">Impressões Totais</p>
+                <p>@report.QuantidadeImpressaoTotal Impressões</p>
+            </div>
+
+            <div class="statusTintas">
+                <p class="title">Status Tintas</p>
+                <div class="container-capacidade">
+                    <div>
+                        <div class="ink-level">
+                            <div class="ink-fill" style="height: @report.PorcentagemBlack%; background-color: black;"></div>
+                        </div>
+                        <p class="title">@report.PorcentagemBlack%</p>
+                    </div>
+                    @if (report.Tipo == "COLOR")
+                    {
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemCyan%; background-color: cyan;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemCyan%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemYellow%; background-color: yellow;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemYellow%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemMagenta%; background-color: magenta;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemMagenta%</p>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="fusorBeltKit">
+                <p class="title">Fusor, Belt e Kit de Manutenção</p>
+                <div class="container-capacidade">
+                    <div>
+                        <div class="ink-level">
+                            <div class="ink-fill" style="height: @report.PorcentagemFusor%; background-color: gray;"></div>
+                        </div>
+                        <p class="title">@report.PorcentagemFusor%</p>
+                    </div>
+                    <div>
+                        <div class="ink-level">
+                            <div class="ink-fill" style="height: @report.PorcentagemBelt%; background-color: gray;"></div>
+                        </div>
+                        <p class="title">@report.PorcentagemBelt%</p>
+                    </div>
+                    <div>
+                        <div class="ink-level">
+                            <div class="ink-fill" style="height: @report.PorcentagemKitManutencao%; background-color: gray;"></div>
+                        </div>
+                        <p class="title">@report.PorcentagemKitManutencao%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@if (ViewBag.PrinterId == 0)
+{
+    int? currentPrinterId = null; 
+    bool isFirstReport = true;
+
+    foreach (var report in Model)
+    {
+        if (currentPrinterId == null || currentPrinterId != report.PrinterId)
+        {
+            currentPrinterId = report.PrinterId;
+
+            if (!isFirstReport)
+            {
+                <hr class="separator" />
+            }
+
+            <div class="printerInformation">
+                <img src="~/Imagens/Impressoras/@(report.DeviceManufacturer + ".png")" alt="@report.DeviceManufacturer" class="img_impressoras" />
+                <div class="fabricante">
+                    <p class="title">Fabricante:</p>
+                    <p>@report.DeviceManufacturer</p>
+                </div>
+                <div class="modelo">
+                    <p class="title">Modelo do dispositivo:</p>
+                    <p>@report.DeviceModel</p>
+                </div>
+                <div class="serial">
+                    <p class="title">Serial Impressora</p>
+                    <p>@report.SerialImpressora</p>
+                </div>
+                <div class="patrimonio">
+                    <p class="title">Patrimônio Impressora</p>
+                    <p>@report.Patrimonio</p>
+                </div>
+            </div>
+
+            <a class="btn btn-primary" onclick="window.open('@Url.Action("GenerateExcel", "Reports", new { printerId = @report.PrinterId })', '_blank')">
+                Gerar Planilha dos Relatórios
+            </a>
+
+            isFirstReport = false;
+        }
+
+        <div class="containerImpressoras">
+            <div class="dataBusca">
+                <p class="title">Data da busca</p>
+                <p>@report.ReportDate</p>
+            </div>
+
+            <div class="impressoesTotais">
+                <p class="title">Impressões Totais</p>
+                <p>@report.QuantidadeImpressaoTotal Impressões</p>
+            </div>
+
+            <div class="statusTintas">
+                <p class="title">Status Tintas</p>
+                <div class="container-capacidade">
+                    <div>
+                        <div class="ink-level">
+                            <div class="ink-fill" style="height: @report.PorcentagemBlack%; background-color: black;"></div>
+                        </div>
+                        <p class="title">@report.PorcentagemBlack%</p>
+                    </div>
+                    @if (report.Tipo == "COLOR")
+                    {
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemCyan%; background-color: cyan;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemCyan%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemYellow%; background-color: yellow;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemYellow%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemMagenta%; background-color: magenta;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemMagenta%</p>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="fusorBeltKit">
+                <p class="title">Fusor, Belt e Kit de Manutenção</p>
+                <div class="container-capacidade">
+                    <div>
+                        <div class="ink-level">
+                            <div class="ink-fill" style="height: @report.PorcentagemFusor%; background-color: gray;"></div>
+                        </div>
+                        <p class="title">@report.PorcentagemFusor%</p>
+                    </div>
+                    <div>
+                        <div class="ink-level">
+                            <div class="ink-fill" style="height: @report.PorcentagemBelt%; background-color: gray;"></div>
+                        </div>
+                        <p class="title">@report.PorcentagemBelt%</p>
+                    </div>
+                    <div>
+                        <div class="ink-level">
+                            <div class="ink-fill" style="height: @report.PorcentagemKitManutencao%; background-color: gray;"></div>
+                        </div>
+                        <p class="title">@report.PorcentagemKitManutencao%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
