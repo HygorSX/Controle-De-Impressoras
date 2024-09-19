@@ -189,8 +189,9 @@
     <Compile Include="Helpers\CryptoHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PrintersModel.cs" />
+    <Compile Include="Models\PrinterStatusLogsModel.cs" />
     <Compile Include="Models\RegistrarViewModel.cs" />
-    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\PrinterMonitoringModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\AuthService.cs" />

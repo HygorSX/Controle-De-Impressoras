@@ -116,7 +116,7 @@
     }
 </style>
 
-@model IEnumerable<Controle_De_Impressoras.Models.ReportModel>
+@model IEnumerable<Controle_De_Impressoras.Models.PrinterStatusLogModel>
 
 @{
     ViewBag.Title = "Relatórios";
@@ -131,229 +131,205 @@
         <label for="endDate">Data de Fim:</label>
         <input type="date" name="endDate" value="@ViewBag.EndDate?.ToString(" yyyy-MM-dd")" />
 
-        <input type="number" name="printerId" value="@ViewBag.PrinterId" />
-
         <button type="submit">Filtrar</button>
     </div>
 }
 
-@if (ViewBag.PrinterId != 0)
+
+
+@if (ViewBag.PrinterDetails != null)
 {
-    bool isFirstReport = true;
-    foreach (var report in Model)
-    {
-        if (isFirstReport)
-        {
-            <div class="printerInformation">
-                <img src="~/Imagens/Impressoras/@(report.DeviceManufacturer + ".png")" alt="@report.DeviceManufacturer" class="img_impressoras" />
-                <div class="fabricante">
-                    <p class="title">Fabricante:</p>
-                    <p>@report.DeviceManufacturer</p>
-                </div>
-                <div class="modelo">
-                    <p class="title">Modelo do dispositivo:</p>
-                    <p>@report.DeviceModel</p>
-                </div>
-                <div class="serial">
-                    <p class="title">Serial Impressora</p>
-                    <p>@report.SerialImpressora</p>
-                </div>
-                <div class="patrimonio">
-                    <p class="title">Patrimônio Impressora</p>
-                    <p>@report.Patrimonio</p>
-                </div>
-            </div>
+    var printer = ViewBag.PrinterDetails;
 
-            <a class="btn btn-primary" onclick="window.open('@Url.Action("GenerateExcel", "Reports", new { printerId = @report.PrinterId })', '_blank')">
-                Gerar Planilha dos Relatórios
-            </a>
-
-            isFirstReport = false;
-            <hr class="separator" />
-        }
-
-        <div class="containerImpressoras">
-            <div class="dataBusca">
-                <p class="title">Data da busca</p>
-                <p>@report.ReportDate</p>
-            </div>
-
-            <div class="impressoesTotais">
-                <p class="title">Impressões Totais</p>
-                <p>@report.QuantidadeImpressaoTotal Impressões</p>
-            </div>
-
-            <div class="statusTintas">
-                <p class="title">Status Tintas</p>
-                <div class="container-capacidade">
-                    <div>
-                        <div class="ink-level">
-                            <div class="ink-fill" style="height: @report.PorcentagemBlack%; background-color: black;"></div>
-                        </div>
-                        <p class="title">@report.PorcentagemBlack%</p>
-                    </div>
-                    @if (report.Tipo == "COLOR")
-                    {
-                        <div>
-                            <div class="ink-level">
-                                <div class="ink-fill" style="height: @report.PorcentagemCyan%; background-color: cyan;"></div>
-                            </div>
-                            <p class="title">@report.PorcentagemCyan%</p>
-                        </div>
-                        <div>
-                            <div class="ink-level">
-                                <div class="ink-fill" style="height: @report.PorcentagemYellow%; background-color: yellow;"></div>
-                            </div>
-                            <p class="title">@report.PorcentagemYellow%</p>
-                        </div>
-                        <div>
-                            <div class="ink-level">
-                                <div class="ink-fill" style="height: @report.PorcentagemMagenta%; background-color: magenta;"></div>
-                            </div>
-                            <p class="title">@report.PorcentagemMagenta%</p>
-                        </div>
-                    }
-                </div>
-            </div>
-
-            <div class="fusorBeltKit">
-                <p class="title">Fusor, Belt e Kit de Manutenção</p>
-                <div class="container-capacidade">
-                    <div>
-                        <div class="ink-level">
-                            <div class="ink-fill" style="height: @report.PorcentagemFusor%; background-color: gray;"></div>
-                        </div>
-                        <p class="title">@report.PorcentagemFusor%</p>
-                    </div>
-                    <div>
-                        <div class="ink-level">
-                            <div class="ink-fill" style="height: @report.PorcentagemBelt%; background-color: gray;"></div>
-                        </div>
-                        <p class="title">@report.PorcentagemBelt%</p>
-                    </div>
-                    <div>
-                        <div class="ink-level">
-                            <div class="ink-fill" style="height: @report.PorcentagemKitManutencao%; background-color: gray;"></div>
-                        </div>
-                        <p class="title">@report.PorcentagemKitManutencao%</p>
-                    </div>
-                </div>
-            </div>
+    <div class="printerInformation">
+        <img src="~/Imagens/Impressoras/@(printer.DeviceManufacturer + ".png")" alt="@printer.DeviceManufacturer" class="img_impressoras" />
+        <div class="fabricante">
+            <p class="title">Fabricante:</p>
+            <p>@printer.DeviceManufacturer</p>
         </div>
-    }
+        <div class="modelo">
+            <p class="title">Modelo do dispositivo:</p>
+            <p>@printer.DeviceModel</p>
+        </div>
+        <div class="serial">
+            <p class="title">Serial Impressora</p>
+            <p>@printer.SerialImpressora</p>
+        </div>
+        <div class="patrimonio">
+            <p class="title">Patrimônio Impressora</p>
+            <p>@printer.Patrimonio</p>
+        </div>
+    </div>
+
+
+    <hr class="separator" />
 }
 
-@if (ViewBag.PrinterId == 0)
+
+
+@if (Model != null && Model.Any() && ViewBag.PrinterDetails != null)
 {
-    int? currentPrinterId = null; 
-    bool isFirstReport = true;
-
-    foreach (var report in Model)
-    {
-        if (currentPrinterId == null || currentPrinterId != report.PrinterId)
+    <table id="grid_cadastro">
+        @foreach (var report in Model)
         {
-            currentPrinterId = report.PrinterId;
+            <div class="containerImpressoras">
+                <div class="dataBusca">
+                    <p class="title">Data da busca</p>
+                    <p>@report.DataHoraDeBusca</p>
+                </div>
 
-            if (!isFirstReport)
-            {
-                <hr class="separator" />
+                <div class="impressoesTotais">
+                    <p class="title">Impressões Totais</p>
+                    <p>@report.QuantidadeImpressaoTotal Impressões</p>
+                </div>
+
+                <div class="statusTintas">
+                    <p class="title">Status Tintas</p>
+                    <div class="container-capacidade">
+                        @if (ViewBag.PrinterDetails.Tipo == "COLOR")
+                        {
+
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @report.PorcentagemBlack%; background-color: black;"></div>
+                                </div>
+                                <p class="title">@report.PorcentagemBlack%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @report.PorcentagemCyan%; background-color: cyan;"></div>
+                                </div>
+                                <p class="title">@report.PorcentagemCyan%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @report.PorcentagemYellow%; background-color: yellow;"></div>
+                                </div>
+                                <p class="title">@report.PorcentagemYellow%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @report.PorcentagemMagenta%; background-color: magenta;"></div>
+                                </div>
+                                <p class="title">@report.PorcentagemMagenta%</p>
+                            </div>
+                        }
+
+                        @if (ViewBag.PrinterDetails.Tipo == "MONO")
+                        {
+
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @report.PorcentagemBlack%; background-color: black;"></div>
+                                </div>
+                                <p class="title">@report.PorcentagemBlack%</p>
+                            </div>
+                            
+                        }
+                    </div>
+                </div>
+
+                <div class="fusorBeltKit">
+                    <p class="title">Fusor, Belt e Kit de Manutenção</p>
+                    <div class="container-capacidade">
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemFusor%; background-color: gray;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemFusor%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemBelt%; background-color: gray;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemBelt%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemKitManutencao%; background-color: gray;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemKitManutencao%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </table>
+}
+
+else
+{
+    <p>Nenhum relatório encontrado para os critérios especificados.</p>
+}
+
+<div style="margin-top: 20px;">
+    <button id="exportExcel">Exportar para Excel</button>
+    <button id="exportPDF">Exportar para PDF</button>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+<script>
+   document.getElementById("exportPDF").addEventListener("click", function () {
+    const reports = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+    const docDefinition = {
+        content: [
+            { text: 'Relatórios', style: 'header' },
+            ...reports.map(report => {
+                return [
+                    { text: `Data da Busca: ${report.DataHoraDeBusca}`, style: 'tableCell' },
+                    { text: `Impressões Totais: ${report.QuantidadeImpressaoTotal}`, style: 'tableCell' },
+                    { text: `Porcentagem Black: ${report.PorcentagemBlack}`, style: 'tableCell' },
+                    { text: `Porcentagem Cyan: ${report.PorcentagemCyan}`, style: 'tableCell' },
+                    { text: `Porcentagem Yellow: ${report.PorcentagemYellow}`, style: 'tableCell' },
+                    { text: `Porcentagem Magenta: ${report.PorcentagemMagenta}`, style: 'tableCell' },
+                    { text: `Porcentagem Fusor: ${report.PorcentagemFusor}`, style: 'tableCell' },
+                    { text: `Porcentagem Belt: ${report.PorcentagemBelt}`, style: 'tableCell' },
+                    { text: `Porcentagem Kit: ${report.PorcentagemKitManutencao}`, style: 'tableCell' },
+                    { text: ' ', style: 'tableCell' },
+                    { text: '-----------------------------------', style: 'lineSeparator' },
+                    { text: ' ', style: 'tableCell' }
+                ];
+            }),
+        ],
+        styles: {
+            header: {
+                fontSize: 16,
+                bold: true,
+                margin: [0, 20, 0, 10],
+                alignment: 'center'
+            },
+            tableCell: {
+                fontSize: 10,
+                margin: [5, 5],
+                alignment: 'left'
+            },
+            lineSeparator: {
+                margin: [0, 10],
+                fontSize: 10,
+                alignment: 'center'
             }
-
-            <div class="printerInformation">
-                <img src="~/Imagens/Impressoras/@(report.DeviceManufacturer + ".png")" alt="@report.DeviceManufacturer" class="img_impressoras" />
-                <div class="fabricante">
-                    <p class="title">Fabricante:</p>
-                    <p>@report.DeviceManufacturer</p>
-                </div>
-                <div class="modelo">
-                    <p class="title">Modelo do dispositivo:</p>
-                    <p>@report.DeviceModel</p>
-                </div>
-                <div class="serial">
-                    <p class="title">Serial Impressora</p>
-                    <p>@report.SerialImpressora</p>
-                </div>
-                <div class="patrimonio">
-                    <p class="title">Patrimônio Impressora</p>
-                    <p>@report.Patrimonio</p>
-                </div>
-            </div>
-
-            <a class="btn btn-primary" onclick="window.open('@Url.Action("GenerateExcel", "Reports", new { printerId = @report.PrinterId })', '_blank')">
-                Gerar Planilha dos Relatórios
-            </a>
-
-            isFirstReport = false;
+        },
+        defaultStyle: {
+            columnGap: 20
         }
+    };
 
-        <div class="containerImpressoras">
-            <div class="dataBusca">
-                <p class="title">Data da busca</p>
-                <p>@report.ReportDate</p>
-            </div>
+    pdfMake.createPdf(docDefinition).download('relatorios.pdf');
+});
 
-            <div class="impressoesTotais">
-                <p class="title">Impressões Totais</p>
-                <p>@report.QuantidadeImpressaoTotal Impressões</p>
-            </div>
 
-            <div class="statusTintas">
-                <p class="title">Status Tintas</p>
-                <div class="container-capacidade">
-                    <div>
-                        <div class="ink-level">
-                            <div class="ink-fill" style="height: @report.PorcentagemBlack%; background-color: black;"></div>
-                        </div>
-                        <p class="title">@report.PorcentagemBlack%</p>
-                    </div>
-                    @if (report.Tipo == "COLOR")
-                    {
-                        <div>
-                            <div class="ink-level">
-                                <div class="ink-fill" style="height: @report.PorcentagemCyan%; background-color: cyan;"></div>
-                            </div>
-                            <p class="title">@report.PorcentagemCyan%</p>
-                        </div>
-                        <div>
-                            <div class="ink-level">
-                                <div class="ink-fill" style="height: @report.PorcentagemYellow%; background-color: yellow;"></div>
-                            </div>
-                            <p class="title">@report.PorcentagemYellow%</p>
-                        </div>
-                        <div>
-                            <div class="ink-level">
-                                <div class="ink-fill" style="height: @report.PorcentagemMagenta%; background-color: magenta;"></div>
-                            </div>
-                            <p class="title">@report.PorcentagemMagenta%</p>
-                        </div>
-                    }
-                </div>
-            </div>
 
-            <div class="fusorBeltKit">
-                <p class="title">Fusor, Belt e Kit de Manutenção</p>
-                <div class="container-capacidade">
-                    <div>
-                        <div class="ink-level">
-                            <div class="ink-fill" style="height: @report.PorcentagemFusor%; background-color: gray;"></div>
-                        </div>
-                        <p class="title">@report.PorcentagemFusor%</p>
-                    </div>
-                    <div>
-                        <div class="ink-level">
-                            <div class="ink-fill" style="height: @report.PorcentagemBelt%; background-color: gray;"></div>
-                        </div>
-                        <p class="title">@report.PorcentagemBelt%</p>
-                    </div>
-                    <div>
-                        <div class="ink-level">
-                            <div class="ink-fill" style="height: @report.PorcentagemKitManutencao%; background-color: gray;"></div>
-                        </div>
-                        <p class="title">@report.PorcentagemKitManutencao%</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-}
-
+    document.getElementById("exportExcel").addEventListener("click", function() {
+        var wb = XLSX.utils.book_new();
+        var data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+        var ws = XLSX.utils.json_to_sheet(data);
+        XLSX.utils.book_append_sheet(wb, ws, "Relatórios");
+        XLSX.writeFile(wb, "relatorios.xlsx");
+    });
+</script>
