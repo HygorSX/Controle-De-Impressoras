@@ -1,5 +1,4 @@
 <style>
-    /* CSS separado */
     #grid_cadastro > thead > tr th:nth-child(2) {
         width: 110px;
     }
@@ -122,6 +121,7 @@
     ViewBag.Title = "Relatórios";
 }
 
+
 @using (Html.BeginForm("Index", "Reports", FormMethod.Get))
 {
     <div>
@@ -130,6 +130,8 @@
 
         <label for="endDate">Data de Fim:</label>
         <input type="date" name="endDate" value="@ViewBag.EndDate?.ToString(" yyyy-MM-dd")" />
+
+        <input type="hidden" name="printerId" value="@ViewBag.printerId" />
 
         <button type="submit">Filtrar</button>
     </div>
@@ -164,9 +166,7 @@
 
     <hr class="separator" />
 }
-
-
-
+re
 @if (Model != null && Model.Any() && ViewBag.PrinterDetails != null)
 {
     <table id="grid_cadastro">
@@ -224,7 +224,7 @@
                                 </div>
                                 <p class="title">@report.PorcentagemBlack%</p>
                             </div>
-                            
+
                         }
                     </div>
                 </div>
@@ -257,15 +257,14 @@
     </table>
 }
 
-else
-{
-    <p>Nenhum relatório encontrado para os critérios especificados.</p>
-}
 
-<div style="margin-top: 20px;">
-    <button id="exportExcel">Exportar para Excel</button>
-    <button id="exportPDF">Exportar para PDF</button>
-</div>
+@if (ViewBag.PrinterDetails != null)
+{
+    <div style="margin-top: 20px;">
+        <button id="exportExcel">Exportar para Excel</button>
+        <button id="exportPDF">Exportar para PDF</button>
+    </div>
+}
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -274,28 +273,43 @@ else
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 
 <script>
-   document.getElementById("exportPDF").addEventListener("click", function () {
+  document.getElementById("exportPDF").addEventListener("click", function () {
     const reports = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
 
     const docDefinition = {
+        pageOrientation: 'landscape', // Define a orientação para paisagem
         content: [
             { text: 'Relatórios', style: 'header' },
-            ...reports.map(report => {
-                return [
-                    { text: `Data da Busca: ${report.DataHoraDeBusca}`, style: 'tableCell' },
-                    { text: `Impressões Totais: ${report.QuantidadeImpressaoTotal}`, style: 'tableCell' },
-                    { text: `Porcentagem Black: ${report.PorcentagemBlack}`, style: 'tableCell' },
-                    { text: `Porcentagem Cyan: ${report.PorcentagemCyan}`, style: 'tableCell' },
-                    { text: `Porcentagem Yellow: ${report.PorcentagemYellow}`, style: 'tableCell' },
-                    { text: `Porcentagem Magenta: ${report.PorcentagemMagenta}`, style: 'tableCell' },
-                    { text: `Porcentagem Fusor: ${report.PorcentagemFusor}`, style: 'tableCell' },
-                    { text: `Porcentagem Belt: ${report.PorcentagemBelt}`, style: 'tableCell' },
-                    { text: `Porcentagem Kit: ${report.PorcentagemKitManutencao}`, style: 'tableCell' },
-                    { text: ' ', style: 'tableCell' },
-                    { text: '-----------------------------------', style: 'lineSeparator' },
-                    { text: ' ', style: 'tableCell' }
-                ];
-            }),
+            {
+                table: {
+                    body: [
+                        // Cabeçalho da tabela
+                        [
+                            { text: 'Data da Busca', style: 'tableHeader' },
+                            { text: 'Impressões Totais', style: 'tableHeader' },
+                            { text: 'Porcentagem Black', style: 'tableHeader' },
+                            { text: 'Porcentagem Cyan', style: 'tableHeader' },
+                            { text: 'Porcentagem Yellow', style: 'tableHeader' },
+                            { text: 'Porcentagem Magenta', style: 'tableHeader' },
+                            { text: 'Porcentagem Fusor', style: 'tableHeader' },
+                            { text: 'Porcentagem Belt', style: 'tableHeader' },
+                            { text: 'Porcentagem Kit', style: 'tableHeader' }
+                        ],
+                        // Dados da tabela
+                        ...reports.map(report => [
+                            { text: report.DataHoraDeBusca, style: 'tableCell' },
+                            { text: report.QuantidadeImpressaoTotal, style: 'tableCell' },
+                            { text: report.PorcentagemBlack, style: 'tableCell' },
+                            { text: report.PorcentagemCyan, style: 'tableCell' },
+                            { text: report.PorcentagemYellow, style: 'tableCell' },
+                            { text: report.PorcentagemMagenta, style: 'tableCell' },
+                            { text: report.PorcentagemFusor, style: 'tableCell' },
+                            { text: report.PorcentagemBelt, style: 'tableCell' },
+                            { text: report.PorcentagemKitManutencao, style: 'tableCell' }
+                        ])
+                    ]
+                }
+            }
         ],
         styles: {
             header: {
@@ -304,15 +318,16 @@ else
                 margin: [0, 20, 0, 10],
                 alignment: 'center'
             },
+            tableHeader: {
+                fontSize: 12,
+                bold: true,
+                fillColor: '#eeeeee',
+                alignment: 'center'
+            },
             tableCell: {
                 fontSize: 10,
                 margin: [5, 5],
                 alignment: 'left'
-            },
-            lineSeparator: {
-                margin: [0, 10],
-                fontSize: 10,
-                alignment: 'center'
             }
         },
         defaultStyle: {
@@ -322,6 +337,8 @@ else
 
     pdfMake.createPdf(docDefinition).download('relatorios.pdf');
 });
+
+
 
 
 
