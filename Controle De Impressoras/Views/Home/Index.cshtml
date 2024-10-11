@@ -71,7 +71,7 @@
         justify-content: center;
     }
     .filtro{
-        padding-left: 80px;
+        padding-left: 50px;
     }
     .filtros{
         margin-bottom: 50px;
@@ -129,7 +129,7 @@
             <form method="get" action="@Url.Action("Index")" id="pesquisas">
                 <div class="filtro">
                     <label class="text-filter">Tipo:</label>
-                    <select class="form-select" name="tipo" aria-label="Default select example">
+                    <select class="form-select" name="tipo">
                         <option selected value=""></option>
                         <option value="Mono">Mono</option>
                         <option value="Color">Color</option>
@@ -137,7 +137,7 @@
                 </div>
                 <div class="filtro">
                     <label class="text-filter">Marca:</label>
-                    <select class="form-select" name="marca" aria-label="Default select example">
+                    <select class="form-select" name="marca">
                         <option selected value=""></option>
                         <option value="Epson">Epson</option>
                         <option value="Lexmark">Lexmark</option>
@@ -147,11 +147,18 @@
                 </div>
                 <div class="filtro">
                     <label class="text-filter">Modelo:</label>
-                    <input class="form-control me-2" type="search" name="modelo" placeholder="Pesquisar" aria-label="Search">
+                    <input class="form-control" type="search" name="modelo" placeholder="Pesquisar">
                 </div>
                 <div class="filtro">
                     <label class="text-filter">Patrimônio:</label>
-                    <input class="form-control me-2" type="search" name="patrimonio" placeholder="Pesquisar" aria-label="Search">
+                    <input class="form-control" type="search" name="patrimonio" placeholder="Pesquisar">
+                </div>
+                <div class="filtro">
+                    <label class="text-filter">Pouca tinta:</label> <br />
+                    <div style="display: flex; justify-content: center; align-items: center; padding: .75rem;">
+                        <input type="checkbox" style="transform: scale(2.5); padding: 10px;" name="tintaBaixa" value="true" />
+                    </div>
+
                 </div>
                 <div id="btn-filter">
                     <button type="submit" class="btn btn-outline-primary">Filtrar<i class="bi bi-funnel"></i></button>
