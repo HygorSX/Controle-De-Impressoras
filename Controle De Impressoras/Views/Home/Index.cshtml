@@ -66,12 +66,11 @@
         border: none;
         transition: transform 0.3s;
     }
-    #pesquisas{
-        display:flex;
+    #pesquisas {
+        display: flex;
         justify-content: center;
-    }
-    .filtro{
-        padding-left: 50px;
+        margin: 2em 0 4rem;
+        gap: 2.5rem;
     }
     .filtros{
         margin-bottom: 50px;
@@ -125,7 +124,7 @@
 <main>
     <section>
         <div class="filtros">
-            <h2>Filtros</h2>
+            <h2>Filtros:</h2>
             <form method="get" action="@Url.Action("Index")" id="pesquisas">
                 <div class="filtro">
                     <label class="text-filter">Tipo:</label>
@@ -133,6 +132,14 @@
                         <option selected value=""></option>
                         <option value="Mono">Mono</option>
                         <option value="Color">Color</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label class="text-filter">Pouca tinta:</label> <br />
+                    <select class="form-select" name="tintaBaixa">
+                        <option selected value=""></option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
                     </select>
                 </div>
                 <div class="filtro">
@@ -153,13 +160,7 @@
                     <label class="text-filter">Patrimônio:</label>
                     <input class="form-control" type="search" name="patrimonio" placeholder="Pesquisar">
                 </div>
-                <div class="filtro">
-                    <label class="text-filter">Pouca tinta:</label> <br />
-                    <div style="display: flex; justify-content: center; align-items: center; padding: .75rem;">
-                        <input type="checkbox" style="transform: scale(2.5); padding: 10px;" name="tintaBaixa" value="true" />
-                    </div>
 
-                </div>
                 <div id="btn-filter">
                     <button type="submit" class="btn btn-outline-primary">Filtrar<i class="bi bi-funnel"></i></button>
                     <a href="@Url.Action("Index")" class="btn btn-outline-danger">Limpar<i class="bi bi-x-lg"></i></a>
@@ -184,8 +185,11 @@
                                 <div class="info">
                                     <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
                                     <p>@item.QuantidadeImpressaoTotal Impressões</p>
-                                    <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
-                                    <p>@item.PrinterStatus</p>
+                                    @if (item.PrinterStatus != "")
+                                    {
+                                        <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
+                                        <p>@item.PrinterStatus</p>
+                                    }
                                     <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
                                     <p>@item.SerialImpressora</p>
                                     <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
@@ -194,6 +198,8 @@
                                 <div class="fabricante">
                                     <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
                                     <p>@item.DeviceManufacturer</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Patrimônio</p>
+                                    <p>@item.Patrimonio</p>
                                     <p style="font-weight: bold">Status Tintas</p>
                                     <div class="container-capacidade">
                                         <div>
@@ -252,29 +258,34 @@
                             }
                             else if (item.Tipo == "MONO")
                             {
-                                <div class="info">
-                                    <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
-                                    <p>@item.QuantidadeImpressaoTotal Impressões</p>
+                            <div class="info">
+                                <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
+                                <p>@item.QuantidadeImpressaoTotal Impressões</p>
+                                @if (item.PrinterStatus != "")
+                                {
                                     <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
                                     <p>@item.PrinterStatus</p>
-                                    <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
-                                    <p>@item.SerialImpressora</p>
-                                    <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
-                                    <p>@item.Ip</p>
-                                </div>
-                                <div class="fabricante">
-                                    <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
-                                    <p>@item.DeviceManufacturer</p>
-                                    <p style="font-weight: bold">Status Tinta</p>
-                                    <div class="container-capacidade">
-                                        <div>
-                                            <div class="ink-level">
-                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%'); background-color: black;"></div>
-                                            </div>
-                                            <p style="font-weight: bold">@item.PorcentagemBlack%</p>
+                                }
+                                <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
+                                <p>@item.SerialImpressora</p>
+                                <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
+                                <p>@item.Ip</p>
+                            </div>
+                            <div class="fabricante">
+                                <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
+                                <p>@item.DeviceManufacturer</p>
+                                <p style="font-weight: bold; margin-top: 1rem;">Patrimônio</p>
+                                <p>@item.Patrimonio</p>
+                                <p style="font-weight: bold">Status Tinta</p>
+                                <div class="container-capacidade">
+                                    <div>
+                                        <div class="ink-level">
+                                            <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%'); background-color: black;"></div>
                                         </div>
+                                        <p style="font-weight: bold">@item.PorcentagemBlack%</p>
                                     </div>
                                 </div>
+                            </div>
                                 <div class="modelo">
                                     <p style="font-weight: bold; margin-top: 1rem">Modelo do dispositivo</p>
                                     <p>@item.DeviceModel</p>

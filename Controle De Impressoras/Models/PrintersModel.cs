@@ -3,10 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
 
 namespace Controle_De_Impressoras.Models
 {
@@ -71,7 +68,6 @@ namespace Controle_De_Impressoras.Models
         [Range(0, 100, ErrorMessage = "A porcentagem deve estar entre 0 e 100")]
         public int? PorcentagemKitManutencao { get; set; }
 
-
         [Required(ErrorMessage = "O status da impressora é obrigatório")]
         [MaxLength(100, ErrorMessage = "O comprimento máximo permitido é 100 caracteres.")]
         [MinLength(3, ErrorMessage = "O status da impressora deve ter no mínimo 3 caracteres")]
@@ -92,29 +88,53 @@ namespace Controle_De_Impressoras.Models
         {
             using (var context = new PrintersContext())
             {
-                var query = context.Printers.AsQueryable();
+                // Junte as impressoras com os logs de status
+                var query = from pm in context.Printers
+                            join psl in context.PrinterStatusLogs
+                            on pm.Id equals psl.PrinterId
+                            where psl.DataHoraDeBusca == context.PrinterStatusLogs
+                                    .Where(psl2 => psl2.PrinterId == pm.Id)
+                                    .Max(psl2 => psl2.DataHoraDeBusca)
+                            select new
+                            {
+                                Printer = pm,
+                                Status = psl
+                            };
 
+                // Filtragem com base nos parâmetros fornecidos
                 if (!string.IsNullOrEmpty(tipo))
-                {
-                    query = query.Where(p => p.Tipo.Contains(tipo));
-                }
+                    query = query.Where(q => q.Printer.Tipo == tipo);
 
                 if (!string.IsNullOrEmpty(marca))
-                {
-                    query = query.Where(p => p.DeviceManufacturer.Contains(marca));
-                }
+                    query = query.Where(q => q.Printer.DeviceManufacturer.Contains(marca));
 
                 if (!string.IsNullOrEmpty(modelo))
-                {
-                    query = query.Where(p => p.PrinterModel.Contains(modelo));
-                }
+                    query = query.Where(q => q.Printer.PrinterModel.Contains(modelo));
 
-                if (patrimonio != 0)
-                {
-                    query = query.Where(p => p.Patrimonio == patrimonio);
-                }
+                if (patrimonio > 0)
+                    query = query.Where(q => q.Printer.Patrimonio == patrimonio);
 
-                return query.OrderBy(p => p.DeviceManufacturer).ToList();
+                // Selecionar apenas as impressoras e preencher os dados com base nos logs de status
+                var updatedPrinters = query.ToList().Select(q =>
+                {
+                    var printer = q.Printer;
+
+                    // Atribuições
+                    printer.QuantidadeImpressaoTotal = q.Status.QuantidadeImpressaoTotal;
+                    printer.PorcentagemBlack = q.Status.PorcentagemBlack;
+                    printer.PorcentagemCyan = q.Status.PorcentagemCyan;
+                    printer.PorcentagemYellow = q.Status.PorcentagemYellow;
+                    printer.PorcentagemMagenta = q.Status.PorcentagemMagenta;
+                    printer.PorcentagemFusor = q.Status.PorcentagemFusor;
+                    printer.PorcentagemBelt = q.Status.PorcentagemBelt;
+                    printer.PorcentagemKitManutencao = q.Status.PorcentagemKitManutencao;
+                    printer.DataHoraDeBusca = q.Status.DataHoraDeBusca;
+
+                    // Retornar a instância atualizada
+                    return printer;
+                }).ToList();
+
+                return updatedPrinters;
             }
         }
 
