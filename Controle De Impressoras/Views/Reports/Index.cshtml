@@ -69,9 +69,7 @@
         justify-content: center;
     }
 
-    .filtro {
-        padding-left: 80px;
-    }
+
 
     .filtros {
         margin-bottom: 50px;
@@ -124,18 +122,27 @@
 
 @using (Html.BeginForm("Index", "Reports", FormMethod.Get))
 {
-    <div>
-        <label for="startDate">Data de Início:</label>
-        <input type="date" name="startDate" value="@ViewBag.StartDate?.ToString(" yyyy-MM-dd")" />
+    <div class="filtros">
+        <h2>Filtros:</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <div class="filtro">
+                <label for="startDate">Data de Início:</label>
+                <input type="date" name="startDate" value="@ViewBag.StartDate?.ToString(" yyyy-MM-dd")" />
+            </div>
 
-        <label for="endDate">Data de Fim:</label>
-        <input type="date" name="endDate" value="@ViewBag.EndDate?.ToString(" yyyy-MM-dd")" />
+            <div class="filtro">
+                <label for="endDate">Data de Fim:</label>
+                <input type="date" name="endDate" value="@ViewBag.EndDate?.ToString(" yyyy-MM-dd")" />
+            </div>
 
-        <input type="hidden" name="printerId" value="@ViewBag.printerId" />
+            <input type="hidden" name="printerId" value="@ViewBag.printerId" />
 
-        <button type="submit">Filtrar</button>
+            <button type="submit" class="btn btn-outline-primary">Filtrar<i class="bi bi-funnel"></i></button>
+        </div>
     </div>
 }
+
+
 
 
 
@@ -151,7 +158,7 @@
         </div>
         <div class="modelo">
             <p class="title">Modelo do dispositivo:</p>
-            <p>@printer.DeviceModel</p>
+            <p>@printer.PrinterModel</p>
         </div>
         <div class="serial">
             <p class="title">Serial Impressora</p>

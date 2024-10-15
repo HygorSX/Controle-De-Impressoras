@@ -88,7 +88,6 @@ namespace Controle_De_Impressoras.Models
         {
             using (var context = new PrintersContext())
             {
-                // Junte as impressoras com os logs de status
                 var query = from pm in context.Printers
                             join psl in context.PrinterStatusLogs
                             on pm.Id equals psl.PrinterId
@@ -101,7 +100,6 @@ namespace Controle_De_Impressoras.Models
                                 Status = psl
                             };
 
-                // Filtragem com base nos parâmetros fornecidos
                 if (!string.IsNullOrEmpty(tipo))
                     query = query.Where(q => q.Printer.Tipo == tipo);
 
