@@ -111,6 +111,10 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
+
+    .filtro {
+        flex: 1; /* Isso faz com que todos os filtros tenham a mesma largura */
+    }
 </style>
 
 @model IEnumerable<Controle_De_Impressoras.Models.PrinterStatusLogModel>
@@ -125,22 +129,30 @@
     <div class="filtros">
         <h2>Filtros:</h2>
         <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-            <div class="filtro">
-                <label for="startDate">Data de Início:</label>
-                <input type="date" name="startDate" value="@ViewBag.StartDate?.ToString(" yyyy-MM-dd")" />
+            <div class="filtro" style="flex: 1;">
+                <label class="text-filter">Data de Início:</label>
+                <input class="form-control" type="date" name="startDate" style="width: 100%;">
             </div>
-
-            <div class="filtro">
-                <label for="endDate">Data de Fim:</label>
-                <input type="date" name="endDate" value="@ViewBag.EndDate?.ToString(" yyyy-MM-dd")" />
+            <div class="filtro" style="flex: 1;">
+                <label class="text-filter">Data Final:</label>
+                <input class="form-control" type="date" name="endDate" style="width: 100%;">
             </div>
 
             <input type="hidden" name="printerId" value="@ViewBag.printerId" />
 
-            <button type="submit" class="btn btn-outline-primary">Filtrar<i class="bi bi-funnel"></i></button>
+            <div class="filtro" style="flex: 1;">
+                <label class="text-filter"></label>
+                <button type="submit" class="btn btn-outline-primary" style="width: 100%;">Filtrar<i class="bi bi-funnel"></i></button>
+            </div>
+            <div class="filtro" style="flex: 1;">
+                <label class="text-filter"></label>
+                <button type="button" id="exportPDF" class="btn btn-outline-success" style="width: 100%;">Exportar PDF<i class="bi bi-file-earmark-pdf"></i></button>
+            </div>
         </div>
     </div>
 }
+
+
 
 
 
@@ -269,7 +281,6 @@
 {
     <div style="margin-top: 20px;">
         <button id="exportExcel">Exportar para Excel</button>
-        <button id="exportPDF">Exportar para PDF</button>
     </div>
 }
 
@@ -343,11 +354,7 @@
     };
 
     pdfMake.createPdf(docDefinition).download('relatorios.pdf');
-});
-
-
-
-
+    });
 
     document.getElementById("exportExcel").addEventListener("click", function() {
         var wb = XLSX.utils.book_new();

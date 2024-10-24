@@ -407,7 +407,7 @@
                             { text: 'Fusor (%)', style: 'tableHeader' },
                             { text: 'Belt (%)', style: 'tableHeader' },
                             { text: 'Kit (%)', style: 'tableHeader' },
-                            { text: 'Status', style: 'tableHeader' } // Nova coluna de Status
+                            { text: 'Abaixo de 10%', style: 'tableHeader' } // Nova coluna de Status
                         ],
                         ...items.map(item => {
                             const status = getStatus(item);
@@ -498,11 +498,11 @@
             }
 
             if (thresholds[key] < 10) {
-                status[key] = cor + 'Crítico';
+                status[key] = cor + 'em falta';
             } else if (thresholds[key] < 60) {
-                status[key] = cor + 'Adequado';
+                status[key] = '';
             } else {
-                status[key] = cor + 'Satisfatório';
+                status[key] = '';
             }
         }
 
