@@ -207,7 +207,7 @@
                                     <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
                                     <p>@item.SerialImpressora</p>
                                     <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
-                                    <p>@item.Ip</p>
+                                    <a href="https://@item.Ip">@item.Ip</a>
                                 </div>
                                 <div class="fabricante">
                                     <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
@@ -272,19 +272,19 @@
                             }
                             else if (item.Tipo == "MONO")
                             {
-                                <div class="info">
-                                    <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
-                                    <p>@item.QuantidadeImpressaoTotal Impressões</p>
-                                    @if (item.PrinterStatus != "")
-                                    {
-                                        <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
-                                        <p>@item.PrinterStatus</p>
-                                    }
-                                    <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
-                                    <p>@item.SerialImpressora</p>
-                                    <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
-                                    <p>@item.Ip</p>
-                                </div>
+                        <div class="info">
+                            <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
+                            <p>@item.QuantidadeImpressaoTotal Impressões</p>
+                            @if (item.PrinterStatus != "")
+                            {
+                                <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
+                                <p>@item.PrinterStatus</p>
+                            }
+                            <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
+                            <p>@item.SerialImpressora</p>
+                            <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
+                            <a href="https://@item.Ip">@item.Ip</a>
+                        </div>
                                 <div class="fabricante">
                                     <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
                                     <p>@item.DeviceManufacturer</p>
