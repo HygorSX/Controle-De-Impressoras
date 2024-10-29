@@ -189,7 +189,7 @@
 @if (Model != null && Model.Any() && ViewBag.PrinterDetails != null)
 {
     <table id="grid_cadastro">
-        @foreach (var report in Model)
+        @foreach (var report in Model.Reverse())
         {
             <div class="containerImpressoras">
                 <div class="dataBusca">
@@ -277,12 +277,6 @@
 }
 
 
-@if (ViewBag.PrinterDetails != null)
-{
-    <div style="margin-top: 20px;">
-        <button id="exportExcel">Exportar para Excel</button>
-    </div>
-}
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -356,11 +350,4 @@
     pdfMake.createPdf(docDefinition).download('relatorios.pdf');
     });
 
-    document.getElementById("exportExcel").addEventListener("click", function() {
-        var wb = XLSX.utils.book_new();
-        var data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
-        var ws = XLSX.utils.json_to_sheet(data);
-        XLSX.utils.book_append_sheet(wb, ws, "Relatórios");
-        XLSX.writeFile(wb, "relatorios.xlsx");
-    });
 </script>

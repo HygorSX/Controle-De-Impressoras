@@ -51,6 +51,6 @@ namespace Controle_De_Impressoras.Models
         public string PrinterStatus { get; set; }
 
         [Required(ErrorMessage = "A data e hora de busca são obrigatórias")]
-        public DateTime DataHoraDeBusca { get; set; }
+        public DateTime DataHoraDeBusca { get; set; } 
     }
 }
