@@ -1020,3 +1020,16 @@ C:\Users\PMB\Documents\projeto_impressoras_29outubro\Controle-De-Impressoras\Con
 C:\Users\PMB\Documents\projeto_impressoras_29outubro\Controle-De-Impressoras\Controle De Impressoras\obj\Debug\Controle.C76E2D28.Up2Date
 C:\Users\PMB\Documents\projeto_impressoras_29outubro\Controle-De-Impressoras\Controle De Impressoras\obj\Debug\Controle De Impressoras.dll
 C:\Users\PMB\Documents\projeto_impressoras_29outubro\Controle-De-Impressoras\Controle De Impressoras\obj\Debug\Controle De Impressoras.pdb
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\BouncyCastle.Cryptography.dll
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\EPPlus.dll
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\EPPlus.Interfaces.dll
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\EPPlus.System.Drawing.dll
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\itextsharp.dll
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\System.ComponentModel.Annotations.dll
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\BouncyCastle.Cryptography.xml
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\EPPlus.xml
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\itextsharp.xml
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\PMB\Documents\Controle-De-Impressoras\Controle De Impressoras\bin\Microsoft.IO.RecyclableMemoryStream.xml

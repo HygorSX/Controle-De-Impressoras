@@ -121,119 +121,238 @@
     .icon {
         font-weight: bold;
     }
+
+    .modal-content {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    /* Icone e botão fechar */
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .modal-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Grid principal */
+    .modal-grid {
+        display: grid;
+        grid-template-areas:
+            "image capacity info"
+            "impressions maintenance maintenance";
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+    }
+
+    /* Área de imagem */
+    .modal-img {
+        grid-area: image;
+    }
+
+    .printer-image {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    /* Capacidade de cores */
+    .modal-capacity {
+        grid-area: capacity;
+    }
+
+    .color-container {
+        display: flex;
+        gap: 8px;
+    }
+
+    .color-item {
+        width: 24px;
+        height: 48px;
+        border-radius: 4px;
+    }
+
+        .color-item.black {
+            background-color: black;
+        }
+
+        .color-item.cyan {
+            background-color: cyan;
+        }
+
+        .color-item.yellow {
+            background-color: yellow;
+        }
+
+        .color-item.magenta {
+            background-color: magenta;
+        }
+
+    .color-labels {
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+    }
+
+    /* Informações principais */
+    .modal-info {
+        grid-area: info;
+    }
+
+        .modal-info h6, .modal-info p {
+            margin: 0;
+        }
+
+    /* Impressões totais */
+    .modal-impressions {
+        grid-area: impressions;
+        text-align: center;
+    }
+
+    /* Manutenção */
+    .modal-maintenance {
+        grid-area: maintenance;
+    }
+
+    .maintenance-container {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    .maintenance-item {
+        width: 24px;
+        height: 48px;
+        background-color: gray;
+        border-radius: 4px;
+    }
+
+    .maintenance-labels {
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+    }
 </style>
 
 <main class="custom-page">
     <section class="gridContainer">
-        <div class="containerImpressora">
-            <div class="gridContainer1">
-                <img src="~/Imagens/Icon.svg" class="feedback" alt="feedback">
-                <img src="~/Imagens/Impressoras/EPSON.png" class="impressora" alt="impressora">
-                <div class="container-capacidade">
-                    Container tintas (Em adaptação...)
+        @foreach (var impressoras in Model)
+        {
+            <div class="containerImpressora">
+                <div class="gridContainer1">
+                    <img src="~/Imagens/Icon.svg" class="feedback" alt="feedback">
+                    <img src="~/Imagens/Impressoras/EPSON.png" class="impressora" alt="impressora">
+                    <div class="container-capacidade">
+                        Container tintas (Em adaptação...)
+                    </div>
                 </div>
-            </div>
 
-            <div class="gridContainer2">
-                <div class="info">
-                    <h6>Modelo do dispositivo:</h6>
-                    <p>EPSON WF-C5790 Series</p>
+                <div class="gridContainer2">
+                    <div class="info">
+                        <h6>Modelo do dispositivo:</h6>
+                        <p>@impressoras.PrinterModel</p>
+                    </div>
+                    <div class="info">
+                        <h6>Patrimônio:</h6>
+                        <p>@impressoras.Patrimonio</p>
+                    </div>
+                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta')">
+                        <span class="icon">+</span>
+                    </button>
                 </div>
-                <div class="info">
-                    <h6>Patrimônio:</h6>
-                    <p>83</p>
-                </div>
-                <button class="btn-plus">
-                    <span class="icon">+</span>
-                </button>
-            </div>
 
-            <div class="gridContainer3">
-                Secretaria
-            </div>
-        </div>
-        <div class="containerImpressora">
-            <div class="gridContainer1">
-                <img src="~/Imagens/Icon.svg" class="feedback" alt="feedback">
-                <img src="~/Imagens/Impressoras/EPSON.png" class="impressora" alt="impressora">
-                <div class="container-capacidade">
-                    Container tintas (Em adaptação...)
+                <div class="gridContainer3">
+                    <p>Adicionar localização...</p>
                 </div>
             </div>
-
-            <div class="gridContainer2">
-                <div class="info">
-                    <h6>Modelo do dispositivo:</h6>
-                    <p>EPSON WF-C5790 Series</p>
-                </div>
-                <div class="info">
-                    <h6>Patrimônio:</h6>
-                    <p>83</p>
-                </div>
-                <button class="btn-plus">
-                    <span class="icon">+</span>
-                </button>
-            </div>
-
-            <div class="gridContainer3">
-                Secretaria
-            </div>
-        </div>
-        <div class="containerImpressora">
-            <div class="gridContainer1">
-                <img src="~/Imagens/Icon.svg" class="feedback" alt="feedback">
-                <img src="~/Imagens/Impressoras/EPSON.png" class="impressora" alt="impressora">
-                <div class="container-capacidade">
-                    Container tintas (Em adaptação...)
-                </div>
-            </div>
-
-            <div class="gridContainer2">
-                <div class="info">
-                    <h6>Modelo do dispositivo:</h6>
-                    <p>EPSON WF-C5790 Series</p>
-                </div>
-                <div class="info">
-                    <h6>Patrimônio:</h6>
-                    <p>83</p>
-                </div>
-                <button class="btn-plus">
-                    <span class="icon">+</span>
-                </button>
-            </div>
-
-            <div class="gridContainer3">
-                Secretaria
-            </div>
-        </div>
-        <div class="containerImpressora">
-            <div class="gridContainer1">
-                <img src="~/Imagens/Icon.svg" class="feedback" alt="feedback">
-                <img src="~/Imagens/Impressoras/EPSON.png" class="impressora" alt="impressora">
-                <div class="container-capacidade">
-                    Container tintas (Em adaptação...)
-                </div>
-            </div>
-
-            <div class="gridContainer2">
-                <div class="info">
-                    <h6>Modelo do dispositivo:</h6>
-                    <p>EPSON WF-C5790 Series</p>
-                </div>
-                <div class="info">
-                    <h6>Patrimônio:</h6>
-                    <p>83</p>
-                </div>
-                <button class="btn-plus">
-                    <span class="icon">+</span>
-                </button>
-            </div>
-
-            <div class="gridContainer3">
-                Secretaria
-            </div>
-        </div>
+        }
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="impressoraModal" tabindex="-1" aria-labelledby="impressoraModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="~/Imagens/Icon.svg" class="modal-icon" alt="icon">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-grid">
+                    <div class="modal-img">
+                        <img src="~/Imagens/Impressoras/EPSON.png" alt="Impressora" class="printer-image">
+                    </div>
+                    <div class="container-toner">
+                        <h6>Capacidade</h6>
+                        <div class="container-capacidade">
+                            <div>
+                                <div class="ink-level">
+                                    <div id="black-ink-fill" class="ink-fill" style="background-color: black;"></div>
+                                </div>
+                                <p style="font-weight: bold" id="black-percentage">100%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div id="cyan-ink-fill" class="ink-fill" style="background-color: cyan;"></div>
+                                </div>
+                                <p style="font-weight: bold" id="cyan-percentage">100%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div id="yellow-ink-fill" class="ink-fill" style="background-color: yellow;"></div>
+                                </div>
+                                <p style="font-weight: bold" id="yellow-percentage">100%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div id="magenta-ink-fill" class="ink-fill" style="background-color: magenta;"></div>
+                                </div>
+                                <p style="font-weight: bold" id="magenta-percentage">100%</p>
+                            </div>
+                        </div>
+                        <h6>Modelo</h6>
+                        <p id="modalPrinterModel">X3B7001709</p>
+                    </div>
+                    <div class="modal-info">
+                        <h6>Patrimônio</h6>
+                        <p id="modalPatrimonio" style="padding-bottom:10px">83</p>
+                        <h6>Serial Uni. Imagem</h6>
+                        <p id="modalSerial" style="padding-bottom:10px">X3B7001709</p>
+                        <h6>Local</h6>
+                        <p>Secretaria ABC</p>
+                    </div>
+                    <div class="modal-impressions">
+                        <h6>Impressões Totais</h6>
+                        <p id="modalImpressaoTotal">190000 Impressões</p>
+                    </div>
+                    <div class="container-toner">
+                        <h6>Fusor, Belt e Kit Manutenção</h6>
+                        <div class="container-capacidade">
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                </div>
+                                <p style="font-weight: bold">100%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                </div>
+                                <p style="font-weight: bold">100%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                </div>
+                                <p style="font-weight: bold">100%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <nav class="filtrosImpressoras">
         <!-- Filtros podem ser adicionados aqui -->
@@ -241,6 +360,28 @@
 </main>
 
 <script>
+    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta) {
+        // Atualiza o conteúdo do modal
+        document.getElementById('modalPrinterModel').textContent = printerModel;
+        document.getElementById('modalPatrimonio').textContent = patrimonio;
+        document.getElementById('modalSerial').textContent = deviceModel;
+        document.getElementById('modalImpressaoTotal').textContent = impressaoTotal + " Impressões";
+
+        // Atualiza as alturas e os textos das barras de preenchimento de toner
+        document.getElementById("black-ink-fill").style.height = black + "%";
+        document.getElementById("cyan-ink-fill").style.height = cyan + "%";
+        document.getElementById("yellow-ink-fill").style.height = yellow + "%";
+        document.getElementById("magenta-ink-fill").style.height = magenta + "%";
+
+        document.getElementById("black-percentage").textContent = black + "%";
+        document.getElementById("cyan-percentage").textContent = cyan + "%";
+        document.getElementById("yellow-percentage").textContent = yellow + "%";
+        document.getElementById("magenta-percentage").textContent = magenta + "%";
+
+        // Abre o modal
+        $('#impressoraModal').modal('show');
+    }
+
     function abrirInfo(id) {
         var div_info = document.getElementById("info_impressora_" + id);
         var i_icon = document.getElementById("icon_" + id);
@@ -273,7 +414,32 @@
         });
     }
 
+    const containers = Array.from(document.querySelectorAll('.containerImpressora'));
+    let currentIndex = 0;
+    const maxContainersPerScreen = 16;
+    const displayDuration = 25000; // 25 segundos em milissegundos
+
+    function renderContainers() {
+        const gridContainer = document.querySelector('.gridContainer');
+        gridContainer.innerHTML = ''; // Limpa a exibição anterior
+
+        // Exibe os próximos 16 containers (ou menos, caso não haja 16 restantes)
+        const containersToShow = containers.slice(currentIndex, currentIndex + maxContainersPerScreen);
+        containersToShow.forEach(container => {
+            gridContainer.appendChild(container); // Adiciona cada container ao DOM
+        });
+
+        // Atualiza o índice para a próxima "página" de containers
+        currentIndex += maxContainersPerScreen;
+        if (currentIndex >= containers.length) {
+            currentIndex = 0; // Reinicia ao chegar ao final da lista
+        }
+    }
+
     verificarPorcentagens();
+    renderContainers();
+    setInterval(renderContainers, displayDuration);
+
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
@@ -281,27 +447,3 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
 
-@*const containers = Array.from(document.querySelectorAll('.containerImpressora'));
-let currentIndex = 0;
-const maxContainersPerScreen = 16;
-const displayDuration = 25000; // 25 segundos em milissegundos
-
-function renderContainers() {
-    const gridContainer = document.querySelector('.gridContainer');
-    gridContainer.innerHTML = ''; // Limpa a exibição anterior
-
-    // Exibe os próximos 16 containers (ou menos, caso não haja 16 restantes)
-    const containersToShow = containers.slice(currentIndex, currentIndex + maxContainersPerScreen);
-    containersToShow.forEach(container => {
-        gridContainer.appendChild(container); // Adiciona cada container ao DOM
-    });
-
-    // Atualiza o índice para a próxima "página" de containers
-    currentIndex += maxContainersPerScreen;
-    if (currentIndex >= containers.length) {
-        currentIndex = 0; // Reinicia ao chegar ao final da lista
-    }
-}
-
-renderContainers();
-setInterval(renderContainers, displayDuration);*@
