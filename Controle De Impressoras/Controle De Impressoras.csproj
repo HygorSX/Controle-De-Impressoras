@@ -2319,6 +2319,7 @@
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\Shared\AcessoNegado.cshtml" />
     <Content Include="Views\Conta\Registrar.cshtml" />
+    <Content Include="Views\Home\Painel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

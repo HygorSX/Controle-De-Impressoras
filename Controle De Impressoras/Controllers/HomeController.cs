@@ -42,5 +42,21 @@ namespace Controle_De_Impressoras.Controllers
             ViewBag.Message = "Your contact page.";
             return View();
         }
+
+        public ActionResult Painel(string tipo, string marca, string modelo, int patrimonio = 0, bool? tintaBaixa = false)
+        {
+            var impressoras = PrintersModel.RecuperarImpressoras(tipo, marca, modelo, patrimonio);
+
+            if (tintaBaixa.HasValue && tintaBaixa.Value)
+            {
+                impressoras = impressoras.Where(i =>
+                    i.PorcentagemBlack < 10 ||
+                    (i.PorcentagemCyan < 10 && i.Tipo == "COLOR") ||
+                    (i.PorcentagemMagenta < 10 && i.Tipo == "COLOR") ||
+                    (i.PorcentagemYellow < 10 && i.Tipo == "COLOR")).ToList();
+            }
+
+            return View(impressoras);
+        }
     }
 }

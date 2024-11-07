@@ -11,10 +11,6 @@
         width: 210px;
     }
 
-    .container-impressoras {
-        border: 1px solid;
-    }
-
     #corpo_tabela {
         max-height: 700px;
         overflow: auto;
@@ -107,15 +103,17 @@
     }
 
     #capacidade {
-        display: flex;
-        justify-content: center;
+        display: flex;justify-content: center;
     }
 
     .containerImpressoras {
         display: grid;
         grid-template-columns: 3fr 3fr 3fr 4fr;
-        padding: 2rem 1rem;
+        padding: 2rem;
         gap: .5rem;
+        border: 1px solid;
+        border-radius: 0.75rem;
+        margin-top: 2rem;
     }
 
     .alinharTintas {
@@ -131,6 +129,8 @@
     p {
         margin-bottom: .5rem;
     }
+
+
 </style>
 <main>
     <section>
@@ -185,7 +185,7 @@
             <table id="grid_cadastro" class="table table-bordered table-striped table-striped-columns">
 
 
-                <section>
+                <section style="">
                     @foreach (var item in Model)
                     {
                         <div class="containerImpressoras">
@@ -330,8 +330,7 @@
                             }
 
                         </div>
-                        <hr class="separator" />
-                    }
+                    }   
 </main>
 <script>
     function abrirInfo(id) {
