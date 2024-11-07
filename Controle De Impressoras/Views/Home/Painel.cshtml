@@ -8,11 +8,12 @@
         font-family: Arial, sans-serif;
         margin: 0 !important;
         padding: 0 !important;
+        box-sizing: border-box;
     }
 
     .custom-page {
         display: grid;
-        grid-template-columns: 8fr 1fr;
+        grid-template-columns: 12fr 1fr;
         gap: 2rem;
     }
 
@@ -27,6 +28,7 @@
         border-radius: 1rem;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         padding: 1rem;
+        display: grid;
     }
 
     .filtrosImpressoras {
@@ -43,79 +45,192 @@
         padding: 0 !important;
     }
 
-    .item1 {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .item2 {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    .item3 {
-        grid-column: 3;
-        grid-row: 1;
-    }
-
-    .item4 {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .item5 {
-        grid-column: 2;
-        grid-row: 2;
-    }
-
-    .item6 {
-        grid-column: 3;
-        grid-row: 2;
-    }
-
-    .item7 {
-        grid-column: 1 / -1;
-        grid-row: 3;
-    }
-
     .gridContainer1 {
         display: grid;
-        grid-template-columns: 1fr 4fr 3fr;
-        gap: 10px;
+        grid-template-columns: 1fr 12fr 10fr;
+        gap: .5rem;
+        margin-top: .5rem;
     }
 
     .gridContainer2 {
         display: grid;
-        grid-template-columns: 5fr 2fr 1fr;
-        gap: 10px;
+        grid-template-columns: 5fr 5fr 2fr;
+        gap: .5rem;
+        margin-top: .5rem;
     }
 
     .gridContainer3 {
         display: grid;
         grid-template-columns: 1fr;
+        gap: .5rem;
+        margin-top: .5rem;
+    }
+
+    .feedback {
+        width: 100%;
+    }
+
+    .impressora {
+        width: 100%;
+    }
+
+    .container-capacidade {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .ink-level {
+        border: solid 1.5px black;
+        width: 1.5rem;
+        height: 3rem;
+        background-color: #F6F7F8;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .ink-fill {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .btn-plus {
+        width: 40px;
+        height: 40px;
+        background-color: #007bff; /* Azul */
+        color: white;
+        border: none;
+        border-radius: 50%; /* Torna o botão redondo */
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+
+        /* Efeito ao passar o mouse sobre o botão */
+        .btn-plus:hover {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+
+    /* Estilo para o ícone de mais */
+    .icon {
+        font-weight: bold;
     }
 </style>
 
 <main class="custom-page">
     <section class="gridContainer">
         <div class="containerImpressora">
-            <!-- Primeira Grid -->
             <div class="gridContainer1">
-                <div class="item1">Item 1</div>
-                <div class="item2">Item 2</div>
-                <div class="item3">Item 3</div>
+                <img src="~/Imagens/Icon.svg" class="feedback" alt="feedback">
+                <img src="~/Imagens/Impressoras/EPSON.png" class="impressora" alt="impressora">
+                <div class="container-capacidade">
+                    Container tintas (Em adaptação...)
+                </div>
             </div>
 
-            <!-- Segunda Grid -->
             <div class="gridContainer2">
-                <div class="item4">Item 4</div>
-                <div class="item5">Item 5</div>
-                <div class="item6">Item 6</div>
+                <div class="info">
+                    <h6>Modelo do dispositivo:</h6>
+                    <p>EPSON WF-C5790 Series</p>
+                </div>
+                <div class="info">
+                    <h6>Patrimônio:</h6>
+                    <p>83</p>
+                </div>
+                <button class="btn-plus">
+                    <span class="icon">+</span>
+                </button>
             </div>
 
-            <!-- Terceira Grid (1 item que ocupa toda a linha) -->
             <div class="gridContainer3">
-                <div class="item7">Item 7</div>
+                Secretaria
+            </div>
+        </div>
+        <div class="containerImpressora">
+            <div class="gridContainer1">
+                <img src="~/Imagens/Icon.svg" class="feedback" alt="feedback">
+                <img src="~/Imagens/Impressoras/EPSON.png" class="impressora" alt="impressora">
+                <div class="container-capacidade">
+                    Container tintas (Em adaptação...)
+                </div>
+            </div>
+
+            <div class="gridContainer2">
+                <div class="info">
+                    <h6>Modelo do dispositivo:</h6>
+                    <p>EPSON WF-C5790 Series</p>
+                </div>
+                <div class="info">
+                    <h6>Patrimônio:</h6>
+                    <p>83</p>
+                </div>
+                <button class="btn-plus">
+                    <span class="icon">+</span>
+                </button>
+            </div>
+
+            <div class="gridContainer3">
+                Secretaria
+            </div>
+        </div>
+        <div class="containerImpressora">
+            <div class="gridContainer1">
+                <img src="~/Imagens/Icon.svg" class="feedback" alt="feedback">
+                <img src="~/Imagens/Impressoras/EPSON.png" class="impressora" alt="impressora">
+                <div class="container-capacidade">
+                    Container tintas (Em adaptação...)
+                </div>
+            </div>
+
+            <div class="gridContainer2">
+                <div class="info">
+                    <h6>Modelo do dispositivo:</h6>
+                    <p>EPSON WF-C5790 Series</p>
+                </div>
+                <div class="info">
+                    <h6>Patrimônio:</h6>
+                    <p>83</p>
+                </div>
+                <button class="btn-plus">
+                    <span class="icon">+</span>
+                </button>
+            </div>
+
+            <div class="gridContainer3">
+                Secretaria
+            </div>
+        </div>
+        <div class="containerImpressora">
+            <div class="gridContainer1">
+                <img src="~/Imagens/Icon.svg" class="feedback" alt="feedback">
+                <img src="~/Imagens/Impressoras/EPSON.png" class="impressora" alt="impressora">
+                <div class="container-capacidade">
+                    Container tintas (Em adaptação...)
+                </div>
+            </div>
+
+            <div class="gridContainer2">
+                <div class="info">
+                    <h6>Modelo do dispositivo:</h6>
+                    <p>EPSON WF-C5790 Series</p>
+                </div>
+                <div class="info">
+                    <h6>Patrimônio:</h6>
+                    <p>83</p>
+                </div>
+                <button class="btn-plus">
+                    <span class="icon">+</span>
+                </button>
+            </div>
+
+            <div class="gridContainer3">
+                Secretaria
             </div>
         </div>
     </section>
@@ -165,3 +280,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+
+@*const containers = Array.from(document.querySelectorAll('.containerImpressora'));
+let currentIndex = 0;
+const maxContainersPerScreen = 16;
+const displayDuration = 25000; // 25 segundos em milissegundos
+
+function renderContainers() {
+    const gridContainer = document.querySelector('.gridContainer');
+    gridContainer.innerHTML = ''; // Limpa a exibição anterior
+
+    // Exibe os próximos 16 containers (ou menos, caso não haja 16 restantes)
+    const containersToShow = containers.slice(currentIndex, currentIndex + maxContainersPerScreen);
+    containersToShow.forEach(container => {
+        gridContainer.appendChild(container); // Adiciona cada container ao DOM
+    });
+
+    // Atualiza o índice para a próxima "página" de containers
+    currentIndex += maxContainersPerScreen;
+    if (currentIndex >= containers.length) {
+        currentIndex = 0; // Reinicia ao chegar ao final da lista
+    }
+}
+
+renderContainers();
+setInterval(renderContainers, displayDuration);*@
