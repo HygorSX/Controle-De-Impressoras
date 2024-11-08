@@ -2273,6 +2273,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagens\AcessoNegado\AcessDenied.svg" />
+    <Content Include="Imagens\IconBlack.svg" />
+    <Content Include="Imagens\IconRed.svg" />
+    <Content Include="Imagens\IconYellow.svg" />
     <Content Include="Imagens\Imagem EPSON.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
