@@ -429,16 +429,32 @@
         </div>
     </div>
 
-    <nav class="filtrosImpressoras">
-        <img src="~/Imagens/Icon.svg" class="feedback-nav" alt="feedback">
-        <p class="feedback-p">100% até 60%</p>
-        <img src="~/Imagens/IconYellow.svg" class="feedback-nav" alt="feedback">
-        <p class="feedback-p">60% até 20%</p>
-        <img src="~/Imagens/IconRed.svg" class="feedback-nav" alt="feedback">
-        <p class="feedback-p">20% até 1%</p>
-        <img src="~/Imagens/IconBlack.svg" class="feedback-nav" alt="feedback">
-        <p class="feedback-p">Esgotado!</p>
-    </nav>
+    <form method="get" action="/Home/Painel">
+        <div class="filtrosImpressoras">
+            <label>
+                <input type="checkbox" name="intervalo1" value="true" />
+                <img src="~/Imagens/Icon.svg" class="feedback-nav" alt="feedback">
+                <p class="feedback-p">100% até 60%</p>
+            </label>
+            <label>
+                <input type="checkbox" name="intervalo2" value="true" />
+                <img src="~/Imagens/IconYellow.svg" class="feedback-nav" alt="feedback">
+                <p class="feedback-p">60% até 20%</p>
+            </label>
+            <label>
+                <input type="checkbox" name="intervalo3" value="true" />
+                <img src="~/Imagens/IconRed.svg" class="feedback-nav" alt="feedback">
+                <p class="feedback-p">20% até 1%</p>
+            </label>
+            <label>
+                <input type="checkbox" name="esgotado" value="true" />
+                <img src="~/Imagens/IconBlack.svg" class="feedback-nav" alt="feedback">
+                <p class="feedback-p">Esgotado!</p>
+            </label>
+            <button type="submit" class="btn btn-primary ml-2">Aplicar Filtros</button>
+        </div>
+    </form>
+
 </main>
 
 <script>
