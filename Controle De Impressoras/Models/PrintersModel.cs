@@ -84,6 +84,19 @@ namespace Controle_De_Impressoras.Models
         [FutureDate(ErrorMessage = "A data e hora não podem estar no futuro.")]
         public DateTime DataHoraDeBusca { get; set; }
 
+        // Novos campos
+        [Required(ErrorMessage = "A secretaria é obrigatória")]
+        [MaxLength(100, ErrorMessage = "O comprimento máximo permitido é 100 caracteres.")]
+        public string Secretaria { get; set; }
+
+        [Required(ErrorMessage = "A abreviação da secretaria é obrigatória")]
+        [MaxLength(20, ErrorMessage = "O comprimento máximo permitido é 20 caracteres.")]
+        public string AbrSecretaria { get; set; }
+
+        [Required(ErrorMessage = "O departamento é obrigatório")]
+        [MaxLength(100, ErrorMessage = "O comprimento máximo permitido é 100 caracteres.")]
+        public string Depto { get; set; }
+
         public static List<PrintersModel> RecuperarImpressoras(string tipo = null, string marca = null, string modelo = null, int patrimonio = 0)
         {
             using (var context = new PrintersContext())
@@ -112,12 +125,10 @@ namespace Controle_De_Impressoras.Models
                 if (patrimonio > 0)
                     query = query.Where(q => q.Printer.Patrimonio == patrimonio);
 
-                // Selecionar apenas as impressoras e preencher os dados com base nos logs de status
                 var updatedPrinters = query.ToList().Select(q =>
                 {
                     var printer = q.Printer;
 
-                    // Atribuições
                     printer.QuantidadeImpressaoTotal = q.Status.QuantidadeImpressaoTotal;
                     printer.PorcentagemBlack = q.Status.PorcentagemBlack;
                     printer.PorcentagemCyan = q.Status.PorcentagemCyan;
@@ -128,13 +139,11 @@ namespace Controle_De_Impressoras.Models
                     printer.PorcentagemKitManutencao = q.Status.PorcentagemKitManutencao;
                     printer.DataHoraDeBusca = q.Status.DataHoraDeBusca;
 
-                    // Retornar a instância atualizada
                     return printer;
                 }).ToList();
 
                 return updatedPrinters;
             }
         }
-
     }
 }

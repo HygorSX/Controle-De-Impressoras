@@ -334,13 +334,13 @@
                         <p style="font-size: 14px; font-weight: bold">Patrimônio:</p>
                         <p style="font-size: 14px;">@impressoras.Patrimonio</p>
                     </div>
-                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta', @impressoras.PorcentagemFusor, @impressoras.PorcentagemBelt, @impressoras.PorcentagemKitManutencao)">
+                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta', @impressoras.PorcentagemFusor, @impressoras.PorcentagemBelt, @impressoras.PorcentagemKitManutencao, '@impressoras.Secretaria')">
                         <span class="icon">+</span>
                     </button>
                 </div>
 
                 <div class="gridContainer3">
-                    <p>Adicionar localização...</p>
+                    <p>@impressoras.AbrSecretaria</p>
                 </div>
             </div>
         }
@@ -351,7 +351,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <img src="~/Imagens/Icon.svg" class="modal-icon" alt="icon">
+                    <img src="~/Imagens/Icon.svg" id="icon" class="modal-icon" alt="icon">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body modal-grid">
@@ -395,7 +395,7 @@
                         <h6><strong>Serial Uni. Imagem</strong></h6>
                         <p id="modalSerial" style="padding-bottom:10px">X3B7001709</p>
                         <h6><strong>Local</strong></h6>
-                        <p>Insira secretaria...</p>
+                        <p id="modalSecretaria" style="padding-bottom:10px">Insira secretaria...</p>
                     </div>
                     <div class="modal-impressions">
                         <h6><strong>Impressões Totais</strong></h6>
@@ -458,35 +458,6 @@
 </main>
 
 <script>
-    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit) {
-        // Atualiza o conteúdo do modal
-        document.getElementById('modalPrinterModel').textContent = printerModel;
-        document.getElementById('modalPatrimonio').textContent = patrimonio;
-        document.getElementById('modalSerial').textContent = deviceModel;
-        document.getElementById('modalImpressaoTotal').textContent = impressaoTotal + " Impressões";
-        // Atualiza as alturas e os textos das barras de preenchimento de toner
-        document.getElementById("black-ink-fill").style.height = black + "%";
-        document.getElementById("cyan-ink-fill").style.height = cyan + "%";
-        document.getElementById("yellow-ink-fill").style.height = yellow + "%";
-        document.getElementById("magenta-ink-fill").style.height = magenta + "%";
-
-        document.getElementById("black-percentage").textContent = black + "%";
-        document.getElementById("cyan-percentage").textContent = cyan + "%";
-        document.getElementById("yellow-percentage").textContent = yellow + "%";
-        document.getElementById("magenta-percentage").textContent = magenta + "%";
-
-        document.getElementById("fusor-ink-fill").style.height = fusor + "%";
-        document.getElementById("belt-ink-fill").style.height = belt + "%";
-        document.getElementById("kit-ink-fill").style.height = kit + "%";
-
-        document.getElementById("fusor-percentage").textContent = fusor + "%";
-        document.getElementById("belt-percentage").textContent = belt + "%";
-        document.getElementById("kit-percentage").textContent = kit + "%";
-
-        // Abre o modal
-        $('#impressoraModal').modal('show');
-    }
-
     function abrirInfo(id) {
         var div_info = document.getElementById("info_impressora_" + id);
         var i_icon = document.getElementById("icon_" + id);
@@ -555,7 +526,7 @@
         // Itera sobre cada impressora e verifica se está dentro do intervalo de porcentagem
         impressoras.forEach(impressora => {
             const porcentagemBlack = parseInt(impressora.getAttribute("data-percent-black"));
-            
+
             if (porcentagemBlack >= minPorcentagem && porcentagemBlack <= maxPorcentagem) {
                 impressora.style.display = "block";  // Exibe a impressora
             } else {
@@ -565,13 +536,30 @@
     }
 
     // Função para abrir o modal e mostrar as informações detalhadas
-    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit) {
+    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit, secretaria) {
+
+        function getIconPath(black) {
+            if (black >= 60) {
+                return "/Imagens/Icon.svg";
+            } else if (black >= 20) {
+                return "/Imagens/IconYellow.svg";
+            } else if (black >= 1) {
+                return "/Imagens/IconRed.svg";
+            } else {
+                return "/Imagens/IconBlack.svg";
+            }
+        }
+
+        const icon = getIconPath(black);
+
         // Atualiza o conteúdo do modal
         document.getElementById('modalPrinterModel').textContent = printerModel;
         document.getElementById('modalPatrimonio').textContent = patrimonio;
         document.getElementById('modalSerial').textContent = deviceModel;
         document.getElementById('modalImpressaoTotal').textContent = impressaoTotal + " Impressões";
-        
+        document.getElementById("modalSecretaria").textContent = secretaria;
+        document.getElementById("icon").src = icon;
+
         // Atualiza as porcentagens de tinta no modal
         document.getElementById("black-ink-fill").style.height = black + "%";
         document.getElementById("cyan-ink-fill").style.height = cyan + "%";
