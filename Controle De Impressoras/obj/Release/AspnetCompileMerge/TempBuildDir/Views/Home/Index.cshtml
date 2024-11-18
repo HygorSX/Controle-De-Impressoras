@@ -1,0 +1,517 @@
+﻿@model List<Controle_De_Impressoras.Models.PrintersModel>
+@{
+    ViewBag.Title = "Controle De Impressoras";
+}
+<style>
+    #grid_cadastro > thead > tr th:nth-child(2) {
+        width: 110px;
+    }
+
+    #grid_cadastro > thead > tr th:nth-child(3) {
+        width: 210px;
+    }
+
+    #corpo_tabela {
+        max-height: 700px;
+        overflow: auto;
+        display: block;
+    }
+
+        #corpo_tabela tr {
+            table-layout: fixed;
+            width: 100%;
+            display: table;
+        }
+
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    thead {
+        width: calc(100% - 1em);
+        border-bottom: 1px solid;
+    }
+
+    td, th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .container-capacidade {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .ink-level {
+        border: solid 1.5px black;
+        width: 30px;
+        height: 50px;
+        background-color: #F6F7F8;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .ink-fill {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .btn-drop {
+        cursor: pointer;
+        border: none;
+        transition: transform 0.3s;
+    }
+
+    #pesquisas {
+        display: flex;
+        justify-content: center;
+        margin: 2em 0 4rem;
+        gap: 1.5rem;
+    }
+
+    .filtros {
+        margin-bottom: 50px;
+    }
+
+    #btn-filter {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+
+    .img_impressoras {
+        height: 200px;
+        width: 200px;
+        margin-bottom: 1rem;
+    }
+
+    .container-impressoras-2 {
+        display: flex;
+        text-align: center;
+        vertical-align: middle;
+        align-content: center;
+        justify-content: center;
+        border-bottom: 1px solid;
+    }
+
+    .container-impressoras-3 {
+        text-align: center;
+    }
+
+    #capacidade {
+        display: flex;justify-content: center;
+    }
+
+    .containerImpressoras {
+        display: grid;
+        grid-template-columns: 3fr 3fr 3fr 4fr;
+        padding: 2rem;
+        gap: .5rem;
+        border: 1px solid;
+        border-radius: 0.75rem;
+        margin-top: 2rem;
+    }
+
+    .alinharTintas {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .extraInformation {
+        display: flex;
+        gap: 1rem;
+    }
+
+    p {
+        margin-bottom: .5rem;
+    }
+
+
+</style>
+<main>
+    <section>
+        <div class="filtros">
+            <h2>Filtros:</h2>
+            <form method="get" action="@Url.Action("Index")" id="pesquisas">
+                <div class="filtro">
+                    <label class="text-filter">Tipo:</label>
+                    <select class="form-select" name="tipo">
+                        <option selected value=""></option>
+                        <option value="Mono">Mono</option>
+                        <option value="Color">Color</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label class="text-filter">Pouca tinta:</label> <br />
+                    <select class="form-select" name="tintaBaixa">
+                        <option selected value=""></option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label class="text-filter">Marca:</label>
+                    <select class="form-select" name="marca">
+                        <option selected value=""></option>
+                        <option value="Epson">Epson</option>
+                        <option value="Lexmark">Lexmark</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Brother">Brother</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label class="text-filter">Modelo:</label>
+                    <input class="form-control" type="search" name="modelo" placeholder="Pesquisar">
+                </div>
+                <div class="filtro">
+                    <label class="text-filter">Patrimônio:</label>
+                    <input class="form-control" type="search" name="patrimonio" placeholder="Pesquisar">
+                </div>
+
+                <div id="btn-filter">
+                    <button type="submit" class="btn btn-outline-primary">Filtrar<i class="bi bi-funnel"></i></button>
+                    <a href="@Url.Action("Index")" class="btn btn-outline-danger">Limpar<i class="bi bi-x-lg"></i></a>
+                    <button type="button" id="exportPDF" class="btn btn-outline-success">Exportar PDF<i class="bi bi-file-earmark-pdf"></i></button>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="container-impressoras">
+            <table id="grid_cadastro" class="table table-bordered table-striped table-striped-columns">
+
+
+                <section style="">
+                    @foreach (var item in Model)
+                    {
+                        <div class="containerImpressoras">
+                            <div class="header">
+                                <img src="Imagens/Impressoras/@(item.DeviceManufacturer + ".png")" alt="Alternate Text" class="img_impressoras" />
+                                <p style="margin-left: 2rem;">@item.DataHoraDeBusca</p>
+                            </div>
+
+                            @if (item.Tipo == "COLOR")
+                            {
+                                <div class="info">
+                                    <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
+                                    <p>@item.QuantidadeImpressaoTotal Impressões</p>
+                                    @if (item.PrinterStatus != "")
+                                    {
+                                        <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
+                                        <p>@item.PrinterStatus</p>
+                                    }
+                                    <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
+                                    <p>@item.SerialImpressora</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
+                                    <a href="https://@item.Ip">@item.Ip</a>
+                                </div>
+                                <div class="fabricante">
+                                    <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
+                                    <p>@item.DeviceManufacturer</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Patrimônio</p>
+                                    <p>@item.Patrimonio</p>
+                                    <p style="font-weight: bold">Status Tintas</p>
+                                    <div class="container-capacidade">
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%'); background-color: black;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemBlack%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemCyan, '%'); background-color: cyan;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemCyan%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemYellow, '%'); background-color: yellow;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemYellow%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemMagenta, '%'); background-color: magenta;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemMagenta%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modelo">
+                                    <p style="font-weight: bold; margin-top: 1rem">Modelo do dispositivo</p>
+                                    <p>@item.PrinterModel</p>
+                                    <p style="font-weight: bold">Fusor, Belt e Kit de Manutenção</p>
+                                    <div class="container-capacidade">
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemFusor, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemFusor%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBelt, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemBelt%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemKitManutencao, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
+                                        </div>
+                                    </div>
+                                    <a href="./Reports?printerId=@item.Id">Ver relatórios...</a>
+
+                                </div>
+                            }
+                            else if (item.Tipo == "MONO")
+                            {
+                        <div class="info">
+                            <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
+                            <p>@item.QuantidadeImpressaoTotal Impressões</p>
+                            @if (item.PrinterStatus != "")
+                            {
+                                <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
+                                <p>@item.PrinterStatus</p>
+                            }
+                            <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
+                            <p>@item.SerialImpressora</p>
+                            <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
+                            <a href="https://@item.Ip">@item.Ip</a>
+                        </div>
+                                <div class="fabricante">
+                                    <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
+                                    <p>@item.DeviceManufacturer</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Patrimônio</p>
+                                    <p>@item.Patrimonio</p>
+                                    <p style="font-weight: bold">Status Tinta</p>
+                                    <div class="container-capacidade">
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%'); background-color: black;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemBlack%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modelo">
+                                    <p style="font-weight: bold; margin-top: 1rem">Modelo do dispositivo</p>
+                                    <p>@item.PrinterModel</p>
+                                    <p style="font-weight: bold">Fusor, Belt e Kit de Manutenção</p>
+                                    <div class="container-capacidade">
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemFusor, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemFusor%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBelt, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemBelt%</p>
+                                        </div>
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemKitManutencao, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
+                                        </div>
+                                    </div>
+                                    <a href="./Reports?printerId=@item.Id">Ver relatórios...</a>
+
+                                </div>
+                            }
+
+                        </div>
+                    }   
+</main>
+<script>
+    function abrirInfo(id) {
+        var div_info = document.getElementById("info_impressora_" + id)
+        var i_icon = document.getElementById("icon_" + id)
+
+        if (div_info.style.display == "none") {
+            div_info.style.display = "table";
+            i_icon.style.transform = "rotate(180deg)"
+
+        }
+        else {
+            div_info.style.display = "none";
+            i_icon.style.transform = "rotate(0deg)"
+        }
+
+    }
+    function verificarPorcentagens() {
+        // Seleciona todas as linhas da tabela
+        const linhas = document.querySelectorAll("#corpo_tabela tr[data-id]");
+
+        linhas.forEach(linha => {
+            // Verifica cada coluna de nível de tinta na linha
+            linha.querySelectorAll('.ink-level').forEach(div => {
+                const porcentagem = parseInt(div.querySelector('.ink-fill').style.height);
+
+                if (porcentagem === 0) {
+                    // Cria o ícone substituto
+                    const icone = document.createElement('i');
+                    icone.className = 'bi bi-exclamation-octagon';
+                    icone.style.fontSize = '24px';
+
+                    // Substitui a div inteira pelo ícone
+                    div.replaceWith(icone);
+                }
+            });
+        });
+    }
+    verificarPorcentagens();
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+
+
+
+<script>
+    document.getElementById("exportPDF").addEventListener("click", function () {
+    const rows = document.querySelectorAll("#relatoriosTable tbody tr");
+    const items = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+    const docDefinition = {
+        pageOrientation: 'landscape',
+        pageSize: 'A4',
+        content: [
+            { text: 'Relatórios de Impressoras', style: 'header' },
+            {
+                table: {
+                    widths: ['*', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'], // Adicionada largura para a coluna de status
+                    body: [
+                        [
+                            { text: 'Data da Busca', style: 'tableHeader' },
+                            { text: 'Patrimônio', style: 'tableHeader' },
+                            { text: 'Tipo', style: 'tableHeader' }, // Nova coluna de Tipo
+                            { text: 'Impressões Totais', style: 'tableHeader' },
+                            { text: 'Black (%)', style: 'tableHeader' },
+                            { text: 'Cyan (%)', style: 'tableHeader' },
+                            { text: 'Yellow (%)', style: 'tableHeader' },
+                            { text: 'Magenta (%)', style: 'tableHeader' },
+                            { text: 'Fusor (%)', style: 'tableHeader' },
+                            { text: 'Belt (%)', style: 'tableHeader' },
+                            { text: 'Kit (%)', style: 'tableHeader' },
+                            { text: 'Abaixo de 10%', style: 'tableHeader' } // Nova coluna de Status
+                        ],
+                        ...items.map(item => {
+                            const status = getStatus(item);
+                            const statusValues = [];
+
+                            // Adiciona status apenas se não for impressora mono
+                            if (item.Tipo === 'MONO') {
+                                statusValues.push(status.Black); // Apenas o status da tinta preta
+                            } else {
+                                statusValues.push(status.Black, status.Cyan, status.Yellow, status.Magenta); // Status para impressoras coloridas
+                            }
+
+                            return [
+                                { text: item.DataHoraDeBusca, style: 'tableCell' },
+                                { text: item.Patrimonio, style: 'tableCell' },
+                                { text: item.Tipo, style: 'tableCell' }, // Adicionando Tipo aqui
+                                { text: item.QuantidadeImpressaoTotal, style: 'tableCell' },
+                                { text: item.PorcentagemBlack, style: 'tableCell' },
+                                { text: item.PorcentagemCyan, style: 'tableCell' },
+                                { text: item.PorcentagemYellow, style: 'tableCell' },
+                                { text: item.PorcentagemMagenta, style: 'tableCell' },
+                                { text: item.PorcentagemFusor, style: 'tableCell' },
+                                { text: item.PorcentagemBelt, style: 'tableCell' },
+                                { text: item.PorcentagemKitManutencao, style: 'tableCell' },
+                                { text: statusValues.filter(s => s).join(', '), style: 'tableCell' } // Mostrando o status de cada tinta
+                            ];
+                        })
+                    ]
+                }
+            }
+        ],
+        styles: {
+            header: {
+                fontSize: 14,
+                bold: true,
+                alignment: 'center',
+                margin: [0, 10, 0, 5]
+            },
+            tableHeader: {
+                bold: true,
+                fontSize: 9,
+                fillColor: '#f3f3f3',
+                alignment: 'center'
+            },
+            tableCell: {
+                fontSize: 8,
+                margin: [2, 2, 2, 2],
+                alignment: 'center'
+            }
+        }
+    };
+
+    function getStatus(item) {
+        const thresholds = {
+            Black: item.PorcentagemBlack,
+            Cyan: item.PorcentagemCyan,
+            Yellow: item.PorcentagemYellow,
+            Magenta: item.PorcentagemMagenta,
+        };
+
+        const status = {};
+        const isMonoPrinter = (item.Tipo === 'MONO');
+
+        for (let key in thresholds) {
+            // Se for impressora mono, ignora tintas coloridas
+            if (isMonoPrinter && (key === 'Cyan' || key === 'Yellow' || key === 'Magenta')) {
+                status[key] = '';
+                continue;
+            }
+
+            let cor;
+
+            switch (key) {
+                case 'Cyan':
+                    cor = 'Ciano ';
+                    break;
+                case 'Yellow':
+                    cor = 'Amarelo ';
+                    break;
+                case 'Magenta':
+                    cor = 'Magenta ';
+                    break;
+                case 'Black':
+                    cor = 'Preto ';
+                    break;
+                default:
+                    cor = '';
+            }
+
+            if (thresholds[key] < 10) {
+                status[key] = cor + 'em falta';
+            } else if (thresholds[key] < 60) {
+                status[key] = '';
+            } else {
+                status[key] = '';
+            }
+        }
+
+        return status;
+    }
+
+    pdfMake.createPdf(docDefinition).download('relatorios.pdf');
+});
+
+
+</script>
+
+

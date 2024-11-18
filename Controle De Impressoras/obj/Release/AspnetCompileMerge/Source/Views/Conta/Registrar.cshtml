@@ -1,0 +1,63 @@
+@model Controle_De_Impressoras.Models.RegistrarViewModel
+@{
+    ViewBag.Title = "Registrar";
+}
+<style>
+    .container-registrar {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<div class="container-registrar">
+    <div class="container-form">
+        <div class="row">
+            <h3 class="titulo">Registrar no Sistema</h3>
+        </div>
+        <div class="row">
+            <section id="registerForm">
+                @using (Html.BeginForm("Registrar", "Conta", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken() <!-- Adicione esta linha -->
+
+                    <div class="form-floating mb-3">
+                        @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control", id = "floatingInputGroup1", placeholder = "Nome De Usuário" })
+                        @Html.LabelFor(m => m.Usuario, "Nome De Usuário", new { @for = "floatingInputGroup1" })
+                        @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        @Html.PasswordFor(m => m.Senha, new { @class = "form-control", id = "floatingPassword", placeholder = "Senha" })
+                        @Html.LabelFor(m => m.Senha, "Senha", new { @for = "floatingPassword" })
+                        @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        @Html.PasswordFor(m => m.ConfirmarSenha, new { @class = "form-control", id = "floatingConfirmPassword", placeholder = "Confirmar Senha" })
+                        @Html.LabelFor(m => m.ConfirmarSenha, "Confirmar Senha", new { @for = "floatingConfirmPassword" })
+                        @Html.ValidationMessageFor(m => m.ConfirmarSenha, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        @Html.DropDownListFor(m => m.Role, new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "Admin", Value = "Admin" },
+                            new SelectListItem { Text = "User", Value = "User" }
+                        }, "Selecione o cargo", new { @class = "form-select", id = "floatingTipo" })
+
+                        @Html.LabelFor(m => m.Role, "Cargo", new { @for = "floatingTipo" })
+                        @Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger text-danger-small" })
+                    </div>
+
+
+                    <div>
+                        <button class="btn btn-primary" type="submit">Registrar</button>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

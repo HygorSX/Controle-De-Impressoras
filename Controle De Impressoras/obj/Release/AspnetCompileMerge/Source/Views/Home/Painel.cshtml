@@ -1,0 +1,607 @@
+@model List<Controle_De_Impressoras.Models.PrintersModel>
+@{
+    ViewBag.Title = "Controle De Impressoras";
+}
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box;
+    }
+
+    .custom-page {
+        display: grid;
+        grid-template-columns: 12fr 1fr;
+        gap: 2rem;
+    }
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    .containerImpressora {
+        background-color: #f9f9f9;
+        border-radius: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        padding: 1rem;
+        display: grid;
+        border: 1px solid #000;
+    }
+
+    .filtrosImpressoras {
+        padding: 1rem;
+        background: #ffffff;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .container body-content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .gridContainer1 {
+        display: grid;
+        grid-template-columns: 1fr 6fr 8fr;
+        gap: 1rem;
+        margin-top: .5rem;
+    }
+
+    .gridContainer2 {
+        display: grid;
+        grid-template-columns: 5fr 5fr 2fr;
+        gap: .5rem;
+        margin-top: .5rem;
+    }
+
+    .gridContainer3 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: .5rem;
+        margin-top: .5rem;
+    }
+
+    .feedback {
+        width: 100%;
+    }
+
+    .feedback-nav {
+        width: 2rem;
+    }
+
+    .feedback-p {
+        font-size: 0.8rem;
+        color: black;
+    }
+
+    .impressora {
+        width: 100%;
+    }
+
+    .container-capacidade {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .ink-level {
+        border: solid 1.5px black;
+        width: 1.5rem;
+        height: 3rem;
+        background-color: #F6F7F8;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .ink-fill {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    /* Novo estilo para o formato horizontal */
+    .ink-level-horizontal {
+        border: solid 1.5px black;
+        height: 1.5rem; /* A altura foi reduzida para dar mais ênfase à largura */
+        width: 5rem; /* Torna o mostrador mais largo */
+        background-color: #F6F7F8;
+        position: relative;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    .ink-fill-horizontal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        border-radius: 4px;
+    }
+
+
+    .btn-plus {
+        width: 40px;
+        height: 40px;
+        background-color: #45ADFF; /* Azul */
+        color: white;
+        border: none;
+        border-radius: 50%; /* Torna o botão redondo */
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+
+        /* Efeito ao passar o mouse sobre o botão */
+        .btn-plus:hover {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+
+    /* Estilo para o ícone de mais */
+    .icon {
+        font-weight: bold;
+    }
+
+    .modal-content {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    /* Icone e botão fechar */
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .modal-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Grid principal */
+    .modal-grid {
+        display: grid;
+        grid-template-areas:
+            "image capacity info"
+            "impressions maintenance maintenance";
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+    }
+
+    /* Área de imagem */
+    .modal-img {
+        grid-area: image;
+    }
+
+    .printer-image {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    /* Capacidade de cores */
+    .modal-capacity {
+        grid-area: capacity;
+    }
+
+    .color-container {
+        display: flex;
+        gap: 8px;
+    }
+
+    .color-item {
+        width: 24px;
+        height: 48px;
+        border-radius: 4px;
+    }
+
+        .color-item.black {
+            background-color: black;
+        }
+
+        .color-item.cyan {
+            background-color: cyan;
+        }
+
+        .color-item.yellow {
+            background-color: yellow;
+        }
+
+        .color-item.magenta {
+            background-color: magenta;
+        }
+
+    .color-labels {
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+    }
+
+    /* Informações principais */
+    .modal-info {
+        grid-area: info;
+    }
+
+        .modal-info h6, .modal-info p {
+            margin: 0;
+        }
+
+    /* Impressões totais */
+    .modal-impressions {
+        grid-area: impressions;
+        text-align: center;
+    }
+
+    /* Manutenção */
+    .modal-maintenance {
+        grid-area: maintenance;
+    }
+
+    .maintenance-container {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    .maintenance-item {
+        width: 24px;
+        height: 48px;
+        background-color: gray;
+        border-radius: 4px;
+    }
+
+    .maintenance-labels {
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+    }
+</style>
+
+
+<main class="custom-page">
+    <section class="gridContainer">
+        @foreach (var impressoras in Model)
+        {
+            <div class="containerImpressora">
+                <div class="gridContainer1">
+                    <img src="@(
+                        impressoras.PorcentagemBlack >= 60 ? Url.Content("~/Imagens/Icon.svg") :
+                        impressoras.PorcentagemBlack >= 20 ? Url.Content("~/Imagens/IconYellow.svg") :
+                        impressoras.PorcentagemBlack >= 1 ? Url.Content("~/Imagens/IconRed.svg") :
+                        Url.Content("~/Imagens/IconBlack.svg")
+                    )" class="feedback" alt="feedback">
+
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="~/Imagens/Impressoras/@(impressoras.DeviceManufacturer + ".png")" class="impressora" alt="impressora">
+                    </div>
+                    <div class="container-capacidade" style="padding-top: 30px">
+                        @if (impressoras.Tipo == "MONO")
+                        {
+                            <div>
+                                <div class="ink-level-horizontal">
+                                    <div class="ink-fill-horizontal" style="width: @String.Concat(impressoras.PorcentagemBlack, '%'); background-color: black;"></div>
+                                </div>
+                                <p style="font-weight: bold; font-size: .9rem; text-align: center;">@impressoras.PorcentagemBlack%</p>
+                            </div>
+                        }
+                        @if (impressoras.Tipo == "COLOR")
+                        {
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemBlack, '%'); background-color: black;"></div>
+                                </div>
+                                <p style="font-weight: bold; font-size: 0.7rem">@impressoras.PorcentagemBlack%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemCyan, '%'); background-color: cyan;"></div>
+                                </div>
+                                <p style="font-weight: bold; font-size: 0.7rem">@impressoras.PorcentagemCyan%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemYellow, '%'); background-color: yellow;"></div>
+                                </div>
+                                <p style="font-weight: bold; font-size: 0.7rem">@impressoras.PorcentagemYellow%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemMagenta, '%'); background-color: magenta;"></div>
+                                </div>
+                                <p style="font-weight: bold; font-size: 0.7rem">@impressoras.PorcentagemMagenta%</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="gridContainer2">
+                    <div class="info">
+                        <p style="font-size: 14px; font-weight: bold">Modelo do dispositivo:</p>
+                        <p style="font-size: 14px;">@impressoras.PrinterModel</p>
+                    </div>
+                    <div class="info">
+                        <p style="font-size: 14px; font-weight: bold">Patrimônio:</p>
+                        <p style="font-size: 14px;">@impressoras.Patrimonio</p>
+                    </div>
+                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta', @impressoras.PorcentagemFusor, @impressoras.PorcentagemBelt, @impressoras.PorcentagemKitManutencao, '@impressoras.Secretaria')">
+                        <span class="icon">+</span>
+                    </button>
+                </div>
+
+                <div class="gridContainer3">
+                    <p>@impressoras.AbrSecretaria</p>
+                </div>
+            </div>
+        }
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="impressoraModal" tabindex="-1" aria-labelledby="impressoraModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="~/Imagens/Icon.svg" id="icon" class="modal-icon" alt="icon">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-grid">
+                    <div class="modal-img">
+                        <img src="~/Imagens/Impressoras/EPSON.png" alt="Impressora" class="printer-image">
+                    </div>
+                    <div class="container-toner">
+                        <h6><strong>Capacidade</strong></h6>
+                        <div class="container-capacidade">
+                            <div>
+                                <div class="ink-level">
+                                    <div id="black-ink-fill" class="ink-fill" style="background-color: black;"></div>
+                                </div>
+                                <p style="font-weight: bold" id="black-percentage">100%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div id="cyan-ink-fill" class="ink-fill" style="background-color: cyan;"></div>
+                                </div>
+                                <p style="font-weight: bold" id="cyan-percentage">100%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div id="yellow-ink-fill" class="ink-fill" style="background-color: yellow;"></div>
+                                </div>
+                                <p style="font-weight: bold" id="yellow-percentage">100%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div id="magenta-ink-fill" class="ink-fill" style="background-color: magenta;"></div>
+                                </div>
+                                <p style="font-weight: bold" id="magenta-percentage">100%</p>
+                            </div>
+                        </div>
+                        <h6><strong>Modelo</strong></h6>
+                        <p id="modalPrinterModel">X3B7001709</p>
+                    </div>
+                    <div class="modal-info">
+                        <h6><strong>Patrimônio</strong></h6>
+                        <p id="modalPatrimonio" style="padding-bottom:10px">83</p>
+                        <h6><strong>Serial Uni. Imagem</strong></h6>
+                        <p id="modalSerial" style="padding-bottom:10px">X3B7001709</p>
+                        <h6><strong>Local</strong></h6>
+                        <p id="modalSecretaria" style="padding-bottom:10px">Insira secretaria...</p>
+                    </div>
+                    <div class="modal-impressions">
+                        <h6><strong>Impressões Totais</strong></h6>
+                        <p id="modalImpressaoTotal">Impressões</p>
+                    </div>
+                    <div class="container-toner">
+                        <h6><strong>Fusor, Belt e Kit Manutenção</strong></h6>
+                        <div class="container-capacidade">
+                            <div>
+                                <div class="ink-level">
+                                    <div id="fusor-ink-fill" class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                </div>
+                                <p style="font-weight: bold" id="fusor-percentage">100%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div id="belt-ink-fill" class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                </div>
+                                <p style="font-weight: bold" id="belt-percentage">100%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div id="kit-ink-fill" class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                </div>
+                                <p style="font-weight: bold" id="kit-percentage">100%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form method="get" action="/Home/Painel">
+        <div class="filtrosImpressoras">
+            <label>
+                <input type="checkbox" name="intervalo1" value="true" />
+                <img src="~/Imagens/Icon.svg" class="feedback-nav" alt="feedback">
+                <p class="feedback-p">100% até 60%</p>
+            </label>
+            <label>
+                <input type="checkbox" name="intervalo2" value="true" />
+                <img src="~/Imagens/IconYellow.svg" class="feedback-nav" alt="feedback">
+                <p class="feedback-p">60% até 20%</p>
+            </label>
+            <label>
+                <input type="checkbox" name="intervalo3" value="true" />
+                <img src="~/Imagens/IconRed.svg" class="feedback-nav" alt="feedback">
+                <p class="feedback-p">20% até 1%</p>
+            </label>
+            <label>
+                <input type="checkbox" name="esgotado" value="true" />
+                <img src="~/Imagens/IconBlack.svg" class="feedback-nav" alt="feedback">
+                <p class="feedback-p">Esgotado!</p>
+            </label>
+            <button type="submit" class="btn btn-primary ml-2">Aplicar Filtros</button>
+        </div>
+    </form>
+
+</main>
+
+<script>
+    function abrirInfo(id) {
+        var div_info = document.getElementById("info_impressora_" + id);
+        var i_icon = document.getElementById("icon_" + id);
+
+        if (div_info.style.display == "none") {
+            div_info.style.display = "table";
+            i_icon.style.transform = "rotate(180deg)";
+        }
+        else {
+            div_info.style.display = "none";
+            i_icon.style.transform = "rotate(0deg)";
+        }
+    }
+
+    // Função para verificar porcentagens de tinta
+    function verificarPorcentagens() {
+        const linhas = document.querySelectorAll("#corpo_tabela tr[data-id]");
+
+        linhas.forEach(linha => {
+            linha.querySelectorAll('.ink-level').forEach(div => {
+                const porcentagem = parseInt(div.querySelector('.ink-fill').style.height);
+
+                if (porcentagem === 0) {
+                    const icone = document.createElement('i');
+                    icone.className = 'bi bi-exclamation-octagon';
+                    icone.style.fontSize = '24px';
+                    div.replaceWith(icone);
+                }
+            });
+        });
+    }
+
+    const containers = Array.from(document.querySelectorAll('.containerImpressora'));
+    let currentIndex = 0;
+    const maxContainersPerScreen = 12;
+    const displayDuration = 25000; // 25 segundos em milissegundos
+
+    function renderContainers() {
+        const gridContainer = document.querySelector('.gridContainer');
+        gridContainer.innerHTML = ''; // Limpa a exibição anterior
+
+        // Exibe os próximos 16 containers (ou menos, caso não haja 16 restantes)
+        const containersToShow = containers.slice(currentIndex, currentIndex + maxContainersPerScreen);
+        containersToShow.forEach(container => {
+            gridContainer.appendChild(container); // Adiciona cada container ao DOM
+        });
+
+        // Atualiza o índice para a próxima "página" de containers
+        currentIndex += maxContainersPerScreen;
+        if (currentIndex >= containers.length) {
+            currentIndex = 0; // Reinicia ao chegar ao final da lista
+        }
+    }
+
+    verificarPorcentagens();
+    renderContainers();
+    setInterval(renderContainers, displayDuration);
+
+    function aplicarFiltro() {
+        const minPorcentagem = parseInt(document.getElementById("filterMin").value);
+        const maxPorcentagem = parseInt(document.getElementById("filterMax").value);
+
+        // Seleciona todas as impressoras na página
+        const impressoras = document.querySelectorAll(".containerImpressora");
+
+        // Itera sobre cada impressora e verifica se está dentro do intervalo de porcentagem
+        impressoras.forEach(impressora => {
+            const porcentagemBlack = parseInt(impressora.getAttribute("data-percent-black"));
+
+            if (porcentagemBlack >= minPorcentagem && porcentagemBlack <= maxPorcentagem) {
+                impressora.style.display = "block";  // Exibe a impressora
+            } else {
+                impressora.style.display = "none";  // Esconde a impressora
+            }
+        });
+    }
+
+    // Função para abrir o modal e mostrar as informações detalhadas
+    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit, secretaria) {
+
+        function getIconPath(black) {
+            if (black >= 60) {
+                return "/Imagens/Icon.svg";
+            } else if (black >= 20) {
+                return "/Imagens/IconYellow.svg";
+            } else if (black >= 1) {
+                return "/Imagens/IconRed.svg";
+            } else {
+                return "/Imagens/IconBlack.svg";  
+            }
+        }
+
+        const icon = getIconPath(black);
+
+        // Atualiza o conteúdo do modal
+        document.getElementById('modalPrinterModel').textContent = printerModel;
+        document.getElementById('modalPatrimonio').textContent = patrimonio;
+        document.getElementById('modalSerial').textContent = deviceModel;
+        document.getElementById('modalImpressaoTotal').textContent = impressaoTotal + " Impressões";
+        document.getElementById("modalSecretaria").textContent = secretaria;
+        document.getElementById("icon").src = icon;
+
+        // Atualiza as porcentagens de tinta no modal
+        document.getElementById("black-ink-fill").style.height = black + "%";
+        document.getElementById("cyan-ink-fill").style.height = cyan + "%";
+        document.getElementById("yellow-ink-fill").style.height = yellow + "%";
+        document.getElementById("magenta-ink-fill").style.height = magenta + "%";
+
+        document.getElementById("black-percentage").textContent = black + "%";
+        document.getElementById("cyan-percentage").textContent = cyan + "%";
+        document.getElementById("yellow-percentage").textContent = yellow + "%";
+        document.getElementById("magenta-percentage").textContent = magenta + "%";
+
+        // Atualiza os itens de manutenção
+        document.getElementById("fusor-ink-fill").style.height = fusor + "%";
+        document.getElementById("belt-ink-fill").style.height = belt + "%";
+        document.getElementById("kit-ink-fill").style.height = kit + "%";
+
+        document.getElementById("fusor-percentage").textContent = fusor + "%";
+        document.getElementById("belt-percentage").textContent = belt + "%";
+        document.getElementById("kit-percentage").textContent = kit + "%";
+
+        // Abre o modal
+        $('#impressoraModal').modal('show');
+    }
+
+    // Atualiza a exibição das impressoras no carregamento inicial
+    function verificarPorcentagens() {
+        const impressoras = document.querySelectorAll(".containerImpressora");
+
+        impressoras.forEach(impressora => {
+            const porcentagemBlack = parseInt(impressora.getAttribute("data-percent-black"));
+
+            if (porcentagemBlack <= 0) {
+                // Se o nível de tinta for 0, troca o ícone para um alerta
+                const icone = document.createElement('i');
+                icone.className = 'bi bi-exclamation-octagon';
+                icone.style.fontSize = '24px';
+                impressora.querySelector('.ink-level').replaceWith(icone);
+            }
+        });
+    }
+
+    // Chama a função de verificar e aplicar o filtro de inicialização
+    verificarPorcentagens();
+</script>
+

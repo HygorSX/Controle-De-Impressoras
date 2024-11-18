@@ -1,0 +1,353 @@
+<style>
+    #grid_cadastro > thead > tr th:nth-child(2) {
+        width: 110px;
+    }
+
+    #grid_cadastro > thead > tr th:nth-child(3) {
+        width: 210px;
+    }
+
+    .container-impressoras, .container-impressoras-2 {
+        border: 1px solid;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #corpo_tabela {
+        max-height: 700px;
+        overflow: auto;
+        display: block;
+    }
+
+        #corpo_tabela tr, thead, tbody tr {
+            table-layout: fixed;
+            width: 100%;
+            display: table;
+        }
+
+    thead {
+        width: calc(100% - 1em);
+        border-bottom: 1px solid;
+    }
+
+    td, th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .container-capacidade {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .ink-level {
+        border: solid 1.5px black;
+        width: 30px;
+        height: 50px;
+        background-color: #F6F7F8;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .ink-fill {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .btn-drop {
+        cursor: pointer;
+        border: none;
+        transition: transform 0.3s;
+    }
+
+    #pesquisas {
+        display: flex;
+        justify-content: center;
+    }
+
+
+
+    .filtros {
+        margin-bottom: 50px;
+    }
+
+    #btn-filter {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+
+    .img_impressoras {
+        width: 100%;
+        margin: auto;
+    }
+
+    #capacidade, .extraInformation {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    p {
+        margin-bottom: .5rem;
+    }
+
+    .printerInformation {
+        display: grid;
+        grid-template-columns: 1.5fr 2fr 3fr 3fr 3fr;
+        padding: 2rem 0;
+    }
+
+    .containerImpressoras {
+        display: grid;
+        grid-template-columns: 3fr 3fr 3fr 4fr;
+        padding: 1rem;
+    }
+
+    .alinharTintas {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .filtro {
+        flex: 1; /* Isso faz com que todos os filtros tenham a mesma largura */
+    }
+</style>
+
+@model IEnumerable<Controle_De_Impressoras.Models.PrinterStatusLogModel>
+
+@{
+    ViewBag.Title = "Relatórios";
+}
+
+
+@using (Html.BeginForm("Index", "Reports", FormMethod.Get))
+{
+    <div class="filtros">
+        <h2>Filtros:</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <div class="filtro" style="flex: 1;">
+                <label class="text-filter">Data de Início:</label>
+                <input class="form-control" type="date" name="startDate" style="width: 100%;">
+            </div>
+            <div class="filtro" style="flex: 1;">
+                <label class="text-filter">Data Final:</label>
+                <input class="form-control" type="date" name="endDate" style="width: 100%;">
+            </div>
+
+            <input type="hidden" name="printerId" value="@ViewBag.printerId" />
+
+            <div class="filtro" style="flex: 1;">
+                <label class="text-filter"></label>
+                <button type="submit" class="btn btn-outline-primary" style="width: 100%;">Filtrar<i class="bi bi-funnel"></i></button>
+            </div>
+            <div class="filtro" style="flex: 1;">
+                <label class="text-filter"></label>
+                <button type="button" id="exportPDF" class="btn btn-outline-success" style="width: 100%;">Exportar PDF<i class="bi bi-file-earmark-pdf"></i></button>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+@if (ViewBag.PrinterDetails != null)
+{
+    var printer = ViewBag.PrinterDetails;
+
+    <div class="printerInformation">
+        <img src="~/Imagens/Impressoras/@(printer.DeviceManufacturer + ".png")" alt="@printer.DeviceManufacturer" class="img_impressoras" />
+        <div class="fabricante">
+            <p class="title">Fabricante:</p>
+            <p>@printer.DeviceManufacturer</p>
+        </div>
+        <div class="modelo">
+            <p class="title">Modelo do dispositivo:</p>
+            <p>@printer.PrinterModel</p>
+        </div>
+        <div class="serial">
+            <p class="title">Serial Impressora</p>
+            <p>@printer.SerialImpressora</p>
+        </div>
+        <div class="patrimonio">
+            <p class="title">Patrimônio Impressora</p>
+            <p>@printer.Patrimonio</p>
+        </div>
+    </div>
+
+
+    <hr class="separator" />
+}
+
+@if (Model != null && Model.Any() && ViewBag.PrinterDetails != null)
+{
+    <table id="grid_cadastro">
+        @foreach (var report in Model.Reverse())
+        {
+            <div class="containerImpressoras">
+                <div class="dataBusca">
+                    <p class="title">Data da busca</p>
+                    <p>@report.DataHoraDeBusca</p>
+                </div>
+
+                <div class="impressoesTotais">
+                    <p class="title">Impressões Totais</p>
+                    <p>@report.QuantidadeImpressaoTotal Impressões</p>
+                </div>
+
+                <div class="statusTintas">
+                    <p class="title">Status Tintas</p>
+                    <div class="container-capacidade">
+                        @if (ViewBag.PrinterDetails.Tipo == "COLOR")
+                        {
+
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @report.PorcentagemBlack%; background-color: black;"></div>
+                                </div>
+                                <p class="title">@report.PorcentagemBlack%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @report.PorcentagemCyan%; background-color: cyan;"></div>
+                                </div>
+                                <p class="title">@report.PorcentagemCyan%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @report.PorcentagemYellow%; background-color: yellow;"></div>
+                                </div>
+                                <p class="title">@report.PorcentagemYellow%</p>
+                            </div>
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @report.PorcentagemMagenta%; background-color: magenta;"></div>
+                                </div>
+                                <p class="title">@report.PorcentagemMagenta%</p>
+                            </div>
+                        }
+
+                        @if (ViewBag.PrinterDetails.Tipo == "MONO")
+                        {
+
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @report.PorcentagemBlack%; background-color: black;"></div>
+                                </div>
+                                <p class="title">@report.PorcentagemBlack%</p>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+
+                <div class="fusorBeltKit">
+                    <p class="title">Fusor, Belt e Kit de Manutenção</p>
+                    <div class="container-capacidade">
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemFusor%; background-color: gray;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemFusor%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemBelt%; background-color: gray;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemBelt%</p>
+                        </div>
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemKitManutencao%; background-color: gray;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemKitManutencao%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </table>
+}
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+<script>
+  document.getElementById("exportPDF").addEventListener("click", function () {
+    const reports = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+    const docDefinition = {
+        pageOrientation: 'landscape', // Define a orientação para paisagem
+        content: [
+            { text: 'Relatórios', style: 'header' },
+            {
+                table: {
+                    body: [
+                        // Cabeçalho da tabela
+                        [
+                            { text: 'Data da Busca', style: 'tableHeader' },
+                            { text: 'Impressões Totais', style: 'tableHeader' },
+                            { text: 'Porcentagem Black', style: 'tableHeader' },
+                            { text: 'Porcentagem Cyan', style: 'tableHeader' },
+                            { text: 'Porcentagem Yellow', style: 'tableHeader' },
+                            { text: 'Porcentagem Magenta', style: 'tableHeader' },
+                            { text: 'Porcentagem Fusor', style: 'tableHeader' },
+                            { text: 'Porcentagem Belt', style: 'tableHeader' },
+                            { text: 'Porcentagem Kit', style: 'tableHeader' }
+                        ],
+                        // Dados da tabela
+                        ...reports.map(report => [
+                            { text: report.DataHoraDeBusca, style: 'tableCell' },
+                            { text: report.QuantidadeImpressaoTotal, style: 'tableCell' },
+                            { text: report.PorcentagemBlack, style: 'tableCell' },
+                            { text: report.PorcentagemCyan, style: 'tableCell' },
+                            { text: report.PorcentagemYellow, style: 'tableCell' },
+                            { text: report.PorcentagemMagenta, style: 'tableCell' },
+                            { text: report.PorcentagemFusor, style: 'tableCell' },
+                            { text: report.PorcentagemBelt, style: 'tableCell' },
+                            { text: report.PorcentagemKitManutencao, style: 'tableCell' }
+                        ])
+                    ]
+                }
+            }
+        ],
+        styles: {
+            header: {
+                fontSize: 16,
+                bold: true,
+                margin: [0, 20, 0, 10],
+                alignment: 'center'
+            },
+            tableHeader: {
+                fontSize: 12,
+                bold: true,
+                fillColor: '#eeeeee',
+                alignment: 'center'
+            },
+            tableCell: {
+                fontSize: 10,
+                margin: [5, 5],
+                alignment: 'left'
+            }
+        },
+        defaultStyle: {
+            columnGap: 20
+        }
+    };
+
+    pdfMake.createPdf(docDefinition).download('relatorios.pdf');
+    });
+
+</script>

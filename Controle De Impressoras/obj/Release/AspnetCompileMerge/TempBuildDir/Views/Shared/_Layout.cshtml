@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<style>
+    * {
+        font-family: "Poppins", sans-serif;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("Controle De Impressoras", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar a navegação" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        @Html.ActionLink("Cadastrar Impressora", "CadastrarImpressora", "Cadastro", null, new { @class = "nav-link", aria_current = "page" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Registrar Usuario", "Registrar", "Conta", null, new { @class = "nav-link", aria_current = "page" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Painel", "Painel", "Home", null, new { @class = "nav-link", aria_current = "page" })
+                    </li>
+                </ul>
+            </div>
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Conta", FormMethod.Post, new { id = "logoffForm" }))
+                {
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Olá @User.Identity.Name</a></li>
+                        <li><a class="nav-link" href="javascript:document.getElementById('logoffForm').submit()">Sair</a></li>
+                    </ul>
+                }
+            }
+            else
+            {
+                <ul class="navbar-nav ms-auto">
+                    <li>@Html.ActionLink("Login", "Login", "Conta")</li>
+                </ul>
+            }
+        </div>
+    </nav>
+    <div class="container body-content" style="min-width: 90%">
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
