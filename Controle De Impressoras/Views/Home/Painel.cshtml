@@ -271,10 +271,6 @@
         gap: 8px;
         justify-content: space-between;
     }
-
-    
-
-
 </style>
 
 
@@ -285,11 +281,11 @@
             <div class="containerImpressora">
                 <div class="gridContainer1">
                     <img src="@(
-                        impressoras.PorcentagemBlack >= 60 ? Url.Content("~/Imagens/Icon.svg") :
-                        impressoras.PorcentagemBlack >= 20 ? Url.Content("~/Imagens/IconYellow.svg") :
-                        impressoras.PorcentagemBlack >= 1 ? Url.Content("~/Imagens/IconRed.svg") :
-                        Url.Content("~/Imagens/IconBlack.svg")
-                    )" class="feedback" alt="feedback">
+                    impressoras.PorcentagemBlack >= 60 ? Url.Content("~/Imagens/Icon.svg") :
+                    impressoras.PorcentagemBlack >= 20 ? Url.Content("~/Imagens/IconYellow.svg") :
+                    impressoras.PorcentagemBlack >= 1 ? Url.Content("~/Imagens/IconRed.svg") :
+                    Url.Content("~/Imagens/IconBlack.svg")
+                )" class="feedback" alt="feedback">
 
                     <div style="display: flex; justify-content: center; align-items: center;">
                         <img src="~/Imagens/Impressoras/@(impressoras.DeviceManufacturer + ".png")" class="impressora" alt="impressora">
@@ -337,19 +333,20 @@
                 <div class="gridContainer2">
                     <div class="info">
                         <p style="font-size: 14px; font-weight: bold">Modelo do dispositivo:</p>
-                        <p style="font-size: 14px;">@impressoras.PrinterModel</p>
+                        <p style="font-size: 14px; margin-top: -15px">@impressoras.PrinterModel</p>
                     </div>
                     <div class="info">
                         <p style="font-size: 14px; font-weight: bold">Patrimônio:</p>
-                        <p style="font-size: 14px;">@impressoras.Patrimonio</p>
+                        <p style="font-size: 14px; margin-top: -15px">@impressoras.Patrimonio</p>
                     </div>
-                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta', @impressoras.PorcentagemFusor, @impressoras.PorcentagemBelt, @impressoras.PorcentagemKitManutencao, '@impressoras.Secretaria')">
+                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta', @impressoras.PorcentagemFusor, @impressoras.PorcentagemBelt, @impressoras.PorcentagemKitManutencao, '@impressoras.Secretaria', '@impressoras.Depto')">
                         <span class="icon">+</span>
                     </button>
                 </div>
 
                 <div class="gridContainer3">
-                    <p>@impressoras.AbrSecretaria</p>
+                    <p style="font-size: 14px; font-weight: bold">Local:</p>
+                    <p style="margin-top: -20px">@impressoras.AbrSecretaria - @impressoras.Depto</p>
                 </div>
             </div>
         }
@@ -464,6 +461,10 @@
                 <p class="feedback-p">Esgotado!</p>
             </label>
             <button type="submit" class="btn btn-primary ml-2">Aplicar Filtros</button>
+            <button type="button" id="pauseButton" class="btn btn-primary ml-2">
+                <i id="pauseIcon" class="bi bi-pause-circle"></i>
+                <span id="pauseText">Pausar</span>
+            </button>
         </div>
     </form>
 
@@ -503,54 +504,63 @@
             });
         });
     }
-
     const containers = Array.from(document.querySelectorAll('.containerImpressora'));
     let currentIndex = 0;
     const maxContainersPerScreen = 12;
-    const displayDuration = 25000; // 25 segundos em milissegundos
+    const displayDuration = 10000;
+    let intervalId;
+    let isPaused = false;
 
     function renderContainers() {
-        const gridContainer = document.querySelector('.gridContainer');
-        gridContainer.innerHTML = ''; // Limpa a exibição anterior
+        if (isPaused) return;
 
-        // Exibe os próximos 16 containers (ou menos, caso não haja 16 restantes)
+        const gridContainer = document.querySelector('.gridContainer');
+        gridContainer.innerHTML = '';
+
         const containersToShow = containers.slice(currentIndex, currentIndex + maxContainersPerScreen);
         containersToShow.forEach(container => {
-            gridContainer.appendChild(container); // Adiciona cada container ao DOM
+            gridContainer.appendChild(container);
         });
 
-        // Atualiza o índice para a próxima "página" de containers
         currentIndex += maxContainersPerScreen;
         if (currentIndex >= containers.length) {
-            currentIndex = 0; // Reinicia ao chegar ao final da lista
+            currentIndex = 0;
+        }
+    }
+
+    function startRotation() {
+        intervalId = setInterval(renderContainers, displayDuration);
+    }
+
+    function stopRotation() {
+        clearInterval(intervalId);
+    }
+
+    function togglePause() {
+        isPaused = !isPaused;
+        const pauseIcon = document.getElementById('pauseIcon');
+        const pauseText = document.getElementById('pauseText');
+
+        if (isPaused) {
+            stopRotation();
+            pauseIcon.className = 'bi bi-play-circle';
+            pauseText.textContent = 'Retomar';
+        } else {
+            startRotation();
+            pauseIcon.className = 'bi bi-pause-circle';
+            pauseText.textContent = 'Pausar';
         }
     }
 
     verificarPorcentagens();
     renderContainers();
-    setInterval(renderContainers, displayDuration);
+    startRotation();
 
-    function aplicarFiltro() {
-        const minPorcentagem = parseInt(document.getElementById("filterMin").value);
-        const maxPorcentagem = parseInt(document.getElementById("filterMax").value);
+    document.getElementById('pauseButton').addEventListener('click', togglePause);
 
-        // Seleciona todas as impressoras na página
-        const impressoras = document.querySelectorAll(".containerImpressora");
-
-        // Itera sobre cada impressora e verifica se está dentro do intervalo de porcentagem
-        impressoras.forEach(impressora => {
-            const porcentagemBlack = parseInt(impressora.getAttribute("data-percent-black"));
-
-            if (porcentagemBlack >= minPorcentagem && porcentagemBlack <= maxPorcentagem) {
-                impressora.style.display = "block";  // Exibe a impressora
-            } else {
-                impressora.style.display = "none";  // Esconde a impressora
-            }
-        });
-    }
 
     // Função para abrir o modal e mostrar as informações detalhadas
-    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit, secretaria) {
+    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit, secretaria, depto) {
 
         function getIconPath(black) {
             if (black >= 60) {
@@ -560,7 +570,7 @@
             } else if (black >= 1) {
                 return "/Imagens/IconRed.svg";
             } else {
-                return "/Imagens/IconBlack.svg";  
+                return "/Imagens/IconBlack.svg";
             }
         }
 
@@ -571,7 +581,7 @@
         document.getElementById('modalPatrimonio').textContent = patrimonio;
         document.getElementById('modalSerial').textContent = deviceModel;
         document.getElementById('modalImpressaoTotal').textContent = impressaoTotal + " Impressões";
-        document.getElementById("modalSecretaria").textContent = secretaria;
+        document.getElementById("modalSecretaria").textContent = secretaria + " - " + depto;
         document.getElementById("icon").src = icon;
 
         // Atualiza as porcentagens de tinta no modal
@@ -615,9 +625,6 @@
         });
     }
 
-
-
     // Chama a função de verificar e aplicar o filtro de inicialização
     verificarPorcentagens();
 </script>
-
