@@ -82,7 +82,7 @@
 
     .img_impressoras {
         width: 100%;
-        margin: auto;
+        margin: 0 -1rem;
     }
 
     #capacidade, .extraInformation {
@@ -103,7 +103,7 @@
 
     .containerImpressoras {
         display: grid;
-        grid-template-columns: 3fr 3fr 3fr 4fr;
+        grid-template-columns: 3fr 3fr 3fr 4fr 3fr;
         padding: 1rem;
     }
 
@@ -268,6 +268,17 @@
                                 <div class="ink-fill" style="height: @report.PorcentagemKitManutencao%; background-color: gray;"></div>
                             </div>
                             <p class="title">@report.PorcentagemKitManutencao%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fusorBeltKit">
+                    <p class="title">Unidade de Imagem</p>
+                    <div class="container-capacidade">
+                        <div>
+                            <div class="ink-level">
+                                <div class="ink-fill" style="height: @report.PorcentagemUnidadeImagem%; background-color: gray;"></div>
+                            </div>
+                            <p class="title">@report.PorcentagemUnidadeImagem%</p>
                         </div>
                     </div>
                 </div>

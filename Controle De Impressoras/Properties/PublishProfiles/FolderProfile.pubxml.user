@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot</_PublishTargetUrl>
-    <History>True|2024-11-18T16:49:45.7277471Z||;False|2024-11-18T13:42:40.0407601-03:00||;False|2024-11-18T13:41:25.0091226-03:00||;True|2024-11-13T09:35:44.6718047-03:00||;True|2024-11-12T11:56:14.7150726-03:00||;True|2024-11-12T11:48:40.1056699-03:00||;True|2024-11-12T11:39:31.6080018-03:00||;</History>
+    <History>True|2024-11-19T17:53:38.6384883Z||;True|2024-11-19T13:51:38.7827664-03:00||;True|2024-11-18T14:07:29.3763418-03:00||;True|2024-11-18T13:49:45.7277471-03:00||;False|2024-11-18T13:42:40.0407601-03:00||;False|2024-11-18T13:41:25.0091226-03:00||;True|2024-11-13T09:35:44.6718047-03:00||;True|2024-11-12T11:56:14.7150726-03:00||;True|2024-11-12T11:48:40.1056699-03:00||;True|2024-11-12T11:39:31.6080018-03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -16,10 +16,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/11/2024 13:13:43</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>11/18/2024 13:49:27</publishTime>
+      <publishTime>11/19/2024 14:53:11</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>11/18/2024 13:49:26</publishTime>
+      <publishTime>11/19/2024 14:53:11</publishTime>
     </File>
     <File Include="bin/BCrypt.Net-Next.dll">
       <publishTime>11/11/2024 13:13:43</publishTime>
@@ -28,10 +28,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/11/2024 13:13:43</publishTime>
     </File>
     <File Include="bin/Controle De Impressoras.dll">
-      <publishTime>11/18/2024 13:49:10</publishTime>
+      <publishTime>11/19/2024 14:52:49</publishTime>
     </File>
     <File Include="bin/Controle De Impressoras.pdb">
-      <publishTime>11/18/2024 13:49:10</publishTime>
+      <publishTime>11/19/2024 14:52:49</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/11/2024 13:13:44</publishTime>
@@ -6562,7 +6562,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/11/2024 13:13:40</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>11/18/2024 13:49:18</publishTime>
+      <publishTime>11/19/2024 14:53:00</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>11/11/2024 13:13:40</publishTime>
@@ -6652,13 +6652,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/11/2024 13:13:40</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/13/2024 09:34:17</publishTime>
+      <publishTime>11/19/2024 13:54:49</publishTime>
     </File>
     <File Include="Views/Home/Painel.cshtml">
-      <publishTime>11/18/2024 13:37:24</publishTime>
+      <publishTime>11/19/2024 14:41:23</publishTime>
     </File>
     <File Include="Views/Reports/Index.cshtml">
-      <publishTime>11/11/2024 13:13:40</publishTime>
+      <publishTime>11/19/2024 14:52:02</publishTime>
     </File>
     <File Include="Views/Shared/AcessoNegado.cshtml">
       <publishTime>11/11/2024 13:13:40</publishTime>

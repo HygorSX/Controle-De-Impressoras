@@ -52,5 +52,6 @@ namespace Controle_De_Impressoras.Models
 
         [Required(ErrorMessage = "A data e hora de busca são obrigatórias")]
         public DateTime DataHoraDeBusca { get; set; } 
+        public int? PorcentagemUnidadeImagem { get; set; } 
     }
 }

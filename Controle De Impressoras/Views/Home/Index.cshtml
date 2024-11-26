@@ -267,6 +267,7 @@
                                             <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
                                         </div>
                                     </div>
+
                                     <a href="./Reports?printerId=@item.Id">Ver relatórios...</a>
 
                                 </div>
@@ -325,6 +326,15 @@
                                                 <div class="ink-fill" style="height: @String.Concat(item.PorcentagemKitManutencao, '%'); background-color: gray;"></div>
                                             </div>
                                             <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
+                                        </div>
+                                    </div>
+                                    <p style="font-weight: bold">Unidade de Imagem</p>
+                                    <div class="container-capacidade">
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemUnidadeImagem, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemUnidadeImagem%</p>
                                         </div>
                                     </div>
                                     <a href="./Reports?printerId=@item.Id">Ver relatórios...</a>

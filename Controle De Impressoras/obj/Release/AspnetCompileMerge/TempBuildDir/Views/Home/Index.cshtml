@@ -103,7 +103,8 @@
     }
 
     #capacidade {
-        display: flex;justify-content: center;
+        display: flex;
+        justify-content: center;
     }
 
     .containerImpressoras {
@@ -129,8 +130,6 @@
     p {
         margin-bottom: .5rem;
     }
-
-
 </style>
 <main>
     <section>
@@ -190,7 +189,7 @@
                     {
                         <div class="containerImpressoras">
                             <div class="header">
-                                <img src="Imagens/Impressoras/@(item.DeviceManufacturer + ".png")" alt="Alternate Text" class="img_impressoras" />
+                                <img src="~/Imagens/Impressoras/@(item.DeviceManufacturer + ".png")" alt="Alternate Text" class="img_impressoras" />
                                 <p style="margin-left: 2rem;">@item.DataHoraDeBusca</p>
                             </div>
 
@@ -214,6 +213,8 @@
                                     <p>@item.DeviceManufacturer</p>
                                     <p style="font-weight: bold; margin-top: 1rem;">Patrimônio</p>
                                     <p>@item.Patrimonio</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Local</p>
+                                    <p>@item.AbrSecretaria - @item.Depto </p>
                                     <p style="font-weight: bold">Status Tintas</p>
                                     <div class="container-capacidade">
                                         <div>
@@ -266,30 +267,33 @@
                                             <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
                                         </div>
                                     </div>
+
                                     <a href="./Reports?printerId=@item.Id">Ver relatórios...</a>
 
                                 </div>
                             }
                             else if (item.Tipo == "MONO")
                             {
-                        <div class="info">
-                            <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
-                            <p>@item.QuantidadeImpressaoTotal Impressões</p>
-                            @if (item.PrinterStatus != "")
-                            {
-                                <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
-                                <p>@item.PrinterStatus</p>
-                            }
-                            <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
-                            <p>@item.SerialImpressora</p>
-                            <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
-                            <a href="https://@item.Ip">@item.Ip</a>
-                        </div>
+                                <div class="info">
+                                    <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
+                                    <p>@item.QuantidadeImpressaoTotal Impressões</p>
+                                    @if (item.PrinterStatus != "")
+                                    {
+                                        <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
+                                        <p>@item.PrinterStatus</p>
+                                    }
+                                    <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
+                                    <p>@item.SerialImpressora</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
+                                    <a href="https://@item.Ip">@item.Ip</a>
+                                </div>
                                 <div class="fabricante">
                                     <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
                                     <p>@item.DeviceManufacturer</p>
                                     <p style="font-weight: bold; margin-top: 1rem;">Patrimônio</p>
                                     <p>@item.Patrimonio</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Local</p>
+                                    <p>@item.AbrSecretaria - @item.Depto </p>
                                     <p style="font-weight: bold">Status Tinta</p>
                                     <div class="container-capacidade">
                                         <div>
@@ -324,13 +328,22 @@
                                             <p style="font-weight: bold">@item.PorcentagemKitManutencao%</p>
                                         </div>
                                     </div>
+                                    <p style="font-weight: bold">Unidade de Imagem</p>
+                                    <div class="container-capacidade">
+                                        <div>
+                                            <div class="ink-level">
+                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemUnidadeImagem, '%'); background-color: gray;"></div>
+                                            </div>
+                                            <p style="font-weight: bold">@item.PorcentagemUnidadeImagem%</p>
+                                        </div>
+                                    </div>
                                     <a href="./Reports?printerId=@item.Id">Ver relatórios...</a>
 
                                 </div>
                             }
 
                         </div>
-                    }   
+                    }
 </main>
 <script>
     function abrirInfo(id) {
@@ -513,5 +526,4 @@
 
 
 </script>
-
 

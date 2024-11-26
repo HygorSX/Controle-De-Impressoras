@@ -96,6 +96,8 @@ namespace Controle_De_Impressoras.Models
         [Required(ErrorMessage = "O departamento é obrigatório")]
         [MaxLength(100, ErrorMessage = "O comprimento máximo permitido é 100 caracteres.")]
         public string Depto { get; set; }
+        public int? PorcentagemUnidadeImagem { get; set; }
+
 
         public static List<PrintersModel> RecuperarImpressoras(string tipo = null, string marca = null, string modelo = null, int patrimonio = 0)
         {
@@ -138,6 +140,7 @@ namespace Controle_De_Impressoras.Models
                     printer.PorcentagemBelt = q.Status.PorcentagemBelt;
                     printer.PorcentagemKitManutencao = q.Status.PorcentagemKitManutencao;
                     printer.DataHoraDeBusca = q.Status.DataHoraDeBusca;
+
 
                     return printer;
                 }).ToList();
