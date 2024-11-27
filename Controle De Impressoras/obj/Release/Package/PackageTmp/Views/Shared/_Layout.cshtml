@@ -18,9 +18,13 @@
     * {
         font-family: "Poppins", sans-serif;
     }
+
+    .navbar-hidden {
+        display: none;
+    }
 </style>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" id="navbar">
         <div class="container">
             @Html.ActionLink("Controle De Impressoras", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar a navegação" aria-controls="navbarSupportedContent"
@@ -58,14 +62,23 @@
             }
         </div>
     </nav>
+
+    <!-- Botão para alternar a visibilidade da navbar -->
+
     <div class="container body-content" style="min-width: 90%">
         @RenderBody()
         <hr />
-
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        function toggleNavbar() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('navbar-hidden');
+        }
+    </script>
 </body>
 </html>

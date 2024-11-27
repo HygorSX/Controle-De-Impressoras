@@ -99,7 +99,7 @@
         display: grid;
         grid-template-columns: 1.5fr 2fr 3fr 3fr 3fr;
         padding: 2rem 0;
-    }
+    } 
 
     .containerImpressoras {
         display: grid;
@@ -122,6 +122,7 @@
 @{
     ViewBag.Title = "Relatórios";
 }
+
 
 
 @using (Html.BeginForm("Index", "Reports", FormMethod.Get))
@@ -271,17 +272,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="fusorBeltKit">
-                    <p class="title">Unidade de Imagem</p>
-                    <div class="container-capacidade">
-                        <div>
-                            <div class="ink-level">
-                                <div class="ink-fill" style="height: @report.PorcentagemUnidadeImagem%; background-color: gray;"></div>
+                @if (ViewBag.PrinterDetails.Tipo == "MONO")
+                {
+                    <div class="fusorBeltKit">
+                        <p class="title">Unidade de Imagem</p>
+                        <div class="container-capacidade">
+                            <div>
+                                <div class="ink-level">
+                                    <div class="ink-fill" style="height: @report.PorcentagemUnidadeImagem%; background-color: gray;"></div>
+                                </div>
+                                <p class="title">@report.PorcentagemUnidadeImagem%</p>
                             </div>
-                            <p class="title">@report.PorcentagemUnidadeImagem%</p>
                         </div>
                     </div>
-                </div>
+                }
+
             </div>
         }
     </table>
