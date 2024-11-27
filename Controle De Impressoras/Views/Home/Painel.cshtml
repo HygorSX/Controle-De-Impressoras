@@ -32,7 +32,7 @@
         background-color: #f9f9f9;
         border-radius: 1rem;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-        padding: 1rem;
+        padding: 0.5rem 1rem;
         border: 1px solid #000;
     }
 
@@ -55,21 +55,19 @@
         display: grid;
         grid-template-columns: 4fr 8fr;
         gap: 1rem;
-        margin-top: .5rem;
     }
 
     .gridContainer2 {
         display: grid;
         grid-template-columns: 10fr 2fr;
         gap: .5rem;
-        margin-top: .5rem;
     }
 
     .gridContainer3 {
         display: grid;
         grid-template-columns: 13fr 1fr;
         gap: .5rem;
-        margin-top: .5rem;
+        margin-top: 1rem;
     }
 
     .feedback {
@@ -299,6 +297,28 @@
     .navbar-hidden {
         display: none;
     }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .ink-level-modal {
+        border: solid 1.5px black;
+        width: 1.5rem;
+        height: 3rem;
+        background-color: #F6F7F8;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .ink-fill-modal {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 4px;
+    }
+
 </style>
 
 
@@ -367,13 +387,13 @@
                             @impressoras.Patrimonio, <em>@impressoras.PrinterModel</em>
                         </p>
                     </div>
-                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta', @impressoras.PorcentagemFusor, @impressoras.PorcentagemBelt, @impressoras.PorcentagemKitManutencao, '@impressoras.Secretaria', '@impressoras.Depto', '@impressoras.PorcentagemUnidadeImagem')">
+                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta', @impressoras.PorcentagemFusor, @impressoras.PorcentagemBelt, @impressoras.PorcentagemKitManutencao, '@impressoras.Secretaria', '@impressoras.Depto', '@impressoras.PorcentagemUnidadeImagem', '@impressoras.Tipo')">
                         <span class="icon">+</span>
                     </button>
                 </div>
 
 
-                <div class="gridContainer3" style="margin-top: 1rem;">
+                <div class="gridContainer3">
                     <p style="margin-top: -20px; font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: auto; ">@impressoras.AbrSecretaria - @impressoras.Depto</p>
                     <img src="@(
                         impressoras.PorcentagemBlack >= 60 ? Url.Content("~/Imagens/Icon.svg") :
@@ -401,26 +421,26 @@
                         <h6><strong>Capacidade</strong></h6>
                         <div class="container-capacidade-modal">
                             <div>
-                                <div class="ink-level">
-                                    <div id="black-ink-fill" class="ink-fill" style="background-color: black;"></div>
+                                <div class="ink-level-modal">
+                                    <div id="black-ink-fill" class="ink-fill-modal" style="background-color: black;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="black-percentage">100%</p>
                             </div>
                             <div>
-                                <div class="ink-level">
-                                    <div id="cyan-ink-fill" class="ink-fill" style="background-color: cyan;"></div>
+                                <div class="ink-level-modal" id="cyan-ink-level-modal">
+                                    <div id="cyan-ink-fill" class="ink-fill-modal" style="background-color: cyan;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="cyan-percentage">100%</p>
                             </div>
                             <div>
-                                <div class="ink-level">
-                                    <div id="yellow-ink-fill" class="ink-fill" style="background-color: yellow;"></div>
+                                <div class="ink-level-modal" id="yellow-ink-level-modal">
+                                    <div id="yellow-ink-fill" class="ink-fill-modal" style="background-color: yellow;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="yellow-percentage">100%</p>
                             </div>
                             <div>
-                                <div class="ink-level">
-                                    <div id="magenta-ink-fill" class="ink-fill" style="background-color: magenta;"></div>
+                                <div class="ink-level-modal" id="magenta-ink-level-modal">
+                                    <div id="magenta-ink-fill" class="ink-fill-modal" style="background-color: magenta;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="magenta-percentage">100%</p>
                             </div>
@@ -444,20 +464,20 @@
                         <h6><strong>Fusor, Belt e Kit Manutenção</strong></h6>
                         <div class="container-capacidade-modal">
                             <div>
-                                <div class="ink-level">
-                                    <div id="fusor-ink-fill" class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                <div class="ink-level-modal">
+                                    <div id="fusor-ink-fill" class="ink-fill-modal" style="height: 100%; background-color: gray;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="fusor-percentage">100%</p>
                             </div>
                             <div>
-                                <div class="ink-level">
-                                    <div id="belt-ink-fill" class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                <div class="ink-level-modal">
+                                    <div id="belt-ink-fill" class="ink-fill-modal" style="height: 100%; background-color: gray;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="belt-percentage">100%</p>
                             </div>
                             <div>
-                                <div class="ink-level">
-                                    <div id="kit-ink-fill" class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                <div class="ink-level-modal">
+                                    <div id="kit-ink-fill" class="ink-fill-modal" style="height: 100%; background-color: gray;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="kit-percentage">100%</p>
                             </div>
@@ -466,8 +486,8 @@
                         <h6><strong>Unidade de Imagem</strong></h6>
                         <div class="container-capacidade-modal">
                             <div>
-                                <div class="ink-level">
-                                    <div id="fusor-ink-fill" class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                <div class="ink-level-modal">
+                                    <div id="fusor-ink-fill" class="ink-fill-modal" style="height: 100%; background-color: gray;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="unidade-imagem-percentage">100%</p>
                             </div>
@@ -551,7 +571,7 @@
     // Variáveis de controle da rotação
     const containers = Array.from(document.querySelectorAll('.containerImpressora'));
     let currentIndex = 0;
-    const maxContainersPerScreen = 16; // Máximo de containers por tela
+    const maxContainersPerScreen = 15; // Máximo de containers por tela
     const displayDuration = 10000; // Duração de cada exibição
     let intervalId;
     let isPaused = false;
@@ -627,7 +647,8 @@
     document.getElementById('pauseButton').addEventListener('click', togglePause);
 
     // Função para abrir o modal e mostrar as informações detalhadas da impressora
-    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit, secretaria, depto, unidade_imagem) {
+    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit, secretaria, depto, unidade_imagem, impressora_tipo) {
+
         function getIconPath(black) {
             if (black >= 60) {
                 return "/Imagens/Icon.svg";
@@ -652,14 +673,36 @@
 
         // Atualiza as porcentagens de tinta no modal
         document.getElementById("black-ink-fill").style.height = black + "%";
-        document.getElementById("cyan-ink-fill").style.height = cyan + "%";
-        document.getElementById("yellow-ink-fill").style.height = yellow + "%";
-        document.getElementById("magenta-ink-fill").style.height = magenta + "%";
-
         document.getElementById("black-percentage").textContent = black + "%";
-        document.getElementById("cyan-percentage").textContent = cyan + "%";
-        document.getElementById("yellow-percentage").textContent = yellow + "%";
-        document.getElementById("magenta-percentage").textContent = magenta + "%";
+
+        // Verifica se a impressora é mono, se for, oculta ciano, magenta e amarelo
+        if (impressora_tipo == "MONO") {
+            document.getElementById("cyan-ink-fill").style.display = "none";
+            document.getElementById("yellow-ink-fill").style.display = "none";
+            document.getElementById("magenta-ink-fill").style.display = "none";
+            document.getElementById("cyan-percentage").style.display = "none";
+            document.getElementById("yellow-percentage").style.display = "none";
+            document.getElementById("magenta-percentage").style.display = "none";
+            document.getElementById("cyan-ink-level-modal").style.display = "none";
+            document.getElementById("yellow-ink-level-modal").style.display = "none";
+            document.getElementById("magenta-ink-level-modal").style.display = "none";
+        } else {
+            document.getElementById("cyan-ink-fill").style.height = cyan + "%";
+            document.getElementById("yellow-ink-fill").style.height = yellow + "%";
+            document.getElementById("magenta-ink-fill").style.height = magenta + "%";
+
+            document.getElementById("cyan-percentage").textContent = cyan + "%";
+            document.getElementById("yellow-percentage").textContent = yellow + "%";
+            document.getElementById("magenta-percentage").textContent = magenta + "%";
+
+            // Certifique-se de exibir as cores de volta se não for mono
+            document.getElementById("cyan-ink-fill").style.display = "block";
+            document.getElementById("yellow-ink-fill").style.display = "block";
+            document.getElementById("magenta-ink-fill").style.display = "block";
+            document.getElementById("cyan-percentage").style.display = "block";
+            document.getElementById("yellow-percentage").style.display = "block";
+            document.getElementById("magenta-percentage").style.display = "block";
+        }
 
         // Atualiza os itens de manutenção
         document.getElementById("fusor-ink-fill").style.height = fusor + "%";

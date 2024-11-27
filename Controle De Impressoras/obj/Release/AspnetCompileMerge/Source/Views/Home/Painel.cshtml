@@ -32,12 +32,12 @@
         background-color: #f9f9f9;
         border-radius: 1rem;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-        padding: 1rem;
+        padding: 0.5rem 1rem;
         border: 1px solid #000;
     }
 
     .filtrosImpressoras {
-        padding: 1rem;
+        padding: 1rem 0;
         background: #ffffff;
         color: white;
         display: flex;
@@ -55,21 +55,19 @@
         display: grid;
         grid-template-columns: 4fr 8fr;
         gap: 1rem;
-        margin-top: .5rem;
     }
 
     .gridContainer2 {
         display: grid;
         grid-template-columns: 10fr 2fr;
         gap: .5rem;
-        margin-top: .5rem;
     }
 
     .gridContainer3 {
         display: grid;
         grid-template-columns: 13fr 1fr;
         gap: .5rem;
-        margin-top: .5rem;
+        margin-top: 1rem;
     }
 
     .feedback {
@@ -105,12 +103,13 @@
 
     .ink-level {
         border: solid 1.5px black;
-        width: 1.5rem;
-        height: 3rem;
+        width: 1.5vw; /* Largura proporcional baseada em vw */
+        height: 5vh; /* Altura proporcional baseada em vh */
         background-color: #F6F7F8;
         position: relative;
         border-radius: 4px;
     }
+
 
     .ink-fill {
         position: absolute;
@@ -140,13 +139,13 @@
 
 
     .btn-plus {
-        width: 40px;
-        height: 40px;
+        width: 2vw;
+        height: 2vw;
         background-color: #45ADFF;
         color: white;
         border: none;
         border-radius: 50%;
-        font-size: 30px;
+        font-size: 3.1vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -291,7 +290,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 160px;
+        width: calc(100vw / 10); /* Usa 1/12 da largura da tela */
         display: block;
     }
 
@@ -319,13 +318,13 @@
                                 <div class="ink-level">
                                     <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemBlack, '%'); background-color: black;"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: .9rem; text-align: center;">@impressoras.PorcentagemBlack%</p>
+                                <p style="font-weight: bold; font-size: 1.2vh; text-align: center; ">@impressoras.PorcentagemBlack%</p>
                             </div>
                             <div>
                                 <div class="ink-level">
                                     <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemUnidadeImagem, '%'); background-color: gray;"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: .9rem; text-align: center;">@impressoras.PorcentagemUnidadeImagem%</p>
+                                <p style="font-weight: bold; font-size: 1.2vh; text-align: center;">@impressoras.PorcentagemUnidadeImagem%</p>
                             </div>
                         }
                         @if (impressoras.Tipo == "COLOR")
@@ -334,25 +333,25 @@
                                 <div class="ink-level">
                                     <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemBlack, '%'); background-color: black;"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: 0.7rem">@impressoras.PorcentagemBlack%</p>
+                                <p style="font-weight: bold; font-size: 1.2vh ">@impressoras.PorcentagemBlack%</p>
                             </div>
                             <div>
                                 <div class="ink-level">
-                                    <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemCyan, '%'); background-color: cyan;"></div>
+                                    <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemCyan, '%'); background: linear-gradient(to top, #8AFDFF, #5AFDFF);"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: 0.7rem">@impressoras.PorcentagemCyan%</p>
+                                <p style="font-weight: bold; font-size: 1.2vh ">@impressoras.PorcentagemCyan%</p>
                             </div>
                             <div>
                                 <div class="ink-level">
-                                    <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemYellow, '%'); background-color: yellow;"></div>
+                                    <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemYellow, '%'); background: linear-gradient(to top, #F6FF98, #F2FF66);"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: 0.7rem">@impressoras.PorcentagemYellow%</p>
+                                <p style="font-weight: bold; font-size: 1.2vh ">@impressoras.PorcentagemYellow%</p>
                             </div>
                             <div>
                                 <div class="ink-level">
-                                    <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemMagenta, '%'); background-color: magenta;"></div>
+                                    <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemMagenta, '%'); background: linear-gradient(to top, #FF8AF8, #FF5CF5);"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: 0.7rem">@impressoras.PorcentagemMagenta%</p>
+                                <p style="font-weight: bold; font-size: 1.2vh ">@impressoras.PorcentagemMagenta%</p>
                             </div>
 
                         }
@@ -372,7 +371,7 @@
                 </div>
 
 
-                <div class="gridContainer3" style="margin-top: 1rem;">
+                <div class="gridContainer3">
                     <p style="margin-top: -20px; font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: auto; ">@impressoras.AbrSecretaria - @impressoras.Depto</p>
                     <img src="@(
                         impressoras.PorcentagemBlack >= 60 ? Url.Content("~/Imagens/Icon.svg") :
@@ -550,7 +549,7 @@
     // Variáveis de controle da rotação
     const containers = Array.from(document.querySelectorAll('.containerImpressora'));
     let currentIndex = 0;
-    const maxContainersPerScreen = 20; // Máximo de containers por tela
+    const maxContainersPerScreen = 15; // Máximo de containers por tela
     const displayDuration = 10000; // Duração de cada exibição
     let intervalId;
     let isPaused = false;
