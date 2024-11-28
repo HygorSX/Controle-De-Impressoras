@@ -24,9 +24,19 @@
 
     .gridContainer {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(5, 1fr); /* Mantém 5 colunas como padrão */
         gap: 1rem;
+        transition: grid-template-columns 0.3s ease; /* Suaviza a transição */
     }
+
+    .gridContainer.six-columns {
+        grid-template-columns: repeat(6, 1fr); /* Configura 6 colunas */
+    }
+    
+    .gridContainer.seven-columns {
+        grid-template-columns: repeat(7, 1fr); /* Configura 7 colunas */
+    }
+
 
     .containerImpressora {
         background-color: #f9f9f9;
@@ -297,6 +307,108 @@
     .navbar-hidden {
         display: none;
     }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .ink-level-modal {
+        border: solid 1.5px black;
+        width: 1.5rem;
+        height: 3rem;
+        background-color: #F6F7F8;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .ink-fill-modal {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .infoTonner {
+        font-weight: bold;
+        font-size: 1.2vh;
+        text-align: center;
+    }
+
+    .nomeDispositivo {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    @@media (min-width: 3800px) {
+        .ink-level {
+            border: solid 1.5px black;
+            width: .75vw; /* Largura proporcional baseada em vw */
+            height: 3vh; /* Altura proporcional baseada em vh */
+            background-color: #F6F7F8;
+            position: relative;
+            border-radius: 4px;
+        }
+
+
+        .ink-fill {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .info p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: calc(100vw / 12); /* Usa 1/12 da largura da tela */
+            display: block;
+        }
+
+        .btn-plus {
+            width: 1.5vw;
+            height: 1.5vw;
+            background-color: #45ADFF;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 2vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            margin-left: auto;
+        }
+
+            /* Efeito ao passar o mouse sobre o botão */
+            .btn-plus:hover {
+                background-color: #0056b3; /* Azul mais escuro */
+            }
+
+        .infoTonner {
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        .nomeDispositivo {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .feedback {
+            width: 40px;
+        }
+    }
+
+
 </style>
 
 
@@ -318,13 +430,13 @@
                                 <div class="ink-level">
                                     <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemBlack, '%'); background-color: black;"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: 1.2vh; text-align: center; ">@impressoras.PorcentagemBlack%</p>
+                                <p class="infoTonner">@impressoras.PorcentagemBlack%</p>
                             </div>
                             <div>
                                 <div class="ink-level">
                                     <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemUnidadeImagem, '%'); background-color: gray;"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: 1.2vh; text-align: center;">@impressoras.PorcentagemUnidadeImagem%</p>
+                                <p class="infoTonner">@impressoras.PorcentagemUnidadeImagem%</p>
                             </div>
                         }
                         @if (impressoras.Tipo == "COLOR")
@@ -333,25 +445,25 @@
                                 <div class="ink-level">
                                     <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemBlack, '%'); background-color: black;"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: 1.2vh ">@impressoras.PorcentagemBlack%</p>
+                                <p class="infoTonner">@impressoras.PorcentagemBlack%</p>
                             </div>
                             <div>
                                 <div class="ink-level">
                                     <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemCyan, '%'); background: linear-gradient(to top, #8AFDFF, #5AFDFF);"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: 1.2vh ">@impressoras.PorcentagemCyan%</p>
+                                <p class="infoTonner">@impressoras.PorcentagemCyan%</p>
                             </div>
                             <div>
                                 <div class="ink-level">
                                     <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemYellow, '%'); background: linear-gradient(to top, #F6FF98, #F2FF66);"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: 1.2vh ">@impressoras.PorcentagemYellow%</p>
+                                <p class="infoTonner">@impressoras.PorcentagemYellow%</p>
                             </div>
                             <div>
                                 <div class="ink-level">
                                     <div class="ink-fill" style="height: @String.Concat(impressoras.PorcentagemMagenta, '%'); background: linear-gradient(to top, #FF8AF8, #FF5CF5);"></div>
                                 </div>
-                                <p style="font-weight: bold; font-size: 1.2vh ">@impressoras.PorcentagemMagenta%</p>
+                                <p class="infoTonner">@impressoras.PorcentagemMagenta%</p>
                             </div>
 
                         }
@@ -360,12 +472,12 @@
 
                 <div class="gridContainer2">
                     <div class="info">
-                        <p style="font-size: 14px; font-weight: bold;">Dispositivo:</p>
+                        <p class="nomeDispositivo">Dispositivo:</p>
                         <p>
                             @impressoras.Patrimonio, <em>@impressoras.PrinterModel</em>
                         </p>
                     </div>
-                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta', @impressoras.PorcentagemFusor, @impressoras.PorcentagemBelt, @impressoras.PorcentagemKitManutencao, '@impressoras.Secretaria', '@impressoras.Depto', '@impressoras.PorcentagemUnidadeImagem')">
+                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta', @impressoras.PorcentagemFusor, @impressoras.PorcentagemBelt, @impressoras.PorcentagemKitManutencao, '@impressoras.Secretaria', '@impressoras.Depto', '@impressoras.PorcentagemUnidadeImagem', '@impressoras.Tipo')">
                         <span class="icon">+</span>
                     </button>
                 </div>
@@ -399,26 +511,26 @@
                         <h6><strong>Capacidade</strong></h6>
                         <div class="container-capacidade-modal">
                             <div>
-                                <div class="ink-level">
-                                    <div id="black-ink-fill" class="ink-fill" style="background-color: black;"></div>
+                                <div class="ink-level-modal">
+                                    <div id="black-ink-fill" class="ink-fill-modal" style="background-color: black;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="black-percentage">100%</p>
                             </div>
                             <div>
-                                <div class="ink-level">
-                                    <div id="cyan-ink-fill" class="ink-fill" style="background-color: cyan;"></div>
+                                <div class="ink-level-modal" id="cyan-ink-level-modal">
+                                    <div id="cyan-ink-fill" class="ink-fill-modal" style="background-color: cyan;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="cyan-percentage">100%</p>
                             </div>
                             <div>
-                                <div class="ink-level">
-                                    <div id="yellow-ink-fill" class="ink-fill" style="background-color: yellow;"></div>
+                                <div class="ink-level-modal" id="yellow-ink-level-modal">
+                                    <div id="yellow-ink-fill" class="ink-fill-modal" style="background-color: yellow;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="yellow-percentage">100%</p>
                             </div>
                             <div>
-                                <div class="ink-level">
-                                    <div id="magenta-ink-fill" class="ink-fill" style="background-color: magenta;"></div>
+                                <div class="ink-level-modal" id="magenta-ink-level-modal">
+                                    <div id="magenta-ink-fill" class="ink-fill-modal" style="background-color: magenta;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="magenta-percentage">100%</p>
                             </div>
@@ -442,20 +554,20 @@
                         <h6><strong>Fusor, Belt e Kit Manutenção</strong></h6>
                         <div class="container-capacidade-modal">
                             <div>
-                                <div class="ink-level">
-                                    <div id="fusor-ink-fill" class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                <div class="ink-level-modal">
+                                    <div id="fusor-ink-fill" class="ink-fill-modal" style="height: 100%; background-color: gray;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="fusor-percentage">100%</p>
                             </div>
                             <div>
-                                <div class="ink-level">
-                                    <div id="belt-ink-fill" class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                <div class="ink-level-modal">
+                                    <div id="belt-ink-fill" class="ink-fill-modal" style="height: 100%; background-color: gray;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="belt-percentage">100%</p>
                             </div>
                             <div>
-                                <div class="ink-level">
-                                    <div id="kit-ink-fill" class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                <div class="ink-level-modal">
+                                    <div id="kit-ink-fill" class="ink-fill-modal" style="height: 100%; background-color: gray;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="kit-percentage">100%</p>
                             </div>
@@ -464,8 +576,8 @@
                         <h6><strong>Unidade de Imagem</strong></h6>
                         <div class="container-capacidade-modal">
                             <div>
-                                <div class="ink-level">
-                                    <div id="fusor-ink-fill" class="ink-fill" style="height: 100%; background-color: gray;"></div>
+                                <div class="ink-level-modal">
+                                    <div id="fusor-ink-fill" class="ink-fill-modal" style="height: 100%; background-color: gray;"></div>
                                 </div>
                                 <p style="font-weight: bold" id="unidade-imagem-percentage">100%</p>
                             </div>
@@ -476,44 +588,49 @@
         </div>
     </div>
 
-    <form method="get" action="/Home/Painel">
-        <div class="filtrosImpressoras">
-            <label>
-                <input type="checkbox" name="intervalo1" value="true"
-                       @(Request.QueryString["intervalo1"] == "true" ? "checked" : "") />
-                <img src="~/Imagens/Icon.svg" class="feedback-nav" alt="feedback">
-                <p class="feedback-p">100% até 60%</p>
-            </label>
-            <label>
-                <input type="checkbox" name="intervalo2" value="true"
-                       @(Request.QueryString["intervalo2"] == "true" ? "checked" : "") />
-                <img src="~/Imagens/IconYellow.svg" class="feedback-nav" alt="feedback">
-                <p class="feedback-p">60% até 20%</p>
-            </label>
-            <label>
-                <input type="checkbox" name="intervalo3" value="true"
-                       @(Request.QueryString["intervalo3"] == "true" ? "checked" : "") />
-                <img src="~/Imagens/IconRed.svg" class="feedback-nav" alt="feedback">
-                <p class="feedback-p">20% até 1%</p>
-            </label>
-            <label>
-                <input type="checkbox" name="esgotado" value="true"
-                       @(Request.QueryString["esgotado"] == "true" ? "checked" : "") />
-                <img src="~/Imagens/IconBlack.svg" class="feedback-nav" alt="feedback">
-                <p class="feedback-p">Esgotado!</p>
-            </label>
-            <button type="submit" class="btn btn-primary ml-2">Aplicar Filtros</button>
-            <button type="button" id="pauseButton" class="btn btn-primary ml-2">
-                <i id="pauseIcon" class="bi bi-pause-circle"></i>
-                <span id="pauseText">Pausar</span>
-            </button>
-            <button type="button" class="btn btn-danger" onclick="toggleNavbar()">Esconder menu</button>
+    <div>
+        <form method="get" action="/Home/Painel">
+            <div class="filtrosImpressoras">
+                <label>
+                    <input type="checkbox" name="intervalo1" value="true"
+                           @(Request.QueryString["intervalo1"] == "true" ? "checked" : "") />
+                    <img src="~/Imagens/Icon.svg" class="feedback-nav" alt="feedback">
+                    <p class="feedback-p">100% até 60%</p>
+                </label>
+                <label>
+                    <input type="checkbox" name="intervalo2" value="true"
+                           @(Request.QueryString["intervalo2"] == "true" ? "checked" : "") />
+                    <img src="~/Imagens/IconYellow.svg" class="feedback-nav" alt="feedback">
+                    <p class="feedback-p">60% até 20%</p>
+                </label>
+                <label>
+                    <input type="checkbox" name="intervalo3" value="true"
+                           @(Request.QueryString["intervalo3"] == "true" ? "checked" : "") />
+                    <img src="~/Imagens/IconRed.svg" class="feedback-nav" alt="feedback">
+                    <p class="feedback-p">20% até 1%</p>
+                </label>
+                <label>
+                    <input type="checkbox" name="esgotado" value="true"
+                           @(Request.QueryString["esgotado"] == "true" ? "checked" : "") />
+                    <img src="~/Imagens/IconBlack.svg" class="feedback-nav" alt="feedback">
+                    <p class="feedback-p">Esgotado!</p>
+                </label>
+                <button type="submit" class="btn btn-primary ml-2">Aplicar Filtros</button>
+                <button type="button" class="btn btn-danger" onclick="toggleNavbar()">Esconder menu</button>
+                <button type="button" id="pauseButton" class="btn btn-primary ml-2">
+                    <i id="pauseIcon" class="bi bi-pause-circle"></i>
+                    <span id="pauseText">Pausar</span>
+                </button>
 
-        </div>
-    </form>
+            </div>
+        </form>
+    </div>
+
+
 </main>
 
 <script>
+
     // Função para abrir as informações de impressora
     function abrirInfo(id) {
         var div_info = document.getElementById("info_impressora_" + id);
@@ -525,6 +642,20 @@
         } else {
             div_info.style.display = "none";
             i_icon.style.transform = "rotate(0deg)";
+        }
+    }
+
+    function setMaxContainersPerScreen() {
+        const width = window.innerWidth;
+
+        if (width >= 3840) {
+           return 42;
+        } else if (width >= 1440) {
+            return 20;
+        } else if (width >= 1080) {
+            return 15;
+        } else {
+            return 15;
         }
     }
 
@@ -549,17 +680,31 @@
     // Variáveis de controle da rotação
     const containers = Array.from(document.querySelectorAll('.containerImpressora'));
     let currentIndex = 0;
-    const maxContainersPerScreen = 15; // Máximo de containers por tela
+    var maxContainersPerScreen = setMaxContainersPerScreen(); // Máximo de containers por tela
     const displayDuration = 10000; // Duração de cada exibição
     let intervalId;
     let isPaused = false;
 
-    // Função para renderizar os containers
     function renderContainers() {
         if (isPaused) return;
 
         const gridContainer = document.querySelector('.gridContainer');
         gridContainer.innerHTML = '';
+
+        // Adiciona a classe `six-columns` se o máximo for 30, remove caso contrário
+        if (maxContainersPerScreen === 30) {
+            gridContainer.classList.add('six-columns');
+        } else {
+            gridContainer.classList.remove('six-columns');
+        }
+
+        // Adiciona a classe `six-columns` se o máximo for 30, remove caso contrário
+        if (maxContainersPerScreen === 42) {
+            gridContainer.classList.add('seven-columns');
+        } else {
+            gridContainer.classList.remove('seven-columns');
+        }
+
 
         // Seleciona os containers para exibição
         const containersToShow = containers.slice(currentIndex, currentIndex + maxContainersPerScreen);
@@ -570,11 +715,12 @@
         // Atualiza o índice para exibir os próximos containers
         currentIndex += maxContainersPerScreen;
 
-        // Se atingiu o final da lista, volta para o início
+        // Se atingir o final da lista, volta para o início
         if (currentIndex >= containers.length) {
             currentIndex = 0;
         }
     }
+
 
     // Função para navegar para a página anterior ou próxima
     function changePage(direction) {
@@ -625,7 +771,8 @@
     document.getElementById('pauseButton').addEventListener('click', togglePause);
 
     // Função para abrir o modal e mostrar as informações detalhadas da impressora
-    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit, secretaria, depto, unidade_imagem) {
+    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit, secretaria, depto, unidade_imagem, impressora_tipo) {
+
         function getIconPath(black) {
             if (black >= 60) {
                 return "/Imagens/Icon.svg";
@@ -650,14 +797,36 @@
 
         // Atualiza as porcentagens de tinta no modal
         document.getElementById("black-ink-fill").style.height = black + "%";
-        document.getElementById("cyan-ink-fill").style.height = cyan + "%";
-        document.getElementById("yellow-ink-fill").style.height = yellow + "%";
-        document.getElementById("magenta-ink-fill").style.height = magenta + "%";
-
         document.getElementById("black-percentage").textContent = black + "%";
-        document.getElementById("cyan-percentage").textContent = cyan + "%";
-        document.getElementById("yellow-percentage").textContent = yellow + "%";
-        document.getElementById("magenta-percentage").textContent = magenta + "%";
+
+        // Verifica se a impressora é mono, se for, oculta ciano, magenta e amarelo
+        if (impressora_tipo == "MONO") {
+            document.getElementById("cyan-ink-fill").style.display = "none";
+            document.getElementById("yellow-ink-fill").style.display = "none";
+            document.getElementById("magenta-ink-fill").style.display = "none";
+            document.getElementById("cyan-percentage").style.display = "none";
+            document.getElementById("yellow-percentage").style.display = "none";
+            document.getElementById("magenta-percentage").style.display = "none";
+            document.getElementById("cyan-ink-level-modal").style.display = "none";
+            document.getElementById("yellow-ink-level-modal").style.display = "none";
+            document.getElementById("magenta-ink-level-modal").style.display = "none";
+        } else {
+            document.getElementById("cyan-ink-fill").style.height = cyan + "%";
+            document.getElementById("yellow-ink-fill").style.height = yellow + "%";
+            document.getElementById("magenta-ink-fill").style.height = magenta + "%";
+
+            document.getElementById("cyan-percentage").textContent = cyan + "%";
+            document.getElementById("yellow-percentage").textContent = yellow + "%";
+            document.getElementById("magenta-percentage").textContent = magenta + "%";
+
+            // Certifique-se de exibir as cores de volta se não for mono
+            document.getElementById("cyan-ink-fill").style.display = "block";
+            document.getElementById("yellow-ink-fill").style.display = "block";
+            document.getElementById("magenta-ink-fill").style.display = "block";
+            document.getElementById("cyan-percentage").style.display = "block";
+            document.getElementById("yellow-percentage").style.display = "block";
+            document.getElementById("magenta-percentage").style.display = "block";
+        }
 
         // Atualiza os itens de manutenção
         document.getElementById("fusor-ink-fill").style.height = fusor + "%";
@@ -673,4 +842,14 @@
         $('#impressoraModal').modal('show');
     }
 
+    // Função para atualizar o valor de maxContainersPerScreen
+    function updateMaxContainers(event) {
+        event.preventDefault(); // Previne o comportamento padrão do formulário
+        const select = document.getElementById('maxContainersSelect');
+        const newMax = parseInt(select.value);
+
+        maxContainersPerScreen = newMax; // Atualiza a variável global
+        currentIndex = 0; // Reinicia o índice para começar do início
+        renderContainers(); // Renderiza novamente com o novo valor
+    }
 </script>
