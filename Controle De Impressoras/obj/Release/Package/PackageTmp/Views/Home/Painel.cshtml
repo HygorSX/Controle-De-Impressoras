@@ -345,6 +345,38 @@
         font-size: 1rem;
     }
 
+    .numeroImpressoras {
+        display: none;
+    }
+
+    .containerNumeroImpressoras {
+        padding: .5rem;
+    }
+
+    /* Estilos para a animação de transição */
+    .transition-info {
+        transition: all 0.3s ease-out;
+        overflow: hidden;
+        opacity: 0;
+        height: 0;
+    }
+
+        .transition-info.show {
+            opacity: 1;
+            height: auto;
+        }
+
+
+    @@media (max-height: 800px) {
+        .numeroImpressoras {
+            display: block;
+        }
+
+        .containerNumeroImpressoras {
+            display: none;
+        }
+    }
+
     @@media (min-width: 3800px) {
         .ink-level {
             border: solid 1.5px black;
@@ -594,7 +626,23 @@
         </div>
     </div>
 
-    <div>
+    <div >
+        <div class="containerNumeroImpressoras">
+            <div class="container mt-4">
+                <div class="card shadow-sm border-light">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <em>Impressoras monitoradas:</em>
+                        </h5>
+                        <p class="text-center display-6 font-weight-bold text-primary">
+                            @ViewBag.TotalImpressoras
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
         <form method="get" action="/Home/Painel">
             <div class="filtrosImpressoras">
                 <label>
@@ -645,30 +693,32 @@
                 <i class="bi bi-arrow-right"></i>
             </button>
         </div>
-        <div style="margin: 1rem; border-radius: 1rem;" class="p-3 bg-primary text-white">
-            <p class="numeroImpressoras"><em>Impressoras monitoradas:</em> <br /> @ViewBag.TotalImpressoras</p>
-        </div>
-
 
     </div>
-
-
+    <p class="numeroImpressoras"><em>Impressoras monitoradas:</em> @ViewBag.TotalImpressoras</p>
 </main>
 
 <script>
-    // Função para abrir as informações de impressora
+    // Função para abrir as informaçõ de impressora com animação
     function abrirInfo(id) {
         var div_info = document.getElementById("info_impressora_" + id);
         var i_icon = document.getElementById("icon_" + id);
 
-        if (div_info.style.display == "none") {
-            div_info.style.display = "table";
+        div_info.classList.add('transition-info');
+
+        if (div_info.style.display === "none" || !div_info.classList.contains('show')) {
+            div_info.classList.add('show');
+            div_info.style.display = "block";
             i_icon.style.transform = "rotate(180deg)";
         } else {
-            div_info.style.display = "none";
+            div_info.classList.remove('show');
             i_icon.style.transform = "rotate(0deg)";
+            setTimeout(function () {
+                div_info.style.display = "none";
+            }, 300); 
         }
     }
+
 
     // Função para definir o número de containers por página
     function setMaxContainersPerScreen() {
@@ -879,7 +929,7 @@
         document.getElementById("fusor-percentage").textContent = fusor + "%";
         document.getElementById("belt-percentage").textContent = belt + "%";
         document.getElementById("kit-percentage").textContent = kit + "%";
-        document.getElementById("unidade-imagem-percentage").textContent = unidade_imagem + "%";
+        document.getElementById("unidade-imagem-percentage").textContent = kit + "%";
 
         // Abre o modal
         $('#impressoraModal').modal('show');

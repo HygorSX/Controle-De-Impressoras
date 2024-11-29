@@ -626,19 +626,22 @@
         </div>
     </div>
 
-    <div>
-        <div class="container mt-4">
-            <div class="card shadow-sm border-light">
-                <div class="card-body">
-                    <h5 class="card-title text-center">
-                        <em>Impressoras monitoradas:</em>
-                    </h5>
-                    <p class="text-center display-6 font-weight-bold text-primary">
-                        @ViewBag.TotalImpressoras
-                    </p>
+    <div >
+        <div class="containerNumeroImpressoras">
+            <div class="container mt-4">
+                <div class="card shadow-sm border-light">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <em>Impressoras monitoradas:</em>
+                        </h5>
+                        <p class="text-center display-6 font-weight-bold text-primary">
+                            @ViewBag.TotalImpressoras
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
+        
 
         <form method="get" action="/Home/Painel">
             <div class="filtrosImpressoras">
