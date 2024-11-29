@@ -350,8 +350,11 @@
     }
 
     .containerNumeroImpressoras {
-        padding: .5rem;
-    }
+        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+        border-radius: 1rem;
+        border: 2px solid rgba(240, 46, 170, 0.4);
+        margin: 1rem 0;
+    }    
 
     /* Estilos para a animação de transição */
     .transition-info {
@@ -632,7 +635,7 @@
                 <div class="card shadow-sm border-light">
                     <div class="card-body">
                         <h5 class="card-title text-center">
-                            Impressoras monitoradas:
+                            Impressoras monitoradas
                         </h5>
                         <p class="text-center display-6 font-weight-bold text-primary">
                             @ViewBag.TotalImpressoras
