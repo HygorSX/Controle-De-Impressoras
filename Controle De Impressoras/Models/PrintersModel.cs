@@ -96,6 +96,7 @@ namespace Controle_De_Impressoras.Models
         [Required(ErrorMessage = "O departamento é obrigatório")]
         [MaxLength(100, ErrorMessage = "O comprimento máximo permitido é 100 caracteres.")]
         public string Depto { get; set; }
+        public string SerialTonnerPreto { get; set; }
         public int? PorcentagemUnidadeImagem { get; set; }
 
 
@@ -140,6 +141,7 @@ namespace Controle_De_Impressoras.Models
                     printer.PorcentagemBelt = q.Status.PorcentagemBelt;
                     printer.PorcentagemKitManutencao = q.Status.PorcentagemKitManutencao;
                     printer.DataHoraDeBusca = q.Status.DataHoraDeBusca;
+                    printer.SerialTonnerPreto = q.Status.SerialTonnerPreto;
 
 
                     return printer;

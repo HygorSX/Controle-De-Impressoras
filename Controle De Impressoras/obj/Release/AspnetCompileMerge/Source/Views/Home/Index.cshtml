@@ -275,19 +275,26 @@
                             }
                             else if (item.Tipo == "MONO")
                             {
-                                <div class="info">
-                                    <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
-                                    <p>@item.QuantidadeImpressaoTotal Impressões</p>
-                                    @if (item.PrinterStatus != "")
-                                    {
-                                        <p style="font-weight: bold; margin-top: 1rem;">Status:</p>
-                                        <p>@item.PrinterStatus</p>
-                                    }
-                                    <p style="font-weight: bold; margin-top: 1rem;">Serial:</p>
-                                    <p>@item.SerialImpressora</p>
-                                    <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
-                                    <a href="https://@item.Ip">@item.Ip</a>
-                                </div>
+                        <div class="info">
+                            <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
+                            <p>@item.QuantidadeImpressaoTotal Impressões</p>
+                            <p style="font-weight: bold; margin-top: 1rem;">Serial Impressora:</p>
+                            <p>@item.SerialImpressora</p>
+                            @if (@item.SerialTonnerPreto != "")
+                            {
+                                <p style="font-weight: bold; margin-top: 1rem;">Serial Tonner Preto:</p>
+                                <p href="https://@item.Ip">@item.SerialTonnerPreto</p>
+                            }
+                            @if (item.SerialUniImage != "")
+                            {
+                                <p style="font-weight: bold; margin-top: 1rem;">Serial Unidade Imagem:</p>
+                                <p>@item.SerialUniImage</p>
+                            }
+
+                            <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
+                            <a href="https://@item.Ip">@item.Ip</a>
+
+                        </div>
                                 <div class="fabricante">
                                     <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
                                     <p>@item.DeviceManufacturer</p>

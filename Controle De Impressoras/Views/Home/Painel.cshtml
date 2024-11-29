@@ -44,6 +44,7 @@
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         padding: 0.5rem 1rem;
         border: 1px solid #000;
+        max-height: calc(100vh / 3);
     }
 
     .filtrosImpressoras {
@@ -340,6 +341,42 @@
         font-weight: bold;
     }
 
+    .numeroImpressoras {
+        font-size: 1rem;
+    }
+
+    .numeroImpressoras {
+        display: none;
+    }
+
+    .containerNumeroImpressoras {
+        padding: .5rem;
+    }
+
+    /* Estilos para a animação de transição */
+    .transition-info {
+        transition: all 0.3s ease-out;
+        overflow: hidden;
+        opacity: 0;
+        height: 0;
+    }
+
+        .transition-info.show {
+            opacity: 1;
+            height: auto;
+        }
+
+
+    @@media (max-height: 800px) {
+        .numeroImpressoras {
+            display: block;
+        }
+
+        .containerNumeroImpressoras {
+            display: none;
+        }
+    }
+
     @@media (min-width: 3800px) {
         .ink-level {
             border: solid 1.5px black;
@@ -488,6 +525,7 @@
                     <img src="@(
                         impressoras.PorcentagemBlack >= 60 ? Url.Content("~/Imagens/Icon.svg") :
                         impressoras.PorcentagemBlack >= 20 ? Url.Content("~/Imagens/IconYellow.svg") :
+                        impressoras.PorcentagemBlack >= 11 ? Url.Content("~/Imagens/IconOrange.svg") :
                         impressoras.PorcentagemBlack >= 1 ? Url.Content("~/Imagens/IconRed.svg") :
                         Url.Content("~/Imagens/IconBlack.svg")
                     )" class="feedback" alt="feedback">
@@ -577,9 +615,9 @@
                         <div class="container-capacidade-modal">
                             <div>
                                 <div class="ink-level-modal">
-                                    <div id="fusor-ink-fill" class="ink-fill-modal" style="height: 100%; background-color: gray;"></div>
+                                    <div id="u-ink-fill" class="ink-fill-modal" style="height: 100%; background-color: gray;"></div>
                                 </div>
-                                <p style="font-weight: bold" id="unidade-imagem-percentage">100%</p>
+                                <p style="font-weight: bold" id="unidade-imagem-percentage"></p>
                             </div>
                         </div>
                     </div>
@@ -589,6 +627,19 @@
     </div>
 
     <div>
+        <div class="container mt-4">
+            <div class="card shadow-sm border-light">
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        <em>Impressoras monitoradas:</em>
+                    </h5>
+                    <p class="text-center display-6 font-weight-bold text-primary">
+                        @ViewBag.TotalImpressoras
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <form method="get" action="/Home/Painel">
             <div class="filtrosImpressoras">
                 <label>
@@ -606,8 +657,14 @@
                 <label>
                     <input type="checkbox" name="intervalo3" value="true"
                            @(Request.QueryString["intervalo3"] == "true" ? "checked" : "") />
+                    <img src="~/Imagens/IconOrange.svg" class="feedback-nav" alt="feedback">
+                    <p class="feedback-p">20% até 10%</p>
+                </label>
+                <label>
+                    <input type="checkbox" name="intervalo4" value="true"
+                           @(Request.QueryString["intervalo4"] == "true" ? "checked" : "") />
                     <img src="~/Imagens/IconRed.svg" class="feedback-nav" alt="feedback">
-                    <p class="feedback-p">20% até 1%</p>
+                    <p class="feedback-p">10% até 1%</p>
                 </label>
                 <label>
                     <input type="checkbox" name="esgotado" value="true"
@@ -621,35 +678,51 @@
                     <i id="pauseIcon" class="bi bi-pause-circle"></i>
                     <span id="pauseText">Pausar</span>
                 </button>
-
             </div>
         </form>
+
+
+        <div style=" display: flex; align-items: center; gap: .5rem; flex-wrap: nowrap; justify-content: center;">
+            <button onclick="goToPrevious()" class="btn btn-primary">
+                <i class="bi bi-arrow-left"></i>
+            </button>
+            <button onclick="goToNext()" class="btn btn-primary">
+                <i class="bi bi-arrow-right"></i>
+            </button>
+        </div>
+
     </div>
-
-
+    <p class="numeroImpressoras"><em>Impressoras monitoradas:</em> @ViewBag.TotalImpressoras</p>
 </main>
 
 <script>
-
-    // Função para abrir as informações de impressora
+    // Função para abrir as informaçõ de impressora com animação
     function abrirInfo(id) {
         var div_info = document.getElementById("info_impressora_" + id);
         var i_icon = document.getElementById("icon_" + id);
 
-        if (div_info.style.display == "none") {
-            div_info.style.display = "table";
+        div_info.classList.add('transition-info');
+
+        if (div_info.style.display === "none" || !div_info.classList.contains('show')) {
+            div_info.classList.add('show');
+            div_info.style.display = "block";
             i_icon.style.transform = "rotate(180deg)";
         } else {
-            div_info.style.display = "none";
+            div_info.classList.remove('show');
             i_icon.style.transform = "rotate(0deg)";
+            setTimeout(function () {
+                div_info.style.display = "none";
+            }, 300); 
         }
     }
 
+
+    // Função para definir o número de containers por página
     function setMaxContainersPerScreen() {
         const width = window.innerWidth;
 
         if (width >= 3840) {
-           return 42;
+            return 42;
         } else if (width >= 1440) {
             return 20;
         } else if (width >= 1080) {
@@ -679,71 +752,84 @@
 
     // Variáveis de controle da rotação
     const containers = Array.from(document.querySelectorAll('.containerImpressora'));
-    let currentIndex = 0;
+    let currentPage = 0; // Agora usamos currentPage para controlar a navegação por páginas
     var maxContainersPerScreen = setMaxContainersPerScreen(); // Máximo de containers por tela
-    const displayDuration = 10000; // Duração de cada exibição
+    const displayDuration = 30000; // Duração de cada exibição
     let intervalId;
     let isPaused = false;
+    let isUserNavigating = false; // Controle da navegação manual
 
+    // Calcular o número total de páginas e armazenar as páginas
+    let pages = [];
+
+    // Função para calcular e dividir os containers em páginas
+    function calculatePages() {
+        pages = []; // Limpa as páginas antigas
+
+        for (let i = 0; i < containers.length; i += maxContainersPerScreen) {
+            pages.push(containers.slice(i, i + maxContainersPerScreen));
+        }
+    }
+
+    // Função para renderizar os containers para a página atual
     function renderContainers() {
-        if (isPaused) return;
+        if (isPaused && !isUserNavigating) return; // Verifica se está pausado, mas permite navegação manual
 
         const gridContainer = document.querySelector('.gridContainer');
-        gridContainer.innerHTML = '';
+        gridContainer.innerHTML = ''; // Limpa os containers anteriores
 
-        // Adiciona a classe `six-columns` se o máximo for 30, remove caso contrário
+        // Adiciona a classe `six-columns` ou `seven-columns` conforme o máximo de containers
         if (maxContainersPerScreen === 30) {
             gridContainer.classList.add('six-columns');
         } else {
             gridContainer.classList.remove('six-columns');
         }
 
-        // Adiciona a classe `six-columns` se o máximo for 30, remove caso contrário
         if (maxContainersPerScreen === 42) {
             gridContainer.classList.add('seven-columns');
         } else {
             gridContainer.classList.remove('seven-columns');
         }
 
-
-        // Seleciona os containers para exibição
-        const containersToShow = containers.slice(currentIndex, currentIndex + maxContainersPerScreen);
+        // Adiciona os containers da página atual
+        const containersToShow = pages[currentPage];
         containersToShow.forEach(container => {
             gridContainer.appendChild(container);
         });
-
-        // Atualiza o índice para exibir os próximos containers
-        currentIndex += maxContainersPerScreen;
-
-        // Se atingir o final da lista, volta para o início
-        if (currentIndex >= containers.length) {
-            currentIndex = 0;
-        }
     }
-
 
     // Função para navegar para a página anterior ou próxima
     function changePage(direction) {
-        currentIndex += direction * maxContainersPerScreen;
-
-        if (currentIndex < 0) {
-            currentIndex = containers.length - maxContainersPerScreen; // Vai para a última página
-        } else if (currentIndex >= containers.length) {
-            currentIndex = 0; // Vai para a primeira página
+        console.log('Página antes:', currentPage);
+        currentPage += direction;
+        if (currentPage < 0) {
+            currentPage = pages.length - 1;
+        } else if (currentPage >= pages.length) {
+            currentPage = 0;
         }
-
+        console.log('Página depois:', currentPage);
         renderContainers();
     }
 
+
     // Função para iniciar a rotação
     function startRotation() {
-        intervalId = setInterval(renderContainers, displayDuration);
+        console.log('Iniciando rotação...');
+        intervalId = setInterval(function () {
+            if (!isPaused) {
+                console.log('Mudando página');
+                changePage(1); // Avança para a próxima página
+            }
+        }, displayDuration);
     }
 
+    
     // Função para parar a rotação
     function stopRotation() {
+        console.log('Parando rotação...');
         clearInterval(intervalId);
     }
+
 
     // Função para alternar entre pausar e retomar
     function togglePause() {
@@ -760,10 +846,13 @@
             pauseIcon.className = 'bi bi-pause-circle';
             pauseText.textContent = 'Pausar';
         }
+
+        isUserNavigating = false; // Reseta a navegação manual após o toggle de pausa
     }
 
     // Inicia a rotação ao carregar a página
     verificarPorcentagens();
+    calculatePages(); // Calcula as páginas no carregamento
     renderContainers();
     startRotation();
 
@@ -819,7 +908,7 @@
             document.getElementById("yellow-percentage").textContent = yellow + "%";
             document.getElementById("magenta-percentage").textContent = magenta + "%";
 
-            // Certifique-se de exibir as cores de volta se não for mono
+            // Exibe ciano, magenta e amarelo se não for mono
             document.getElementById("cyan-ink-fill").style.display = "block";
             document.getElementById("yellow-ink-fill").style.display = "block";
             document.getElementById("magenta-ink-fill").style.display = "block";
@@ -830,13 +919,14 @@
 
         // Atualiza os itens de manutenção
         document.getElementById("fusor-ink-fill").style.height = fusor + "%";
-        document.getElementById("unidade-imagem-percentage").style.height = unidade_imagem + "%";
         document.getElementById("belt-ink-fill").style.height = belt + "%";
         document.getElementById("kit-ink-fill").style.height = kit + "%";
+        document.getElementById("u-ink-fill").style.height = unidade_imagem + "%";
 
         document.getElementById("fusor-percentage").textContent = fusor + "%";
         document.getElementById("belt-percentage").textContent = belt + "%";
         document.getElementById("kit-percentage").textContent = kit + "%";
+        document.getElementById("unidade-imagem-percentage").textContent = kit + "%";
 
         // Abre o modal
         $('#impressoraModal').modal('show');
@@ -849,7 +939,20 @@
         const newMax = parseInt(select.value);
 
         maxContainersPerScreen = newMax; // Atualiza a variável global
-        currentIndex = 0; // Reinicia o índice para começar do início
+        currentPage = 0; // Reinicia o índice para começar do início
+        calculatePages(); // Recalcula as páginas após alterar o valor
         renderContainers(); // Renderiza novamente com o novo valor
     }
+
+    // Funções de navegação manual
+    function goToNext() {
+        isUserNavigating = true; // Usuário está navegando manualmente
+        changePage(1); // Direção 1 para avançar
+    }
+
+    function goToPrevious() {
+        isUserNavigating = true; // Usuário está navegando manualmente
+        changePage(-1); // Direção -1 para retroceder
+    }
+
 </script>
