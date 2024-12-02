@@ -97,9 +97,9 @@
 
     .printerInformation {
         display: grid;
-        grid-template-columns: 1.5fr 2fr 3fr 3fr 3fr;
+        grid-template-columns: 1.0fr 0.7fr 1.0fr 1.0fr 1.0fr 1.0fr 1.0fr;
         padding: 2rem 0;
-    } 
+    }
 
     .containerImpressoras {
         display: grid;
@@ -177,9 +177,21 @@
             <p class="title">Serial Impressora</p>
             <p>@printer.SerialImpressora</p>
         </div>
+        <div class="serial-tonner">
+            <p class="title">Serial Tonner Preto</p>
+            @if (@printer.SerialTonnerPreto == "")
+            {
+                <p>Não Encontrado</p>
+            }
+            <p>@printer.SerialTonnerPreto</p>
+        </div>
         <div class="patrimonio">
             <p class="title">Patrimônio Impressora</p>
             <p>@printer.Patrimonio</p>
+        </div>
+        <div class="impressoes">
+            <p class="title">Impressões Mensais</p>
+            <p>@ViewBag.ImpressaoTotal ?? 0</p>
         </div>
     </div>
 

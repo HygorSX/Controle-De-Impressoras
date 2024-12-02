@@ -517,7 +517,7 @@
                             @impressoras.Patrimonio, <em>@impressoras.PrinterModel</em>
                         </p>
                     </div>
-                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta', @impressoras.PorcentagemFusor, @impressoras.PorcentagemBelt, @impressoras.PorcentagemKitManutencao, '@impressoras.Secretaria', '@impressoras.Depto', '@impressoras.PorcentagemUnidadeImagem', '@impressoras.Tipo')">
+                    <button class="btn-plus" onclick="openModal('@impressoras.PrinterModel', '@impressoras.Patrimonio', '@impressoras.DeviceModel', '@impressoras.QuantidadeImpressaoTotal', '@impressoras.PorcentagemBlack', '@impressoras.PorcentagemCyan', '@impressoras.PorcentagemYellow', '@impressoras.PorcentagemMagenta', @impressoras.PorcentagemFusor, @impressoras.PorcentagemBelt, @impressoras.PorcentagemKitManutencao, '@impressoras.Secretaria', '@impressoras.Depto', '@impressoras.PorcentagemUnidadeImagem', '@impressoras.Tipo', '@impressoras.SerialTonnerPreto', '@impressoras.DeviceManufacturer')">
                         <span class="icon">+</span>
                     </button>
                 </div>
@@ -546,7 +546,7 @@
                 </div>
                 <div class="modal-body modal-grid">
                     <div class="modal-img">
-                        <img src="~/Imagens/Impressoras/EPSON.png" alt="Impressora" class="printer-image">
+                        <img id="printerImage" alt="Impressora" class="printer-image">
                     </div>
                     <div class="container-toner">
                         <h6><strong>Capacidade</strong></h6>
@@ -584,6 +584,8 @@
                         <p id="modalPatrimonio" style="padding-bottom:10px">83</p>
                         <h6><strong>Serial Uni. Imagem</strong></h6>
                         <p id="modalSerial" style="padding-bottom:10px">X3B7001709</p>
+                        <h6><strong>Serial Tonner Preto</strong></h6>
+                        <p id="modalSerialTonner" style="padding-bottom:10px">X3B7001709</p>
                         <h6><strong>Local</strong></h6>
                         <p id="modalSecretaria" style="padding-bottom: 10px; ">Insira secretaria...</p>
                     </div>
@@ -866,7 +868,7 @@
     document.getElementById('pauseButton').addEventListener('click', togglePause);
 
     // Função para abrir o modal e mostrar as informações detalhadas da impressora
-    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit, secretaria, depto, unidade_imagem, impressora_tipo) {
+    function openModal(printerModel, patrimonio, deviceModel, impressaoTotal, black, cyan, yellow, magenta, fusor, belt, kit, secretaria, depto, unidade_imagem, impressora_tipo, serialTonner, deviceManufacturer) {
 
         function getIconPath(black) {
             if (black >= 60) {
@@ -883,11 +885,29 @@
         const icon = getIconPath(black);
 
         // Atualiza o conteúdo do modal
+        const imgImpressoras = document.getElementById('printerImage');
+        if (imgImpressoras) {
+            imgImpressoras.src = `/Imagens/Impressoras/${deviceManufacturer}.png`;
+        } else {
+            console.error("Elemento 'printerImage' não encontrado.");
+        }
         document.getElementById('modalPrinterModel').textContent = printerModel;
         document.getElementById('modalPatrimonio').textContent = patrimonio;
         document.getElementById('modalSerial').textContent = deviceModel;
+        if (serialTonner != "") {
+            document.getElementById('modalSerialTonner').textContent = serialTonner;
+        }
+        else {
+            document.getElementById('modalSerialTonner').textContent = "Não Encontrado";
+        }
         document.getElementById('modalImpressaoTotal').textContent = impressaoTotal + " Impressões";
-        document.getElementById("modalSecretaria").textContent = secretaria + " - " + depto;
+
+        if (secretaria != "" && depto != "") {
+            document.getElementById("modalSecretaria").textContent = secretaria + " - " + depto;
+        }
+        else {
+            document.getElementById("modalSecretaria").textContent = "Não foi possível localizar a impressora";
+        }
         document.getElementById("icon").src = icon;
 
         // Atualiza as porcentagens de tinta no modal
