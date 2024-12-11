@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Controle_De_Impressoras.Models
 {
-    [Table("PrinterMonitoringTESTE")]
+    [Table("PrinterMonitoring")]
     public class PrintersModel
     {
         public int Id { get; set; }
@@ -15,6 +15,8 @@ namespace Controle_De_Impressoras.Models
 
         [Required(ErrorMessage = "O fabricante é obrigatório")]
         public string DeviceManufacturer { get; set; }
+        public int Ativa { get; set; }
+
 
         [Required(ErrorMessage = "O nome do dispositivo é obrigatório")]
         [MaxLength(100, ErrorMessage = "O comprimento máximo permitido é 100 caracteres.")]
@@ -98,6 +100,8 @@ namespace Controle_De_Impressoras.Models
         public string Depto { get; set; }
         public string SerialTonnerPreto { get; set; }
         public int? PorcentagemUnidadeImagem { get; set; }
+        public int? InstituicaoId { get; set; }
+        public string Localizacao { get; set; }
 
 
         public static List<PrintersModel> RecuperarImpressoras(string tipo = null, string marca = null, string modelo = null, int patrimonio = 0)

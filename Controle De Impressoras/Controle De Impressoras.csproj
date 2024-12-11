@@ -189,9 +189,11 @@
     <Compile Include="Helpers\CryptoHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PrintersModel.cs" />
+    <Compile Include="Models\PrinterStatusLogMonthlyReportModel.cs" />
     <Compile Include="Models\PrinterStatusLogsModel.cs" />
     <Compile Include="Models\RegistrarViewModel.cs" />
     <Compile Include="Models\PrinterMonitoringModel.cs" />
+    <Compile Include="Models\PrinterStatusLogReportsViewModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\AuthService.cs" />
@@ -2323,6 +2325,8 @@
     <Content Include="Views\Shared\AcessoNegado.cshtml" />
     <Content Include="Views\Conta\Registrar.cshtml" />
     <Content Include="Views\Home\Painel.cshtml" />
+    <Content Include="Views\Reports\ImpressoesMensais.cshtml" />
+    <Content Include="Views\Reports\InstitutionReports.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

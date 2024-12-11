@@ -71,7 +71,7 @@
         display: flex;
         justify-content: center;
         margin: 2em 0 4rem;
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .filtros {
@@ -130,6 +130,22 @@
     p {
         margin-bottom: .5rem;
     }
+
+    .filtro input[name="modelo"] {
+        width: 150px; /* Tamanho personalizado para o campo "Modelo" */
+    }
+
+    .filtro input[name="patrimonio"] {
+        width: 150px; /* Tamanho personalizado para o campo "Patrimônio" */
+    }
+
+    .filtro input[name="departamento"] {
+        width: 180px; /* Tamanho personalizado para o campo "Patrimônio" */
+    }
+    
+    .filtro input[name="localizacao"] {
+        width: 180px; /* Tamanho personalizado para o campo "Patrimônio" */
+    }
 </style>
 <main>
     <section>
@@ -139,46 +155,112 @@
                 <div class="filtro">
                     <label class="text-filter">Tipo:</label>
                     <select class="form-select" name="tipo">
-                        <option selected value=""></option>
-                        <option value="Mono">Mono</option>
-                        <option value="Color">Color</option>
+                        <option value="" @(string.IsNullOrEmpty(ViewBag.Tipo) ? "selected" : "")></option>
+                        <option value="Mono" @(ViewBag.Tipo == "Mono" ? "selected" : "")>Mono</option>
+                        <option value="Color" @(ViewBag.Tipo == "Color" ? "selected" : "")>Color</option>
                     </select>
                 </div>
                 <div class="filtro">
                     <label class="text-filter">Pouca tinta:</label> <br />
                     <select class="form-select" name="tintaBaixa">
-                        <option selected value=""></option>
-                        <option value="true">Sim</option>
-                        <option value="false">Não</option>
+                        <option value="" @(ViewBag.TintaBaixa == null ? "selected" : "")></option>
+                        <option value="true" @(ViewBag.TintaBaixa == true ? "selected" : "")>Sim</option>
+                        <option value="false" @(ViewBag.TintaBaixa == false ? "selected" : "")>Não</option>
                     </select>
                 </div>
                 <div class="filtro">
                     <label class="text-filter">Marca:</label>
                     <select class="form-select" name="marca">
-                        <option selected value=""></option>
-                        <option value="Epson">Epson</option>
-                        <option value="Lexmark">Lexmark</option>
-                        <option value="Samsung">Samsung</option>
-                        <option value="Brother">Brother</option>
-                        <option value="Ricoh">Ricoh</option>
+                        <option value="" @(string.IsNullOrEmpty(ViewBag.Marca) ? "selected" : "")></option>
+                        <option value="Brother" @(ViewBag.Marca == "Brother" ? "selected" : "")>Brother</option>
+                        <option value="Canon" @(ViewBag.Marca == "Canon" ? "selected" : "")>Canon</option>
+                        <option value="Epson" @(ViewBag.Marca == "Epson" ? "selected" : "")>Epson</option>
+                        <option value="Lexmark" @(ViewBag.Marca == "Lexmark" ? "selected" : "")>Lexmark</option>
+                        <option value="Samsung" @(ViewBag.Marca == "Samsung" ? "selected" : "")>Samsung</option>
+                        <option value="Ricoh" @(ViewBag.Marca == "Ricoh" ? "selected" : "")>Ricoh</option>
                     </select>
                 </div>
                 <div class="filtro">
                     <label class="text-filter">Modelo:</label>
-                    <input class="form-control" type="search" name="modelo" placeholder="Pesquisar">
+                    <input class="form-control" type="search" name="modelo" placeholder="Pesquisar" value="@ViewBag.Modelo">
                 </div>
                 <div class="filtro">
                     <label class="text-filter">Patrimônio:</label>
-                    <input class="form-control" type="search" name="patrimonio" placeholder="Pesquisar">
+                    <input class="form-control" type="search" name="patrimonio" placeholder="Pesquisar" value="@ViewBag.Patrimonio">
+                </div>
+
+                <div class="filtro">
+                    <label class="text-filter">Instituição:</label>
+                    <select class="form-select" name="instituicaoId">
+                        <option value="" @(ViewBag.InstituicaoId == null ? "selected" : "")>Todas</option>
+                        <option value="1" @(ViewBag.InstituicaoId == 1 ? "selected" : "")>PMB</option>
+                        <option value="4" @(ViewBag.InstituicaoId == 4 ? "selected" : "")>TEC INK JET</option>
+                    </select>
+                </div>
+
+                <div class="filtro">
+                    <label class="text-filter">Secretaria:</label>
+                    <select class="form-select" name="AbrSecretaria">
+                        <option value="" @(string.IsNullOrEmpty(ViewBag.AbrSecretaria) ? "selected" : "")>Todas</option>
+                        @foreach (var secretaria in ViewBag.Secretarias)
+                        {
+                            <option value="@secretaria" @(ViewBag.AbrSecretaria == secretaria ? "selected" : "")>@secretaria</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="filtro">
+                    <label class="text-filter">Departamento:</label>
+                    <input class="form-control" id="departamento" type="search" name="departamento" placeholder="Pesquisar" value="@ViewBag.Departamento">
+                </div>
+
+                <div class="filtro">
+                    <label class="text-filter">Localização:</label>
+                    <input class="form-control" id="localizacao" type="search" name="localizacao" placeholder="Pesquisar" value="@ViewBag.Localizacao">
                 </div>
 
                 <div id="btn-filter">
                     <button type="submit" class="btn btn-outline-primary">Filtrar<i class="bi bi-funnel"></i></button>
                     <a href="@Url.Action("Index")" class="btn btn-outline-danger">Limpar<i class="bi bi-x-lg"></i></a>
-                    <button type="button" id="exportPDF" class="btn btn-outline-success">Exportar PDF<i class="bi bi-file-earmark-pdf"></i></button>
+                    <button type="button" id="exportPDF" class="btn btn-outline-success">PDF<i class="bi bi-file-earmark-pdf"></i></button>
                 </div>
             </form>
         </div>
+
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // Autocomplete para Departamento
+                $('#departamento').autocomplete({
+                    source: function(request, response) {
+                        $.ajax({
+                            url: '@Url.Action("BuscarDepartamentos", "HomeController")', // Altere para o nome correto do seu controller e action
+                            data: { termo: request.term }, // Envia o texto digitado pelo usuário
+                            dataType: 'json',
+                            success: function(data) {
+                                response(data); // Retorna as sugestões
+                            }
+                        });
+                    },
+                    minLength: 2 // Começa a buscar depois de 2 caracteres digitados
+                });
+
+                // Autocomplete para Localização
+                $('#localizacao').autocomplete({
+                    source: function(request, response) {
+                        $.ajax({
+                            url: '@Url.Action("BuscarLocalizacoes", "HomeController")', // Altere para o nome correto do seu controller e action
+                            data: { termo: request.term },
+                            dataType: 'json',
+                            success: function(data) {
+                                response(data);
+                            }
+                        });
+                    },
+                    minLength: 2
+                });
+            });
+        </script>
 
 
         <div class="container-impressoras">
@@ -215,39 +297,75 @@
                                     <p style="font-weight: bold; margin-top: 1rem;">Patrimônio</p>
                                     <p>@item.Patrimonio</p>
                                     <p style="font-weight: bold; margin-top: 1rem;">Local</p>
-                                    <p>@item.AbrSecretaria - @item.Depto </p>
+                                    <p>@item.AbrSecretaria - @item.Depto - @item.Localizacao</p>
                                     <p style="font-weight: bold">Status Tintas</p>
                                     <div class="container-capacidade">
-                                        <div>
-                                            <div class="ink-level">
-                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%'); background-color: black;"></div>
+                                        @if (item.DeviceManufacturer == "BROTHER")
+                                        {
+                                            <div>
+                                                <div class="ink-level">
+                                                    <div class="ink-fill" style="height: @(item.PorcentagemBlack == 150 ? 100 : item.PorcentagemBlack)%; background-color: black;"></div>
+                                                </div>
+                                                <p style="font-weight: bold">@((item.PorcentagemBlack == 150) ? "100%" : item.PorcentagemBlack.ToString() + "%")</p>
                                             </div>
-                                            <p style="font-weight: bold">@item.PorcentagemBlack%</p>
-                                        </div>
-                                        <div>
-                                            <div class="ink-level">
-                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemCyan, '%');  background: linear-gradient(to top, #8AFDFF, #5AFDFF);"></div>
+
+                                            <div>
+                                                <div class="ink-level">
+                                                    <div class="ink-fill" style="height: @(item.PorcentagemCyan == 150 ? 100 : item.PorcentagemCyan)%; background: linear-gradient(to top, #8AFDFF, #5AFDFF);"></div>
+                                                </div>
+                                                <p style="font-weight: bold">@((item.PorcentagemCyan == 150) ? "100%" : item.PorcentagemCyan.ToString() + "%")</p>
                                             </div>
-                                            <p style="font-weight: bold">@item.PorcentagemCyan%</p>
-                                        </div>
-                                        <div>
-                                            <div class="ink-level">
-                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemYellow, '%'); background: linear-gradient(to top, #F6FF98, #F2FF66);"></div>
+
+                                            <div>
+                                                <div class="ink-level">
+                                                    <div class="ink-fill" style="height: @(item.PorcentagemYellow == 150 ? 100 : item.PorcentagemYellow)%; background: linear-gradient(to top, #F6FF98, #F2FF66);"></div>
+                                                </div>
+                                                <p style="font-weight: bold">@((item.PorcentagemYellow == 150) ? "100%" : item.PorcentagemYellow.ToString() + "%")</p>
                                             </div>
-                                            <p style="font-weight: bold">@item.PorcentagemYellow%</p>
-                                        </div>
-                                        <div>
-                                            <div class="ink-level">
-                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemMagenta, '%'); background: linear-gradient(to top, #FF8AF8, #FF5CF5)"></div>
+
+                                            <div>
+                                                <div class="ink-level">
+                                                    <div class="ink-fill" style="height: @(item.PorcentagemMagenta == 150 ? 100 : item.PorcentagemMagenta)%; background: linear-gradient(to top, #FF8AF8, #FF5CF5)"></div>
+                                                </div>
+                                                <p style="font-weight: bold">@((item.PorcentagemMagenta == 150) ? "100%" : item.PorcentagemMagenta.ToString() + "%")</p>
                                             </div>
-                                            <p style="font-weight: bold">@item.PorcentagemMagenta%</p>
-                                        </div>
+                                        }
+
+
+                                        else
+                                        {
+                                            <div>
+                                                <div class="ink-level">
+                                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%'); background-color: black;"></div>
+                                                </div>
+                                                <p style="font-weight: bold">@item.PorcentagemBlack%</p>
+                                            </div>
+                                            <div>
+                                                <div class="ink-level">
+                                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemCyan, '%');  background: linear-gradient(to top, #8AFDFF, #5AFDFF);"></div>
+                                                </div>
+                                                <p style="font-weight: bold">@item.PorcentagemCyan%</p>
+                                            </div>
+                                            <div>
+                                                <div class="ink-level">
+                                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemYellow, '%'); background: linear-gradient(to top, #F6FF98, #F2FF66);"></div>
+                                                </div>
+                                                <p style="font-weight: bold">@item.PorcentagemYellow%</p>
+                                            </div>
+                                            <div>
+                                                <div class="ink-level">
+                                                    <div class="ink-fill" style="height: @String.Concat(item.PorcentagemMagenta, '%'); background: linear-gradient(to top, #FF8AF8, #FF5CF5)"></div>
+                                                </div>
+                                                <p style="font-weight: bold">@item.PorcentagemMagenta%</p>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                                 <div class="modelo">
                                     <p style="font-weight: bold; margin-top: 1rem">Modelo do dispositivo</p>
                                     <p>@item.PrinterModel</p>
                                     <p style="font-weight: bold">Fusor, Belt e Kit de Manutenção</p>
+
                                     <div class="container-capacidade">
                                         <div>
                                             <div class="ink-level">
@@ -275,42 +393,71 @@
                             }
                             else if (item.Tipo == "MONO")
                             {
-                        <div class="info">
-                            <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
-                            <p>@item.QuantidadeImpressaoTotal Impressões</p>
-                            <p style="font-weight: bold; margin-top: 1rem;">Serial Impressora:</p>
-                            <p>@item.SerialImpressora</p>
-                            @if (@item.SerialTonnerPreto != "")
-                            {
-                                <p style="font-weight: bold; margin-top: 1rem;">Serial Tonner Preto:</p>
-                                <p href="https://@item.Ip">@item.SerialTonnerPreto</p>
-                            }
-                            @if (item.SerialUniImage != "")
-                            {
-                                <p style="font-weight: bold; margin-top: 1rem;">Serial Unidade Imagem:</p>
-                                <p>@item.SerialUniImage</p>
-                            }
+                                <div class="info">
+                                    <p style="font-weight: bold; margin-top: 1rem;">Impressões Totais</p>
+                                    <p>@item.QuantidadeImpressaoTotal Impressões</p>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Serial Impressora:</p>
+                                    <p>@item.SerialImpressora</p>
+                                    @if (@item.SerialTonnerPreto != "")
+                                    {
+                                        <p style="font-weight: bold; margin-top: 1rem;">Serial Tonner Preto:</p>
+                                        <p href="https://@item.Ip">@item.SerialTonnerPreto</p>
+                                    }
+                                    @if (item.SerialUniImage != "")
+                                    {
+                                        <p style="font-weight: bold; margin-top: 1rem;">Serial Unidade Imagem:</p>
+                                        <p>@item.SerialUniImage</p>
+                                    }
 
-                            <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
-                            <a href="https://@item.Ip">@item.Ip</a>
+                                    <p style="font-weight: bold; margin-top: 1rem;">Ip:</p>
+                                    <a href="https://@item.Ip">@item.Ip</a>
 
-                        </div>
+                                </div>
                                 <div class="fabricante">
                                     <p style="font-weight: bold; margin-top: 1rem;">Fabricante</p>
                                     <p>@item.DeviceManufacturer</p>
                                     <p style="font-weight: bold; margin-top: 1rem;">Patrimônio</p>
                                     <p>@item.Patrimonio</p>
                                     <p style="font-weight: bold; margin-top: 1rem;">Local</p>
-                                    <p>@item.AbrSecretaria - @item.Depto </p>
+                                    <p>@item.AbrSecretaria - @item.Depto - @item.Localizacao</p>
                                     <p style="font-weight: bold">Status Tinta</p>
-                                    <div class="container-capacidade">
-                                        <div>
-                                            <div class="ink-level">
-                                                <div class="ink-fill" style="height: @String.Concat(item.PorcentagemBlack, '%'); background-color: black;"></div>
+                                    @if (item.DeviceManufacturer == "BROTHER")
+                                    {
+                                        if (item.PorcentagemBlack == 150)
+                                        {
+                                            <div class="container-capacidade">
+                                                <div>
+                                                    <div class="ink-level">
+                                                        <div class="ink-fill" style="height: 100%; background-color: black;"></div>
+                                                    </div>
+                                                    <p style="font-weight: bold">100%</p>
+                                                </div>
                                             </div>
-                                            <p style="font-weight: bold">@item.PorcentagemBlack%</p>
+                                        }
+                                        else
+                                        {
+                                            <div class="container-capacidade">
+                                                <div>
+                                                    <div class="ink-level">
+                                                        <div class="ink-fill" style="height: @item.PorcentagemBlack%; background-color: black;"></div>
+                                                    </div>
+                                                    <p style="font-weight: bold">@item.PorcentagemBlack%</p>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="container-capacidade">
+                                            <div>
+                                                <div class="ink-level">
+                                                    <div class="ink-fill" style="height: @item.PorcentagemBlack%; background-color: black;"></div>
+                                                </div>
+                                                <p style="font-weight: bold">@item.PorcentagemBlack%</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+
                                 </div>
                                 <div class="modelo">
                                     <p style="font-weight: bold; margin-top: 1rem">Modelo do dispositivo</p>
@@ -413,7 +560,7 @@
             { text: 'Relatórios de Impressoras', style: 'header' },
             {
                 table: {
-                    widths: ['*', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'], // Adicionada largura para a coluna de status
+                    widths: ['*', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'], // Adicionada largura para a coluna de status
                     body: [
                         [
                             { text: 'Data da Busca', style: 'tableHeader' },
@@ -424,6 +571,7 @@
                             { text: 'Cyan (%)', style: 'tableHeader' },
                             { text: 'Yellow (%)', style: 'tableHeader' },
                             { text: 'Magenta (%)', style: 'tableHeader' },
+                            { text: 'Unidade Imagem (%)', style: 'tableHeader' },
                             { text: 'Fusor (%)', style: 'tableHeader' },
                             { text: 'Belt (%)', style: 'tableHeader' },
                             { text: 'Kit (%)', style: 'tableHeader' },
@@ -449,6 +597,7 @@
                                 { text: item.PorcentagemCyan, style: 'tableCell' },
                                 { text: item.PorcentagemYellow, style: 'tableCell' },
                                 { text: item.PorcentagemMagenta, style: 'tableCell' },
+                                { text: item.PorcentagemUnidadeImagem, style: 'tableCell' },
                                 { text: item.PorcentagemFusor, style: 'tableCell' },
                                 { text: item.PorcentagemBelt, style: 'tableCell' },
                                 { text: item.PorcentagemKitManutencao, style: 'tableCell' },

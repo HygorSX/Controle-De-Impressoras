@@ -1,0 +1,62 @@
+@{
+    ViewBag.Title = "Relatórios Mensais por Instituição";
+}
+
+<style>
+    .mensais-container {
+        padding-right: 10px; /* Evita sobreposição do conteúdo com a barra de rolagem */
+        padding: 2rem 0;
+    }
+
+    .grid-container {
+        display: flex;
+        flex-wrap: nowrap;
+        padding: 1rem;
+    }
+</style>
+
+<h2>Relatórios Mensais de Impressões</h2>
+
+<!-- Exibe o formulário para seleção de Instituição -->
+@using (Html.BeginForm("InstitutionReports", "Reports", FormMethod.Get))
+{
+    <label for="instituicaoId">Selecione a Instituição:</label>
+    <div style="display: flex; gap: 1rem;">
+        <select class="form-select" id="instituicaoId" name="instituicaoId" required>
+            <option value="">Selecione</option>
+            <option value="1" @(ViewBag.InstituicaoId == 1 ? "selected" : "")>PMB</option>
+            <option value="4" @(ViewBag.InstituicaoId == 4 ? "selected" : "")>TEC INK JET</option>
+        </select>
+        <button type="submit" class="btn btn-outline-primary">Ver Relatórios</button>
+    </div>
+
+}
+
+<hr class="separator" />
+
+@if (ViewBag.InstituicaoId != null && ViewBag.InstituicaoId != 0)
+{
+
+    <div class="mensais-container">
+        @foreach (var monthlyReport in Model.MonthlyReports)
+        {
+            <div class="grid-container">
+                <div class="dataBusca" style="flex: 1">
+                    <p class="title">Ano</p>
+                    <p>@monthlyReport.Year</p>
+                </div>
+                <div class="dataBusca" style="flex: 1">
+                    <p class="title">Mês</p>
+                    <p>@monthlyReport.Month</p>
+                </div>
+                <div class="dataBusca" style="flex: 4">
+                    <p class="title">Impressões no mês</p>
+                    <p>@monthlyReport.TotalImpressaoMensal</p>
+                </div>
+            </div>
+
+        }
+    </div>
+}
+
+    

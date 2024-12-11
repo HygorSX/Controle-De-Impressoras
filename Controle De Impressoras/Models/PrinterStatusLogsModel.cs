@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -51,8 +52,27 @@ namespace Controle_De_Impressoras.Models
         public string PrinterStatus { get; set; }
 
         [Required(ErrorMessage = "A data e hora de busca são obrigatórias")]
-        public DateTime DataHoraDeBusca { get; set; } 
+        public DateTime DataHoraDeBusca { get; set; }
+
         public int? PorcentagemUnidadeImagem { get; set; }
         public string SerialTonnerPreto { get; set; }
+
+        // Adicionando a propriedade para impressão diária
+        [NotMapped]  // A propriedade não será mapeada para a base de dados
+        public int? QuantidadeImpressaoDiaria { get; set; }
+
+
+        public class ReportsViewModel
+        {
+            public List<PrinterStatusLogModel> Reports { get; set; }  // Relatórios Diários
+            public List<MonthlyReportModel> MonthlyReports { get; set; }  // Relatórios Mensais
+        }
+
+        public class MonthlyReportModel
+        {
+            public int Year { get; set; }
+            public int Month { get; set; }
+            public int? TotalImpressaoMensal { get; set; }
+        }
     }
 }

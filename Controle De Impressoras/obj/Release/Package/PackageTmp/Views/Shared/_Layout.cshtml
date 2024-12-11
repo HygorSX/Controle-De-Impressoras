@@ -14,6 +14,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <style>
     * {
         font-family: "Poppins", sans-serif;
@@ -22,34 +23,99 @@
     .navbar-hidden {
         display: none;
     }
+
+    /* Estilo para destacar o texto do item ativo no menu */
+    .navbar-nav .nav-item.active .nav-link {
+        color: #fff; /* Cor para destacar o texto */
+        font-weight: bold; /* Deixa o texto mais destacado */
+        font-size: 1.1rem;
+    }
+
+    /* Adiciona um hover para o link */
+    .navbar-nav .nav-item .nav-link:hover {
+        color: #0056b3; /* Cor do texto ao passar o mouse */
+    }
+
+    @@import url('https://fonts.googleapis.com/css2?family=Futura&display=swap');    
+        
+    /* "Gerenciamento de Impressoras" destacado à esquerda */
+    .navbar-brand {
+        margin-right: 2rem; /* Adicionando espaço à direita */
+        margin-left: 1rem; /* Margem à esquerda para "Gerenciamento de Impressoras" */
+        font-weight: bold; /* Destaca o nome do software */
+        font-size: 1.5rem; /* Ajuste do tamanho da fonte para destacar */
+        color: #b552ff;
+        font-family: 'Futura', sans-serif;
+    }
+
+    /* Ajustando os itens do menu com gap de 1rem entre eles */
+    .navbar-nav {
+        display: flex;
+        gap: 1rem; /* Espaço entre os itens do menu */
+        margin-left: 0; /* Remove qualquer margem extra à esquerda */
+        padding-left: 0; /* Remove o padding extra do Bootstrap */
+    }
+
+        .navbar-nav .nav-item {
+            margin-left: 0; /* Remove qualquer margem extra entre os itens */
+            padding-left: 0; /* Remove qualquer padding extra do Bootstrap */
+        }
+
+        /* Garantir que os itens à direita (login/logout) fiquem à direita */
+        .navbar-nav.ms-auto {
+            margin-left: auto;
+        }
+
+        /*@@media (min-width: 1400px) {
+            .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+               max-width: 100vw;
+            }
+        }*/
 </style>
+
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" id="navbar">
-        <div class="container">
-            @Html.ActionLink("Controle De Impressoras", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" style="padding: 1rem;" id="navbar">
+        <div class="container" style="max-width: 100vw; margin: .5rem 3rem;">
+            <!-- "Gerenciamento De Impressoras" à esquerda com destaque -->
+            @Html.ActionLink("Gerenciamento de Impressoras", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar a navegação" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        @Html.ActionLink("Cadastrar Impressora", "CadastrarImpressora", "Cadastro", null, new { @class = "nav-link", aria_current = "page" })
+                    <!-- Botão Pesquisar (anteriormente Home) com destaque -->
+                    <li class="nav-item @((ViewContext.RouteData.Values["action"] as string) == "Index" ? "active" : "")">
+                        @Html.ActionLink("Pesquisar", "Index", "Home", null, new { @class = "nav-link", aria_current = "page" })
                     </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Registrar Usuario", "Registrar", "Conta", null, new { @class = "nav-link", aria_current = "page" })
+                    <!-- "Cadastrar Impressora" -->
+                    <li class="nav-item @((ViewContext.RouteData.Values["action"] as string) == "CadastrarImpressora" ? "active" : "")">
+                        @Html.ActionLink("Cadastro de Impressora", "CadastrarImpressora", "Cadastro", null, new { @class = "nav-link", aria_current = "page" })
                     </li>
-                    <li class="nav-item">
+                    <!-- "Registrar Usuario" -->
+                    <li class="nav-item @((ViewContext.RouteData.Values["action"] as string) == "Registrar" ? "active" : "")">
+                        @Html.ActionLink("Registro de usuário", "Registrar", "Conta", null, new { @class = "nav-link", aria_current = "page" })
+                    </li>
+                    <!-- "Painel" -->
+                    <li class="nav-item @((ViewContext.RouteData.Values["action"] as string) == "Painel" ? "active" : "")">
                         @Html.ActionLink("Painel", "Painel", "Home", null, new { @class = "nav-link", aria_current = "page" })
+                    </li>
+                    <!-- Novo item para Relatórios Institucionais -->
+                    <li class="nav-item @((ViewContext.RouteData.Values["controller"] as string) == "Reports" && (ViewContext.RouteData.Values["action"] as string) == "InstitutionReports" ? "active" : "")">
+                        @Html.ActionLink("Relatórios", "InstitutionReports", "Reports", null, new { @class = "nav-link", aria_current = "page" })
                     </li>
                 </ul>
             </div>
+
+            <!-- Itens do login/logout à direita -->
             @if (Request.IsAuthenticated)
             {
                 using (Html.BeginForm("LogOff", "Conta", FormMethod.Post, new { id = "logoffForm" }))
                 {
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Olá @User.Identity.Name</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Olá, @User.Identity.Name</a></li>
                         <li><a class="nav-link" href="javascript:document.getElementById('logoffForm').submit()">Sair</a></li>
                     </ul>
                 }
@@ -63,7 +129,6 @@
         </div>
     </nav>
 
-    <!-- Botão para alternar a visibilidade da navbar -->
 
     <div class="container body-content" style="min-width: 90%">
         @RenderBody()

@@ -97,15 +97,22 @@
 
     .printerInformation {
         display: grid;
-        grid-template-columns: 1.5fr 2fr 3fr 3fr 3fr;
+        grid-template-columns: 1.0fr 0.7fr 1.0fr 1.0fr 1.0fr 1.0fr 1.0fr;
         padding: 2rem 0;
-    } 
+    }
 
     .containerImpressoras {
-        display: grid;
-        grid-template-columns: 3fr 3fr 3fr 4fr 3fr;
+        display: flex;
+        flex-wrap: nowrap; /* Impede que os itens quebrem para uma nova linha */
         padding: 1rem;
     }
+
+        .containerImpressoras > div {
+            flex: 1; /* Faz com que cada item ocupe a mesma largura */
+        }
+
+
+
 
     .alinharTintas {
         display: grid;
@@ -115,15 +122,25 @@
     .filtro {
         flex: 1; /* Isso faz com que todos os filtros tenham a mesma largura */
     }
-</style>
 
-@model IEnumerable<Controle_De_Impressoras.Models.PrinterStatusLogModel>
+    .mensais-container {
+        max-height: 250px; /* Ajuste conforme necessário */
+        overflow-y: auto; /* Adiciona rolagem vertical */
+        padding-right: 10px; /* Evita sobreposição do conteúdo com a barra de rolagem */
+        padding: 2rem 0;
+    }
+
+    .grid-container {
+        display: flex;
+        flex-wrap: nowrap;
+        padding: 1rem;
+    }
+</style>
+@model Controle_De_Impressoras.Models.PrinterStatusLogModelView
 
 @{
     ViewBag.Title = "Relatórios";
 }
-
-
 
 @using (Html.BeginForm("Index", "Reports", FormMethod.Get))
 {
@@ -155,10 +172,6 @@
 
 
 
-
-
-
-
 @if (ViewBag.PrinterDetails != null)
 {
     var printer = ViewBag.PrinterDetails;
@@ -181,16 +194,77 @@
             <p class="title">Patrimônio Impressora</p>
             <p>@printer.Patrimonio</p>
         </div>
+        @if (@printer.SerialTonnerPreto == "")
+        {
+            <div class="serial-tonner">
+            </div>
+        }
+        else
+        {
+            <div class="serial-tonner">
+                <p class="title">Serial Tonner Preto</p>
+                <p>@printer.SerialTonnerPreto</p>
+            </div>
+        }
     </div>
-
 
     <hr class="separator" />
 }
 
-@if (Model != null && Model.Any() && ViewBag.PrinterDetails != null)
+<div style="display: flex; align-items: center;">
+    <h3>Relatórios Mensais</h3>
+    <i id="toggleButton" class="bi bi-caret-down-fill" style="font-size: 1.2rem; margin-left: 10px;"></i> <!-- Ícone ajustado -->
+</div>
+
+<div class="mensais-container" id="reportsContainer" style="display: none;">
+
+    @foreach (var monthlyReport in Model.MonthlyReports)
+    {
+        <div class="grid-container">
+            <div class="dataBusca" style="flex: 1">
+                <p class="title">Ano</p>
+                <p>@monthlyReport.Year</p>
+            </div>
+            <div class="dataBusca" style="flex: 1">
+                <p class="title">Mês</p>
+                <p>@monthlyReport.Month</p>
+            </div>
+            <div class="dataBusca" style="flex: 5">
+                <p class="title">Impressões no mês</p>
+                <p>@monthlyReport.TotalImpressaoMensal</p>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Script para alternar a visibilidade e o ícone -->
+<script>
+    const toggleButton = document.getElementById("toggleButton");
+    const reportsContainer = document.getElementById("reportsContainer");
+
+    toggleButton.addEventListener("click", function () {
+        // Alternar entre mostrar e esconder
+        if (reportsContainer.style.display === "none") {
+            reportsContainer.style.display = "block";
+            toggleButton.classList.remove("bi-caret-down-fill");
+            toggleButton.classList.add("bi-caret-up-fill");  // Mudar para seta para cima
+        } else {
+            reportsContainer.style.display = "none";
+            toggleButton.classList.remove("bi-caret-up-fill");
+            toggleButton.classList.add("bi-caret-down-fill");  // Mudar para seta para baixo
+        }
+    });
+</script>
+
+
+
+
+<hr class="separator" />
+
+@if (Model.Reports != null && Model.Reports.Any() && ViewBag.PrinterDetails != null)
 {
     <table id="grid_cadastro">
-        @foreach (var report in Model.Reverse())
+        @foreach (var report in Model.Reports)
         {
             <div class="containerImpressoras">
                 <div class="dataBusca">
@@ -203,12 +277,16 @@
                     <p>@report.QuantidadeImpressaoTotal Impressões</p>
                 </div>
 
+                <div class="impressoesTotais">
+                    <p class="title">Impressões Diarias</p>
+                    <p>@report.QuantidadeImpressaoDiaria Impressões</p>
+                </div>
+
                 <div class="statusTintas">
                     <p class="title">Status Tintas</p>
                     <div class="container-capacidade">
                         @if (ViewBag.PrinterDetails.Tipo == "COLOR")
                         {
-
                             <div>
                                 <div class="ink-level">
                                     <div class="ink-fill" style="height: @report.PorcentagemBlack%; background-color: black;"></div>
@@ -237,14 +315,12 @@
 
                         @if (ViewBag.PrinterDetails.Tipo == "MONO")
                         {
-
                             <div>
                                 <div class="ink-level">
                                     <div class="ink-fill" style="height: @report.PorcentagemBlack%; background-color: black;"></div>
                                 </div>
                                 <p class="title">@report.PorcentagemBlack%</p>
                             </div>
-
                         }
                     </div>
                 </div>
@@ -287,6 +363,17 @@
                     </div>
                 }
 
+                @if (report.SerialTonnerPreto != "")
+                {
+                    <div class="impressoesTotais">
+                        <p class="title">Serial Tonner Preto</p>
+                        <p>@report.SerialTonnerPreto</p>
+                    </div>
+                }
+                else
+                {
+                    <div></div>
+                }
             </div>
         }
     </table>
@@ -301,69 +388,77 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 
 <script>
-  document.getElementById("exportPDF").addEventListener("click", function () {
-    const reports = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+ document.getElementById("exportPDF").addEventListener("click", function () {
+    const reports = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Reports));
 
-    const docDefinition = {
-        pageOrientation: 'landscape', // Define a orientação para paisagem
-        content: [
-            { text: 'Relatórios', style: 'header' },
-            {
-                table: {
-                    body: [
-                        // Cabeçalho da tabela
-                        [
-                            { text: 'Data da Busca', style: 'tableHeader' },
-                            { text: 'Impressões Totais', style: 'tableHeader' },
-                            { text: 'Porcentagem Black', style: 'tableHeader' },
-                            { text: 'Porcentagem Cyan', style: 'tableHeader' },
-                            { text: 'Porcentagem Yellow', style: 'tableHeader' },
-                            { text: 'Porcentagem Magenta', style: 'tableHeader' },
-                            { text: 'Porcentagem Fusor', style: 'tableHeader' },
-                            { text: 'Porcentagem Belt', style: 'tableHeader' },
-                            { text: 'Porcentagem Kit', style: 'tableHeader' }
-                        ],
-                        // Dados da tabela
-                        ...reports.map(report => [
-                            { text: report.DataHoraDeBusca, style: 'tableCell' },
-                            { text: report.QuantidadeImpressaoTotal, style: 'tableCell' },
-                            { text: report.PorcentagemBlack, style: 'tableCell' },
-                            { text: report.PorcentagemCyan, style: 'tableCell' },
-                            { text: report.PorcentagemYellow, style: 'tableCell' },
-                            { text: report.PorcentagemMagenta, style: 'tableCell' },
-                            { text: report.PorcentagemFusor, style: 'tableCell' },
-                            { text: report.PorcentagemBelt, style: 'tableCell' },
-                            { text: report.PorcentagemKitManutencao, style: 'tableCell' }
-                        ])
-                    ]
-                }
-            }
-        ],
-        styles: {
-            header: {
-                fontSize: 16,
-                bold: true,
-                margin: [0, 20, 0, 10],
-                alignment: 'center'
-            },
-            tableHeader: {
-                fontSize: 12,
-                bold: true,
-                fillColor: '#eeeeee',
-                alignment: 'center'
-            },
-            tableCell: {
-                fontSize: 10,
-                margin: [5, 5],
-                alignment: 'left'
-            }
-        },
-        defaultStyle: {
-            columnGap: 20
-        }
-    };
+    // Verifique se 'reports' é um array
+    console.log(reports);
+
+     const docDefinition = {
+         pageOrientation: 'landscape', // Define a orientação para paisagem
+         content: [
+             { text: 'Relatórios', style: 'header' },
+             {
+                 table: {
+                     body: [
+                         // Cabeçalho da tabela
+                         [
+                             { text: 'Data da Busca', style: 'tableHeader' },
+                             { text: 'Impressões Totais', style: 'tableHeader' },
+                             { text: 'Porcentagem Black', style: 'tableHeader' },
+                             { text: 'Porcentagem Cyan', style: 'tableHeader' },
+                             { text: 'Porcentagem Yellow', style: 'tableHeader' },
+                             { text: 'Porcentagem Magenta', style: 'tableHeader' },
+                             { text: 'Porcentagem Unidade de Imagem', style: 'tableHeader' },
+                             { text: 'Porcentagem Fusor', style: 'tableHeader' },
+                             { text: 'Porcentagem Belt', style: 'tableHeader' },
+                             { text: 'Porcentagem Kit', style: 'tableHeader' }
+                         ],
+                         // Dados da tabela
+                         ...reports.map(report => [
+                             { text: report.DataHoraDeBusca, style: 'tableCell' },
+                             { text: report.QuantidadeImpressaoTotal, style: 'tableCell' },
+                             { text: report.PorcentagemBlack, style: 'tableCell' },
+                             { text: report.PorcentagemCyan, style: 'tableCell' },
+                             { text: report.PorcentagemYellow, style: 'tableCell' },
+                             { text: report.PorcentagemMagenta, style: 'tableCell' },
+                             { text: report.PorcentagemUnidadeImagem, style: 'tableCell' },
+                             { text: report.PorcentagemFusor, style: 'tableCell' },
+                             { text: report.PorcentagemBelt, style: 'tableCell' },
+                             { text: report.PorcentagemKitManutencao, style: 'tableCell' }
+                         ])
+                     ]
+                 }
+             }
+         ],
+         styles: {
+             header: {
+                 fontSize: 14, // Tamanho de fonte reduzido
+                 bold: true,
+                 margin: [0, 20, 0, 10],
+                 alignment: 'center'
+             },
+             tableHeader: {
+                 fontSize: 10,  // Tamanho da fonte reduzido
+                 bold: true,
+                 fillColor: '#eeeeee',
+                 alignment: 'center',
+                 padding: 5 // Menos espaço interno
+             },
+             tableCell: {
+                 fontSize: 9,  // Tamanho da fonte reduzido
+                 margin: [3, 3],  // Menos margem
+                 alignment: 'left',
+                 padding: 3 // Menos espaço interno
+             }
+         },
+         defaultStyle: {
+             columnGap: 10 // Menor espaço entre as colunas
+         }
+     };
 
     pdfMake.createPdf(docDefinition).download('relatorios.pdf');
-    });
+});
 
 </script>
+
