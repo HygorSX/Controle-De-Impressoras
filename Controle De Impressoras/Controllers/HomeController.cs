@@ -55,6 +55,21 @@ namespace Controle_De_Impressoras.Controllers
             // Passa as secretarias para a ViewBag
             ViewBag.Secretarias = secretarias;
 
+            // Obtém os departamentos para a secretaria selecionada, similar ao que foi feito nos relatórios
+            List<string> departamentos = new List<string>();
+            if (!string.IsNullOrEmpty(AbrSecretaria))
+            {
+                departamentos = impressoras
+                    .Where(i => i.AbrSecretaria == AbrSecretaria)  // Filtra impressoras pela Secretaria selecionada
+                    .Select(i => i.Depto)  // Seleciona o campo 'Depto'
+                    .Distinct()  // Garante que os departamentos sejam únicos
+                    .OrderBy(d => d)  // Ordena os departamentos em ordem alfabética
+                    .ToList();
+            }
+
+            // Passa os departamentos para a ViewBag
+            ViewBag.Departamentos = departamentos;
+
             // Aplica o filtro de InstituicaoId se for fornecido
             if (instituicaoId.HasValue)
             {
@@ -109,6 +124,7 @@ namespace Controle_De_Impressoras.Controllers
 
             return View(impressoras);
         }
+
 
 
         public ActionResult AcessoNegado()

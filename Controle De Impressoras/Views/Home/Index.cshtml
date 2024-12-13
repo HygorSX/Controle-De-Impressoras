@@ -139,13 +139,23 @@
         width: 150px; /* Tamanho personalizado para o campo "Patrimônio" */
     }
 
-    .filtro input[name="departamento"] {
-        width: 180px; /* Tamanho personalizado para o campo "Patrimônio" */
-    }
     
     .filtro input[name="localizacao"] {
         width: 180px; /* Tamanho personalizado para o campo "Patrimônio" */
     }
+
+
+    .filtro .form-select[name="depto"] {
+        width: 150px; /* Define a largura fixa para a caixa */
+        height: 30px; /* Define a altura para a caixa */
+        overflow: hidden; /* Caso o texto nas opções seja maior, ele não irá ultrapassar */
+    }
+    
+    .filtro .form-select[name="departamento"] {
+        width: 180px; /* Define a largura fixa para a caixa */
+        overflow: hidden; /* Caso o texto nas opções seja maior, ele não irá ultrapassar */
+    }
+
 </style>
 <main>
     <section>
@@ -154,7 +164,7 @@
             <form method="get" action="@Url.Action("Index")" id="pesquisas">
                 <div class="filtro">
                     <label class="text-filter">Tipo:</label>
-                    <select class="form-select" name="tipo">
+                    <select class="form-select" name="tipo" onchange="this.form.submit()">
                         <option value="" @(string.IsNullOrEmpty(ViewBag.Tipo) ? "selected" : "")></option>
                         <option value="Mono" @(ViewBag.Tipo == "Mono" ? "selected" : "")>Mono</option>
                         <option value="Color" @(ViewBag.Tipo == "Color" ? "selected" : "")>Color</option>
@@ -162,7 +172,7 @@
                 </div>
                 <div class="filtro">
                     <label class="text-filter">Pouca tinta:</label> <br />
-                    <select class="form-select" name="tintaBaixa">
+                    <select class="form-select" name="tintaBaixa" onchange="this.form.submit()">
                         <option value="" @(ViewBag.TintaBaixa == null ? "selected" : "")></option>
                         <option value="true" @(ViewBag.TintaBaixa == true ? "selected" : "")>Sim</option>
                         <option value="false" @(ViewBag.TintaBaixa == false ? "selected" : "")>Não</option>
@@ -170,7 +180,7 @@
                 </div>
                 <div class="filtro">
                     <label class="text-filter">Marca:</label>
-                    <select class="form-select" name="marca">
+                    <select class="form-select" name="marca" onchange="this.form.submit()">
                         <option value="" @(string.IsNullOrEmpty(ViewBag.Marca) ? "selected" : "")></option>
                         <option value="Brother" @(ViewBag.Marca == "Brother" ? "selected" : "")>Brother</option>
                         <option value="Canon" @(ViewBag.Marca == "Canon" ? "selected" : "")>Canon</option>
@@ -186,12 +196,12 @@
                 </div>
                 <div class="filtro">
                     <label class="text-filter">Patrimônio:</label>
-                    <input class="form-control" type="search" name="patrimonio" placeholder="Pesquisar" value="@ViewBag.Patrimonio">
+                    <input class="form-control" type="search" name="patrimonio" placeholder="Pesquisar" value="@ViewBag.Patrimonio" oninput="clearOtherFilters()">
                 </div>
 
                 <div class="filtro">
                     <label class="text-filter">Instituição:</label>
-                    <select class="form-select" name="instituicaoId">
+                    <select class="form-select" name="instituicaoId" onchange="this.form.submit()">
                         <option value="" @(ViewBag.InstituicaoId == null ? "selected" : "")>Todas</option>
                         <option value="1" @(ViewBag.InstituicaoId == 1 ? "selected" : "")>PMB</option>
                         <option value="4" @(ViewBag.InstituicaoId == 4 ? "selected" : "")>TEC INK JET</option>
@@ -200,7 +210,7 @@
 
                 <div class="filtro">
                     <label class="text-filter">Secretaria:</label>
-                    <select class="form-select" name="AbrSecretaria">
+                    <select class="form-select" name="AbrSecretaria" onchange="this.form.submit()">
                         <option value="" @(string.IsNullOrEmpty(ViewBag.AbrSecretaria) ? "selected" : "")>Todas</option>
                         @foreach (var secretaria in ViewBag.Secretarias)
                         {
@@ -211,8 +221,15 @@
 
                 <div class="filtro">
                     <label class="text-filter">Departamento:</label>
-                    <input class="form-control" id="departamento" type="search" name="departamento" placeholder="Pesquisar" value="@ViewBag.Departamento">
+                    <select class="form-select" id="depto" name="departamento" onchange="this.form.submit()">
+                        <option value="">Selecione</option>
+                        @foreach (var depto in ViewBag.Departamentos as List<string>)
+                        {
+                            <option value="@depto" @(Request["departamento"] == depto ? "selected" : "")>@depto</option>
+                        }
+                    </select>
                 </div>
+
 
                 <div class="filtro">
                     <label class="text-filter">Localização:</label>
@@ -227,6 +244,26 @@
             </form>
         </div>
 
+        <script>
+            function clearOtherFilters() {
+                var patrimonioValue = document.querySelector('[name="patrimonio"]').value;
+
+                // Se o campo de patrimônio tiver algum valor, limpa todos os outros campos
+                if (patrimonioValue.trim() !== "") {
+                    // Limpa os campos de filtro
+                    document.querySelector('[name="tipo"]').value = "";
+                    document.querySelector('[name="tintaBaixa"]').value = "";
+                    document.querySelector('[name="marca"]').value = "";
+                    document.querySelector('[name="modelo"]').value = "";
+                    document.querySelector('[name="instituicaoId"]').value = "";
+                    document.querySelector('[name="AbrSecretaria"]').value = "";
+                    document.querySelector('[name="departamento"]').value = "";
+                    document.querySelector('[name="localizacao"]').value = "";
+                }
+            }
+        </script>
+
+
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -234,7 +271,7 @@
                 $('#departamento').autocomplete({
                     source: function(request, response) {
                         $.ajax({
-                            url: '@Url.Action("BuscarDepartamentos", "HomeController")', // Altere para o nome correto do seu controller e action
+                            url: '@Url.Action("BuscarDepartamentos", "Home")', // Altere para o nome correto do seu controller e action
                             data: { termo: request.term }, // Envia o texto digitado pelo usuário
                             dataType: 'json',
                             success: function(data) {
@@ -249,7 +286,7 @@
                 $('#localizacao').autocomplete({
                     source: function(request, response) {
                         $.ajax({
-                            url: '@Url.Action("BuscarLocalizacoes", "HomeController")', // Altere para o nome correto do seu controller e action
+                            url: '@Url.Action("BuscarLocalizacoes", "Home")', // Altere para o nome correto do seu controller e action
                             data: { termo: request.term },
                             dataType: 'json',
                             success: function(data) {

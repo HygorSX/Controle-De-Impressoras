@@ -64,7 +64,7 @@
 
     .gridContainer1 {
         display: grid;
-        grid-template-columns: 8fr 16fr;
+        grid-template-columns: 16fr 32fr 1fr;
         gap: 1rem;
     }
 
@@ -375,6 +375,25 @@
         box-sizing: border-box;
     }
 
+    .onlineOfflineButton {
+    width: 20px;
+    height: 20px;
+    animation: pulse 1s infinite;
+    }
+
+    @@keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2); /* Aumenta o tamanho */
+        }
+        100% {
+            transform: scale(1); /* Retorna ao tamanho original */
+        }
+    }
+
+
 
     @@media (max-height: 800px) {
         .numeroImpressoras {
@@ -558,8 +577,25 @@
 
                             }
 
+
+                        }
+
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; width: 100%; padding-top: 1rem;">
+                        @if (impressoras.Ativa == 0)
+                        {
+                            <img src="~/Imagens/circulo-vermelho.svg" alt="feedback" class="onlineOfflineButton">
+                        }
+                        else
+                        {
+                            <img src="~/Imagens/circulo-verde.svg" alt="feedback" class="onlineOfflineButton">
+
                         }
                     </div>
+
+
+
+
                 </div>
 
                 <div class="gridContainer2">
@@ -588,10 +624,7 @@
 
                         @if (impressoras.DataHoraDeBusca != null)
                         {
-                            if (impressoras.Ativa == 0)
-                            {
-                                <img src="~/Imagens/warning.svg" class="feedback" alt="feedback">
-                            }
+
                         }
 
 
@@ -987,13 +1020,14 @@
 
         const icon = getIconPath(black);
 
-        // Atualiza o conteúdo do modal
         const imgImpressoras = document.getElementById('printerImage');
         if (imgImpressoras) {
             imgImpressoras.src = `/Imagens/Impressoras/${deviceManufacturer}.png`;
         } else {
             console.error("Elemento 'printerImage' não encontrado.");
         }
+
+        // Atualiza o conteúdo do modal
         document.getElementById('modalPrinterModel').textContent = printerModel;
         document.getElementById('modalPrinterIp').textContent = ip;
         document.getElementById('modalPrinterIp').href = ip;

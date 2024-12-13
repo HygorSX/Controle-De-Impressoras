@@ -102,26 +102,68 @@ namespace Controle_De_Impressoras.Controllers
             return View(viewModel);
         }
 
-
-        public ActionResult InstitutionReports(int? instituicaoId, DateTime? startDate, DateTime? endDate)
+        public ActionResult InstitutionReports(int? instituicaoId, DateTime? startDate, DateTime? endDate, string abrSecretaria, string depto)
         {
-            // Se instituicaoId não for fornecido, podemos redirecionar para um formulário de entrada
-            if (!instituicaoId.HasValue || instituicaoId.Value == 0)
+            // Se algum desses parâmetros for nulo, atribua valores padrão
+            if (!instituicaoId.HasValue)
             {
-                // Redireciona para a mesma página com o formulário para escolher a instituição
-                ViewBag.InstituicaoId = null;  // Informa que o ID da instituição não foi passado
-                return View();  // Carrega a página inicial com o formulário
+                instituicaoId = 0; // ou qualquer valor padrão que faça sentido
             }
 
-            // Caso o instituicaoId tenha sido passado, então executa a consulta e carrega os relatórios
+            if (string.IsNullOrEmpty(abrSecretaria))
+            {
+                abrSecretaria = "todos"; // ou outro valor default como 'nenhuma' ou 'não especificado'
+            }
+
+            if (string.IsNullOrEmpty(depto))
+            {
+                depto = "todos"; // ou outro valor default como 'nenhum' ou 'não especificado'
+            }
+
+            // Buscar as secretarias dinamicamente
+            var secretariasQuery = _context.Printers.AsQueryable();
+
+            // Filtra pela instituição, se o ID for fornecido e válido
+            if (instituicaoId.HasValue && instituicaoId.Value > 0)
+            {
+                secretariasQuery = secretariasQuery.Where(i => i.InstituicaoId == instituicaoId.Value);
+            }
+
+            // Busca as secretarias distintas
+            var secretarias = secretariasQuery
+                .Where(i => !string.IsNullOrEmpty(i.AbrSecretaria)) // Filtra secretarias não nulas
+                .Select(i => i.AbrSecretaria) // Seleciona apenas o campo 'AbrSecretaria'
+                .Distinct() // Garante que as secretarias sejam únicas
+                .OrderBy(s => s) // Ordena as secretarias em ordem alfabética
+                .ToList();
+
+            ViewBag.Secretarias = secretarias ?? new List<string>();
+
+            // Se uma secretaria for selecionada, busca os departamentos dessa secretaria
+            List<string> departamentos = new List<string>();
+
+            if (!string.IsNullOrEmpty(abrSecretaria) && abrSecretaria != "todos")
+            {
+                departamentos = _context.Printers
+                    .Where(p => p.AbrSecretaria == abrSecretaria)
+                    .Select(p => p.Depto)  // Seleciona o campo 'Depto'
+                    .Distinct()  // Garante que os departamentos sejam únicos
+                    .ToList();
+            }
+
+            // Passa a lista de departamentos para a View
+            ViewBag.Departamentos = departamentos;
+
+            // Inicia a consulta para os relatórios de impressões
             var query = from log in _context.PrinterStatusLogs
                         join printer in _context.Printers on log.PrinterId equals printer.Id
-                        where printer.InstituicaoId == instituicaoId // Filtrando pela instituição
-                        select new
-                        {
-                            log,
-                            printer
-                        };
+                        select new { log, printer };
+
+            // Filtrando pela instituição, se necessário
+            if (instituicaoId.HasValue && instituicaoId.Value > 0)
+            {
+                query = query.Where(x => x.printer.InstituicaoId == instituicaoId.Value);
+            }
 
             // Filtrando por data, se necessário
             if (startDate.HasValue)
@@ -134,7 +176,19 @@ namespace Controle_De_Impressoras.Controllers
                 query = query.Where(x => x.log.DataHoraDeBusca <= endDate.Value);
             }
 
-            // Ordenando pela data e carregando os logs
+            // Filtrando pela abreviação da secretaria, se fornecido
+            if (!string.IsNullOrEmpty(abrSecretaria) && abrSecretaria != "todos")
+            {
+                query = query.Where(x => x.printer.AbrSecretaria != null && x.printer.AbrSecretaria.Contains(abrSecretaria));
+            }
+
+            // Filtrando pelo departamento, se fornecido
+            if (!string.IsNullOrEmpty(depto) && depto != "todos")
+            {
+                query = query.Where(x => x.printer.Depto != null && x.printer.Depto.Contains(depto));
+            }
+
+            // Verifica se a consulta resultou em dados antes de prosseguir
             var reports = query
                 .OrderBy(x => x.log.DataHoraDeBusca)
                 .ToList()
@@ -150,8 +204,16 @@ namespace Controle_De_Impressoras.Controllers
                     // Ignorando o primeiro log de cada impressora
                     if (previousLog != null)
                     {
-                        log.QuantidadeImpressaoTotal = log.QuantidadeImpressaoTotal ?? 0;
-                        previousLog.QuantidadeImpressaoTotal = previousLog.QuantidadeImpressaoTotal ?? 0;
+                        // Se for nulo, define como 0
+                        if (log.QuantidadeImpressaoTotal == null)
+                        {
+                            log.QuantidadeImpressaoTotal = 0;
+                        }
+
+                        if (previousLog.QuantidadeImpressaoTotal == null)
+                        {
+                            previousLog.QuantidadeImpressaoTotal = 0;
+                        }
 
                         // A impressão diária é a diferença entre os logs
                         log.QuantidadeImpressaoDiaria = log.QuantidadeImpressaoTotal - previousLog.QuantidadeImpressaoTotal;
@@ -172,7 +234,8 @@ namespace Controle_De_Impressoras.Controllers
                 {
                     Year = g.Key.Year,
                     Month = g.Key.Month,
-                    TotalImpressaoMensal = g.Sum(r => r.QuantidadeImpressaoDiaria) // Soma das impressões diárias
+                    TotalImpressaoMensal = g.Sum(r => r.QuantidadeImpressaoDiaria), // Soma das impressões diárias
+                    MonitoredPrintersCount = g.Select(r => r.PrinterId).Distinct().Count(), // Contagem de impressoras monitoradas no mês
                 })
                 .OrderBy(g => g.Year)
                 .ThenBy(g => g.Month)
@@ -185,7 +248,8 @@ namespace Controle_De_Impressoras.Controllers
                 {
                     Year = mr.Year,
                     Month = mr.Month,
-                    TotalImpressaoMensal = mr.TotalImpressaoMensal ?? 0
+                    TotalImpressaoMensal = mr.TotalImpressaoMensal ?? 0,
+                    MonitoredPrintersCount = mr.MonitoredPrintersCount, // Número de impressoras monitoradas no mês
                 }).ToList()
             };
 
@@ -193,10 +257,11 @@ namespace Controle_De_Impressoras.Controllers
             ViewBag.StartDate = startDate;
             ViewBag.EndDate = endDate;
             ViewBag.InstituicaoId = instituicaoId;
+            ViewBag.AbrSecretaria = abrSecretaria; // Passando o valor do filtro para a view
+            ViewBag.Depto = depto; // Passando o valor do filtro para a view
 
             // Retornando a View com o ViewModel
             return View(viewModel);
         }
-
     }
 }

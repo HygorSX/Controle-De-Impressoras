@@ -17,26 +17,57 @@
 
 <h2>Relatórios Mensais de Impressões</h2>
 
-<!-- Exibe o formulário para seleção de Instituição -->
+<!-- Formulário com filtro -->
 @using (Html.BeginForm("InstitutionReports", "Reports", FormMethod.Get))
 {
-    <label for="instituicaoId">Selecione a Instituição:</label>
     <div style="display: flex; gap: 1rem;">
-        <select class="form-select" id="instituicaoId" name="instituicaoId" required>
-            <option value="">Selecione</option>
-            <option value="1" @(ViewBag.InstituicaoId == 1 ? "selected" : "")>PMB</option>
-            <option value="4" @(ViewBag.InstituicaoId == 4 ? "selected" : "")>TEC INK JET</option>
-        </select>
-        <button type="submit" class="btn btn-outline-primary">Ver Relatórios</button>
-    </div>
+        <div>
+            <label for="instituicaoId">Selecione a Instituição:</label>
+            <select class="form-select" id="instituicaoId" name="instituicaoId" onchange="this.form.submit()">
+                <option value="" @(ViewBag.InstituicaoId == null ? "selected" : "")>Selecione...</option> <!-- Opção vazia -->
+                <option value="todos" @(ViewBag.InstituicaoId == 0 ? "selected" : "")>Todos</option> <!-- Opção 'Todos' -->
+                <option value="1" @(ViewBag.InstituicaoId == 1 ? "selected" : "")>PMB</option>
+                <option value="4" @(ViewBag.InstituicaoId == 4 ? "selected" : "")>TEC INK JET</option>
+            </select>
+        </div>
 
+        <!-- Filtrar por Secretaria -->
+        <div>
+            <label for="abrSecretaria">Filtrar por Secretaria:</label>
+            <select class="form-select" id="abrSecretaria" name="abrSecretaria" onchange="document.getElementById('depto').value = ''; this.form.submit();">
+                <option value="" @(ViewBag.AbrSecretaria == null ? "selected" : "")>Selecione...</option> <!-- Opção vazia -->
+                <option value="todos" @(ViewBag.AbrSecretaria == "todos" ? "selected" : "")>Todos</option> <!-- Opção 'Todos' -->
+                @foreach (var secretaria in ViewBag.Secretarias as List<string>)
+                {
+                    <option value="@secretaria" @(ViewBag.AbrSecretaria == secretaria ? "selected" : "")>@secretaria</option>
+                }
+            </select>
+        </div>
+
+        <!-- Filtrar por Departamento -->
+        <div>
+            <label for="depto">Filtrar por Departamento:</label>
+            <select class="form-select" id="depto" name="depto" onchange="this.form.submit()">
+                <option value="" @(ViewBag.Depto == null ? "selected" : "")>Selecione...</option> <!-- Opção vazia -->
+                <option value="todos" @(ViewBag.Depto == "todos" ? "selected" : "")>Todos</option> <!-- Opção 'Todos' -->
+                @foreach (var depto in ViewBag.Departamentos as List<string>)
+                {
+                    <option value="@depto" @(ViewBag.Depto == depto ? "selected" : "")>@depto</option>
+                }
+            </select>
+        </div>
+
+        <div>
+            <br />
+            <button type="submit" class="btn btn-outline-primary">Ver Relatórios</button>
+        </div>
+    </div>
 }
 
 <hr class="separator" />
 
-@if (ViewBag.InstituicaoId != null && ViewBag.InstituicaoId != 0)
+@if (Model != null && Model.MonthlyReports != null && Model.MonthlyReports.Count > 0)
 {
-
     <div class="mensais-container">
         @foreach (var monthlyReport in Model.MonthlyReports)
         {
@@ -49,14 +80,19 @@
                     <p class="title">Mês</p>
                     <p>@monthlyReport.Month</p>
                 </div>
-                <div class="dataBusca" style="flex: 4">
+                <div class="dataBusca" style="flex: 1">
                     <p class="title">Impressões no mês</p>
                     <p>@monthlyReport.TotalImpressaoMensal</p>
                 </div>
+                <div class="dataBusca" style="flex: 3">
+                    <p class="title">Impressoras monitoradas no periodo</p>
+                    <p>@monthlyReport.MonitoredPrintersCount</p>
+                </div>
             </div>
-
         }
     </div>
 }
-
-    
+else
+{
+    <p>Nenhum relatório encontrado.</p>
+}

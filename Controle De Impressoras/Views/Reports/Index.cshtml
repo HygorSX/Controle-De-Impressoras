@@ -190,6 +190,14 @@
             <p class="title">Serial Impressora</p>
             <p>@printer.SerialImpressora</p>
         </div>
+        <div class="serial-tonner">
+            <p class="title">Serial Tonner Preto</p>
+            @if (@printer.SerialTonnerPreto == "")
+            {
+                <p>Não Encontrado</p>
+            }
+            <p>@printer.SerialTonnerPreto</p>
+        </div>
         <div class="patrimonio">
             <p class="title">Patrimônio Impressora</p>
             <p>@printer.Patrimonio</p>

@@ -73,6 +73,8 @@ namespace Controle_De_Impressoras.Models
             public int Year { get; set; }
             public int Month { get; set; }
             public int? TotalImpressaoMensal { get; set; }
+            public int? MaxPrinterPatrimonio { get; set; }
+            public int? MonitoredPrintersCount { get; set; }
         }
     }
 }

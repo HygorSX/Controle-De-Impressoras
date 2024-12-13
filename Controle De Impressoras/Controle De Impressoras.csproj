@@ -2275,6 +2275,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagens\AcessoNegado\AcessDenied.svg" />
+    <Content Include="Imagens\circulo-verde.svg" />
+    <Content Include="Imagens\circulo-vermelho.svg" />
     <Content Include="Imagens\IconBlack.svg" />
     <Content Include="Imagens\IconRed.svg" />
     <Content Include="Imagens\IconYellow.svg" />
