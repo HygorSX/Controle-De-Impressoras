@@ -86,27 +86,32 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <!-- Botão Pesquisar (anteriormente Home) com destaque -->
+                    <!-- Botão Pesquisar -->
                     <li class="nav-item @((ViewContext.RouteData.Values["action"] as string) == "Index" ? "active" : "")">
                         @Html.ActionLink("Pesquisar", "Index", "Home", null, new { @class = "nav-link", aria_current = "page" })
                     </li>
-                    <!-- "Cadastrar Impressora" -->
+                    <!-- Cadastro de Impressora -->
                     <li class="nav-item @((ViewContext.RouteData.Values["action"] as string) == "CadastrarImpressora" ? "active" : "")">
                         @Html.ActionLink("Cadastro de Impressora", "CadastrarImpressora", "Cadastro", null, new { @class = "nav-link", aria_current = "page" })
                     </li>
-                    <!-- "Registrar Usuario" -->
+                    <!-- Registro de usuário -->
                     <li class="nav-item @((ViewContext.RouteData.Values["action"] as string) == "Registrar" ? "active" : "")">
                         @Html.ActionLink("Registro de usuário", "Registrar", "Conta", null, new { @class = "nav-link", aria_current = "page" })
                     </li>
-                    <!-- "Painel" -->
+                    <!-- Painel -->
                     <li class="nav-item @((ViewContext.RouteData.Values["action"] as string) == "Painel" ? "active" : "")">
                         @Html.ActionLink("Painel", "Painel", "Home", null, new { @class = "nav-link", aria_current = "page" })
                     </li>
-                    <!-- Novo item para Relatórios Institucionais -->
-                    <li class="nav-item @((ViewContext.RouteData.Values["controller"] as string) == "Reports" && (ViewContext.RouteData.Values["action"] as string) == "InstitutionReports" ? "active" : "")">
-                        @Html.ActionLink("Relatórios", "InstitutionReports", "Reports", null, new { @class = "nav-link", aria_current = "page" })
+                    <!-- Relatórios -->
+                    <li class="nav-item @((ViewContext.RouteData.Values["controller"] as string) == "Home" && (ViewContext.RouteData.Values["action"] as string) == "DadosRelatorio" ? "active" : "")">
+                        @Html.ActionLink("Relatórios", "DadosRelatorio", "Home", null, new { @class = "nav-link", aria_current = "page" })
+                    </li>
+                    <!-- Novo item para Erros de Impressoras -->
+                    <li class="nav-item @((ViewContext.RouteData.Values["action"] as string) == "ErrosImpressoras" ? "active" : "")">
+                        @Html.ActionLink("Impressoras com erro", "ErrosImpressoras", "Home", null, new { @class = "nav-link", aria_current = "page" })
                     </li>
                 </ul>
+
             </div>
 
             <!-- Itens do login/logout à direita -->

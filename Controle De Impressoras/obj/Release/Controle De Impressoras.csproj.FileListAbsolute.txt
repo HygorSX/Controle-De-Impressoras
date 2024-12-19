@@ -111,3 +111,23 @@ C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Co
 C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\obj\Release\Controle.C76E2D28.Up2Date
 C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\obj\Release\Controle De Impressoras.dll
 C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\obj\Release\Controle De Impressoras.pdb
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\System.Drawing.Common.dll
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\System.Drawing.Common.pdb
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\System.Drawing.Common.xml
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\ClosedXML.dll
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\ClosedXML.Parser.dll
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\DocumentFormat.OpenXml.dll
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\DocumentFormat.OpenXml.Framework.dll
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\ExcelNumberFormat.dll
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\Microsoft.Bcl.HashCode.dll
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\RBush.dll
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\SixLabors.Fonts.dll
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\ClosedXML.pdb
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\ClosedXML.xml
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\ClosedXML.Parser.xml
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\DocumentFormat.OpenXml.xml
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\DocumentFormat.OpenXml.Framework.xml
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\ExcelNumberFormat.xml
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\Microsoft.Bcl.HashCode.xml
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\RBush.xml
+C:\Users\PMB\Documents\projeto_impressoras_11novembro\Controle-De-Impressoras\Controle De Impressoras\bin\SixLabors.Fonts.xml

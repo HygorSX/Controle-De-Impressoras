@@ -32,14 +32,32 @@ public class ContaController : Controller
             return View(login);
         }
 
+        // Validar o usuário com o serviço de autenticação
         if (_authService.ValidateUser(login, out var role))
         {
-            var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(
-                1, login.Usuario, DateTime.Now, DateTime.Now.AddHours(12), login.LembrarMe, role));
+            // Criação do ticket de autenticação
+            var ticket = new FormsAuthenticationTicket(
+                version: 1,
+                name: login.Usuario,
+                issueDate: DateTime.Now,
+                expiration: login.LembrarMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddHours(12), // Expiração ajustada com base no "Lembrar-me"
+                isPersistent: login.LembrarMe, // Define o cookie como persistente se "Lembrar-me" for marcado
+                userData: role
+            );
 
-            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticket);
+            // Criptografar o ticket e criar o cookie de autenticação
+            var encryptedTicket = FormsAuthentication.Encrypt(ticket);
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
+            {
+                HttpOnly = true, // Para aumentar a segurança, tornando o cookie inacessível via JavaScript
+                Secure = Request.IsSecureConnection, // Marque o cookie como seguro (somente em conexões HTTPS)
+                Expires = ticket.Expiration // Define a data de expiração do cookie
+            };
+
+            // Adicionar o cookie à resposta
             Response.Cookies.Add(cookie);
 
+            // Redirecionar de volta para a URL de retorno ou para a página inicial
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
@@ -51,6 +69,7 @@ public class ContaController : Controller
         }
         else
         {
+            // Caso de falha no login
             ModelState.AddModelError("", "Login Inválido");
         }
 
@@ -61,6 +80,7 @@ public class ContaController : Controller
     [AllowAnonymous]
     public ActionResult LogOff()
     {
+        // Realiza o logoff e limpa o cookie de autenticação
         FormsAuthentication.SignOut();
         return RedirectToAction("Index", "Home");
     }

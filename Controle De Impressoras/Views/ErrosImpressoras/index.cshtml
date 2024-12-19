@@ -1,0 +1,46 @@
+@model List<Controle_De_Impressoras.Models.ErroImpressora>
+
+@{
+    ViewBag.Title = "Erros de Impressoras";
+}
+
+<h2>Erros de Impressoras</h2>
+
+<!-- Exibe o número total de erros encontrados -->
+<h3>Total de Erros: @Model.Count</h3>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Instituição</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>IP</th>
+            <th>Patrimônio</th>
+            <th>Secretaria</th>
+            <th>Abreviação Secretaria</th>
+            <th>Departamento</th>
+            <th>Localização</th>
+            <th>Motivo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var erro in Model)
+        {
+            <tr>
+                <td>@erro.Id</td>
+                <td>@erro.InstituicaoId</td>
+                <td>@erro.Marca ?? "Não Informado"</td> <!-- Verifica se Marca é nula -->
+                <td>@erro.Modelo ?? "Não Informado"</td> <!-- Verifica se Modelo é nulo -->
+                <td>@erro.Ip ?? "Não Informado"</td> <!-- Verifica se IP é nulo -->
+                <td>@erro.Patrimonio</td> <!-- Verifica se Patrimonio é nulo -->
+                <td>@erro.Secretaria ?? "Não Informado"</td> <!-- Verifica se Secretaria é nula -->
+                <td>@erro.AbrSecretaria ?? "Não Informado"</td> <!-- Verifica se AbrSecretaria é nula -->
+                <td>@erro.Depto ?? "Não Informado"</td> <!-- Verifica se Depto é nulo -->
+                <td>@erro.Localizacao ?? "Não Informado"</td> <!-- Verifica se Localizacao é nula -->
+                <td>@erro.Motivo ?? "Não Informado"</td> <!-- Verifica se Motivo é nulo -->
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,320 @@
+@model List<Controle_De_Impressoras.Models.ErroImpressora>
+
+@{
+    ViewBag.Title = "Erros de Impressoras";
+}
+
+<style>
+    #grid_cadastro > thead > tr th:nth-child(2) {
+        width: 110px;
+    }
+
+    #grid_cadastro > thead > tr th:nth-child(3) {
+        width: 210px;
+    }
+
+    #corpo_tabela {
+        max-height: 700px;
+        overflow: auto;
+        display: block;
+    }
+
+        #corpo_tabela tr {
+            table-layout: fixed;
+            width: 100%;
+            display: table;
+        }
+
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    thead {
+        width: calc(100% - 1em);
+        border-bottom: 1px solid;
+    }
+
+    td, th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .container-capacidade {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .ink-level {
+        border: solid 1.5px black;
+        width: 30px;
+        height: 50px;
+        background-color: #F6F7F8;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .ink-fill {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .btn-drop {
+        cursor: pointer;
+        border: none;
+        transition: transform 0.3s;
+    }
+
+    #pesquisas {
+        display: flex;
+        justify-content: center;
+        margin: 2em 0 4rem;
+        gap: 1rem;
+    }
+
+    .filtros {
+        margin-bottom: 50px;
+    }
+
+    #btn-filter {
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+
+    .img_impressoras {
+        height: 200px;
+        width: 200px;
+        margin-bottom: 1rem;
+    }
+
+    .container-impressoras-2 {
+        display: flex;
+        text-align: center;
+        vertical-align: middle;
+        align-content: center;
+        justify-content: center;
+        border-bottom: 1px solid;
+    }
+
+    .container-impressoras-3 {
+        text-align: center;
+    }
+
+    #capacidade {
+        display: flex;
+        justify-content: center;
+    }
+
+    .containerImpressoras {
+        display: grid;
+        grid-template-columns: 3fr 3fr 3fr 4fr;
+        padding: 2rem;
+        gap: .5rem;
+        border: 1px solid;
+        border-radius: 0.75rem;
+        margin-top: 2rem;
+    }
+
+    .alinharTintas {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .extraInformation {
+        display: flex;
+        gap: 1rem;
+    }
+
+    p {
+        margin-bottom: .5rem;
+    }
+
+    .filtro input[name="Modelo"] {
+        width: 150px; /* Tamanho personalizado para o campo "Modelo" */
+    }
+
+    .filtro input[name="Patrimonio"] {
+        width: 150px; /* Tamanho personalizado para o campo "Patrimônio" */
+    }
+
+
+    .filtro input[name="Localizacao"] {
+        width: 180px; /* Tamanho personalizado para o campo "Patrimônio" */
+    }
+
+
+    .filtro .form-select[name="Depto"] {
+        width: 150px; /* Define a largura fixa para a caixa */
+        overflow: hidden; /* Caso o texto nas opções seja maior, ele não irá ultrapassar */
+    }
+
+    .filtro .form-select[name="Departamento"] {
+        width: 180px; /* Define a largura fixa para a caixa */
+        overflow: hidden; /* Caso o texto nas opções seja maior, ele não irá ultrapassar */
+    }
+
+    .containerNumeroImpressoras {
+        display: flex;
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza verticalmente */
+        height: 5rem; /* Altura do container */
+        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+        border-radius: 1rem;
+        border: 2px solid rgba(240, 46, 170, 0.4);
+        padding: 0 1rem; /* Ajustar para um pequeno espaço lateral */
+    }
+
+    .card-body {
+        text-align: center; /* Garante que o texto dentro do card esteja centralizado */
+        font-size: 1.1rem;
+    }
+
+    .error-text {
+        font-size: 1.1rem;
+        color: #000; /* Cor do texto normal */
+    }
+
+    .error-number {
+        font-size: 1.3rem; /* Tamanho maior para destacar o número */
+        font-weight: bold; /* Destacar o número com negrito */
+        color: #F02EAA; /* Cor destacada para o número */
+    }
+
+
+</style>
+
+
+
+
+<div>
+    <form method="get" id="pesquisas">
+        <div class="filtro">
+            <label class="text-filter" for="Patrimonio">Patrimônio:</label>
+            <input type="text" name="Patrimonio" id="Patrimonio" class="form-control" value="@Request.QueryString["Patrimonio"]" />
+        </div>
+
+        <div class="filtro">
+            <label class="text-filter">Marca:</label>
+            <select class="form-select" name="Marca" onchange="this.form.submit()">
+                <option value="" @(string.IsNullOrEmpty(ViewBag.Marca) ? "selected" : "")></option>
+                @foreach (var marca in ViewBag.Marcas as List<string>)
+                {
+                    <option value="@marca" @(ViewBag.Marca == marca ? "selected" : "")>@marca</option>
+                }
+            </select>
+        </div>
+
+        <div class="filtro">
+            <label class="text-filter" for="Modelo">Modelo:</label>
+            <input type="text" name="Modelo" id="Modelo" class="form-control" value="@Request.QueryString["Modelo"]" />
+        </div>
+
+        <!-- Filtro para AbrSecretaria com select -->
+        <div class="filtro">
+            <label class="text-filter">Secretaria:</label>
+            <select class="form-select" name="AbrSecretaria" onchange="this.form.submit()">
+                <option value="" @(string.IsNullOrEmpty(ViewBag.AbrSecretaria) ? "selected" : "")>Todas</option>
+                @foreach (var secretaria in ViewBag.AbrSecretarias as List<string>)
+                {
+                    <option value="@secretaria" @(ViewBag.AbrSecretaria == secretaria ? "selected" : "")>@secretaria</option>
+                }
+            </select>
+        </div>
+
+        <!-- Filtro para Departamento com select -->
+        <div class="filtro">
+            <label class="text-filter" for="Depto">Departamento:</label>
+            <select class="form-select" name="Depto" id="Depto" onchange="this.form.submit()">
+                <option value="" @(string.IsNullOrEmpty(ViewBag.Depto) ? "selected" : "")></option>
+                @foreach (var depto in ViewBag.Departamentos as List<string>)
+                {
+                    <option value="@depto" @(ViewBag.Depto == depto ? "selected" : "")>@depto</option>
+                }
+            </select>
+        </div>
+
+        <div class="filtro">
+            <label class="text-filter" for="Localizacao">Localização:</label>
+            <input type="text" name="Localizacao" id="Localizacao" class="form-control" value="@Request.QueryString["Localizacao"]" />
+        </div>
+
+        <div class="filtro">
+            <label class="text-filter">Instituição:</label>
+            <select class="form-select" name="instituicaoId" onchange="this.form.submit()">
+                <option value="" @(ViewBag.InstituicaoId == null ? "selected" : "")>Todas</option>
+                <option value="1" @(ViewBag.InstituicaoId == 1 ? "selected" : "")>PMB</option>
+                <option value="4" @(ViewBag.InstituicaoId == 4 ? "selected" : "")>TEC INK JET</option>
+            </select>
+        </div>
+
+        <div id="btn-filter">
+            <button type="submit" class="btn btn-outline-primary">Filtrar<i class="bi bi-funnel"></i></button>
+            <a href="@Url.Action("ErrosImpressoras", "Home")" class="btn btn-outline-danger">Limpar<i class="bi bi-x-lg"></i></a>
+        </div>
+
+        <div class="containerNumeroImpressoras">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <span class="error-text">
+                        Impressoras com erro:
+                    </span>
+                    <span class="error-number">
+                        @ViewBag.totalErros
+                    </span>
+                </h5>
+            </div>
+        </div>
+
+
+
+
+    </form>
+
+
+
+
+</div>
+
+
+
+
+
+
+<!-- Tabela de Erros de Impressoras -->
+<table class="table table-bordered table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Patrimônio</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>IP</th>
+            <th>Secretaria</th>
+            <th>AbrSecretaria</th>
+            <th>Departamento</th>
+            <th>Localização</th>
+            <th>Motivo</th>
+            <th>Instituição</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var erro in Model.Select((value, index) => new { value, index }))
+        {
+            <tr class="@(erro.index % 2 == 0 ? "even-row" : "odd-row")">
+                <td>@erro.value.Patrimonio</td>
+                <td>@erro.value.Marca</td>
+                <td>@erro.value.Modelo</td>
+                <td>@erro.value.Ip</td>
+                <td>@erro.value.Secretaria</td>
+                <td>@erro.value.AbrSecretaria</td>
+                <td>@erro.value.Depto</td>
+                <td>@erro.value.Localizacao</td>
+                <td>@erro.value.Motivo</td>
+                <td>@erro.value.InstituicaoId</td>
+            </tr>
+        }
+    </tbody>
+</table>

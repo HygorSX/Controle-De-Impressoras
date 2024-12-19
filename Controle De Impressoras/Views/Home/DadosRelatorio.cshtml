@@ -1,0 +1,74 @@
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+        margin-top: 2rem;
+    }
+
+    .filtros {
+        margin-bottom: 50px;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 0.375rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+    #btn-filter {
+        margin-top: 25px;
+        display: flex;
+        gap: 1rem;
+    }
+
+    button {
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        transition: opacity 0.3s;
+    }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+            button[type="submit"]:hover {
+                opacity: 0.9;
+            }
+</style>
+
+<body>
+
+    <div>
+        <h2 class="text-center">Relatório de Impressoras</h2>
+
+        <div class="filtros">
+            <form id="filtroForm" method="get" action="@Url.Action("DownloadRelatorio", "Home")" class="mb-4">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="dataInicio">Data Início</label>
+                        <input type="date" id="dataInicio" name="dataInicio" class="form-control" value="@Request.QueryString["dataInicio"]" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="dataFim">Data Fim</label>
+                        <input type="date" id="dataFim" name="dataFim" class="form-control" value="@Request.QueryString["dataFim"]" />
+                    </div>
+                </div>
+
+                <div id="btn-filter">
+                    <button type="submit" class="btn btn-outline-primary" id="filtrarRelatorioBtn">
+                        Baixar Relatório <i class="bi bi-file-earmark-excel"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>

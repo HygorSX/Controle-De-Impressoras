@@ -1,17 +1,24 @@
-﻿using Controle_De_Impressoras.Models;
+﻿using Controle_De_Impressoras.Data;
+using Controle_De_Impressoras.Models;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using ClosedXML.Excel;
 
 namespace Controle_De_Impressoras.Controllers
 {
     public class HomeController : Controller
     {
+
+        private PrintersContext db = new PrintersContext();
+
         public static string RemoverAcentos(string texto)
         {
             if (string.IsNullOrEmpty(texto))
@@ -248,6 +255,166 @@ namespace Controle_De_Impressoras.Controllers
             return Json(localizacoes, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult ErrosImpressoras(string Patrimonio, string Marca, string Modelo, string Ip, string AbrSecretaria, string Depto, string Localizacao, int? InstituicaoId)
+        {
+            // Inicializa a lista com todos os erros de impressora
+            var errosImpressoras = db.ErrosImpressoras.AsQueryable();
+
+            // Contagem do total de impressoras com erro (sem filtros)
+
+            // Cria uma lista com as AbrSecretarias únicas
+            var abrSecretarias = errosImpressoras
+                .Where(e => !string.IsNullOrEmpty(e.AbrSecretaria)) // Filtra erros que possuem uma AbrSecretaria
+                .Select(e => e.AbrSecretaria) // Seleciona o campo 'AbrSecretaria'
+                .Distinct() // Garante que as AbrSecretarias sejam únicas
+                .OrderBy(s => s) // Ordena as AbrSecretarias em ordem alfabética
+                .ToList();
+
+            // Cria uma lista com as Marcas únicas
+            var marcas = errosImpressoras
+                .Where(e => !string.IsNullOrEmpty(e.Marca)) // Filtra erros que possuem uma marca
+                .Select(e => e.Marca) // Seleciona o campo 'Marca'
+                .Distinct() // Garante que as marcas sejam únicas
+                .OrderBy(m => m) // Ordena as marcas em ordem alfabética
+                .ToList();
+
+            // Cria uma lista com os Departamentos únicos baseados na AbrSecretaria
+            var departamentos = errosImpressoras
+                .Where(e => !string.IsNullOrEmpty(e.Depto)) // Filtra erros que possuem um departamento
+                .Where(e => e.AbrSecretaria == AbrSecretaria) // Filtra departamentos pela AbrSecretaria selecionada
+                .Select(e => e.Depto) // Seleciona o campo 'Depto'
+                .Distinct() // Garante que os departamentos sejam únicos
+                .OrderBy(d => d) // Ordena os departamentos em ordem alfabética
+                .ToList();
+
+            // Passa as AbrSecretarias, marcas, departamentos e o total de erros para o ViewBag
+            ViewBag.AbrSecretarias = abrSecretarias;
+            ViewBag.Marcas = marcas;
+            ViewBag.Departamentos = departamentos;
+            ViewBag.AbrSecretaria = AbrSecretaria;  // Passando para a View a Secretaria Selecionada
+            ViewBag.Marca = Marca;  // Passando para a View a Marca Selecionada
+            ViewBag.Depto = Depto;  // Passando para a View o Departamento Selecionado
+            ViewBag.InstituicaoId = InstituicaoId; // Passando o id da Instituição para o View
+
+            // Aplica os filtros, caso existam
+            if (!string.IsNullOrEmpty(Marca))
+                errosImpressoras = errosImpressoras.Where(e => e.Marca.Contains(Marca));
+
+            if (!string.IsNullOrEmpty(Modelo))
+                errosImpressoras = errosImpressoras.Where(e => e.Modelo.Contains(Modelo));
+
+            if (!string.IsNullOrEmpty(Ip))
+                errosImpressoras = errosImpressoras.Where(e => e.Ip.Contains(Ip));
+
+            if (!string.IsNullOrEmpty(AbrSecretaria))
+                errosImpressoras = errosImpressoras.Where(e => e.AbrSecretaria.Contains(AbrSecretaria));
+
+            if (!string.IsNullOrEmpty(Depto))
+                errosImpressoras = errosImpressoras.Where(e => e.Depto.Contains(Depto));
+
+            if (!string.IsNullOrEmpty(Localizacao))
+                errosImpressoras = errosImpressoras.Where(e => e.Localizacao.Contains(Localizacao));
+
+            // Filtro para o campo InstituicaoId, caso fornecido
+            if (InstituicaoId.HasValue)
+                errosImpressoras = errosImpressoras.Where(e => e.InstituicaoId == InstituicaoId);
+
+            // Para o campo Patrimonio que é int, fazemos a comparação com int, se o filtro for fornecido
+            if (!string.IsNullOrEmpty(Patrimonio) && int.TryParse(Patrimonio, out var patrimonioInt))
+            {
+                errosImpressoras = errosImpressoras.Where(e => e.Patrimonio == patrimonioInt);
+            }
+
+            var totalErros = errosImpressoras.Count();
+
+            // Converte o resultado para lista
+            var resultado = errosImpressoras.ToList();
+            ViewBag.TotalErros = totalErros;  // Passa a quantidade total de erros de impressora para a View
+
+            return View(resultado);
+        }
+
+        public ActionResult DadosRelatorio(DateTime? dataInicio, DateTime? dataFim)
+        {
+            if (!dataInicio.HasValue) dataInicio = DateTime.MinValue;
+            if (!dataFim.HasValue) dataFim = DateTime.MaxValue;
+
+            List<DadosRelatorioModel> relatorio = PrintersModel.DadosRelatorio(dataInicio, dataFim);
+            return View(relatorio);
+        }
+
+        public ActionResult DownloadRelatorio(DateTime? dataInicio, DateTime? dataFim)
+        {
+            if (!dataInicio.HasValue) dataInicio = DateTime.MinValue;
+            if (!dataFim.HasValue) dataFim = DateTime.MaxValue;
+
+            List<DadosRelatorioModel> relatorio = PrintersModel.DadosRelatorio(dataInicio, dataFim);
+
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Relatório");
+
+                // Adiciona os cabeçalhos
+                worksheet.Cell(1, 1).Value = "Data e Hora de Busca";
+                worksheet.Cell(1, 2).Value = "Patrimônio";
+                worksheet.Cell(1, 3).Value = "Modelo";
+                worksheet.Cell(1, 4).Value = "Secretaria";
+                worksheet.Cell(1, 5).Value = "Depto";
+                worksheet.Cell(1, 6).Value = "Tipo (ColorMono)";
+                worksheet.Cell(1, 7).Value = "Impressões Totais";
+                worksheet.Cell(1, 8).Value = "% Black";
+                worksheet.Cell(1, 9).Value = "% Cyan";
+                worksheet.Cell(1, 10).Value = "% Yellow";
+                worksheet.Cell(1, 11).Value = "% Magenta";
+                worksheet.Cell(1, 12).Value = "% Unidade Imagem";
+                worksheet.Cell(1, 13).Value = "% Fusor";
+                worksheet.Cell(1, 14).Value = "% Belt";
+                worksheet.Cell(1, 15).Value = "% Kit Manutenção";
+                worksheet.Cell(1, 16).Value = "Instituição";
+
+                // Adiciona os dados
+                for (int i = 0; i < relatorio.Count; i++)
+                {
+                    var item = relatorio[i];
+                    worksheet.Cell(i + 2, 1).Value = item.DataHoraDeBusca.ToString("yyyy-MM-dd HH:mm:ss");
+                    worksheet.Cell(i + 2, 2).Value = item.Patrimonio;
+                    worksheet.Cell(i + 2, 3).Value = item.Modelo;
+                    worksheet.Cell(i + 2, 4).Value = item.Secretaria;
+                    worksheet.Cell(i + 2, 5).Value = item.Depto;
+                    worksheet.Cell(i + 2, 6).Value = item.ColorMono;
+                    worksheet.Cell(i + 2, 7).Value = item.ImpressoesTotais;
+                    worksheet.Cell(i + 2, 8).Value = item.PorcentagemBlack;
+                    worksheet.Cell(i + 2, 9).Value = item.PorcentagemCyan;
+                    worksheet.Cell(i + 2, 10).Value = item.PorcentagemYellow;
+                    worksheet.Cell(i + 2, 11).Value = item.PorcentagemMagenta;
+                    worksheet.Cell(i + 2, 12).Value = item.UnidadeImagem;
+                    worksheet.Cell(i + 2, 13).Value = item.Fusor;
+                    worksheet.Cell(i + 2, 14).Value = item.Belt;
+                    worksheet.Cell(i + 2, 15).Value = item.KitManutencao;
+                    worksheet.Cell(i + 2, 16).Value = item.InstituicaoId;
+                }
+
+                worksheet.Columns().AdjustToContents();
+
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    stream.Flush();  // Assegura que todos os dados foram escritos no stream
+                    stream.Position = 0;  // Reposiciona para o início do stream antes de enviá-lo
+
+                    string excelName = $"RelatorioImpressoras-{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+
+                    // Definir cabeçalhos de resposta HTTP para o download correto
+                    Response.Clear();  // Limpa quaisquer dados de resposta anteriores
+                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    Response.AddHeader("Content-Disposition", $"attachment; filename={excelName}");
+                    Response.BinaryWrite(stream.ToArray()); // Escreve o conteúdo do arquivo Excel no corpo da resposta
+                    Response.End(); // Finaliza a resposta
+
+                    return new EmptyResult();  // Retorna um resultado vazio após o download
+                }
+            }
+        }
 
     }
 }

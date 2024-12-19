@@ -2897,6 +2897,206 @@
             Show negative values bars in the same direction as positive.
             </summary>
         </member>
+        <member name="T:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType">
+            <summary>
+            Conditional formatting rule types valid for pivot tables.
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.AboveAverage">
+            <summary>
+            Highlights cells that are above the average for all values in the range.
+            </summary>
+            <remarks>AboveAverage Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.AboveOrEqualAverage">
+            <summary>
+            Highlights cells that are above or equal to the average for all values in the range.
+            </summary>
+            <remarks>AboveAverage Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.BelowAverage">
+            <summary>
+            Highlights cells that are below the average for all values in the range.
+            </summary>
+            <remarks>AboveAverage Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.BelowOrEqualAverage">
+            <summary>
+            Highlights cells that are below or equal to the average for all values in the range.
+            </summary>
+            <remarks>AboveAverage Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.AboveStdDev">
+            <summary>
+            Highlights cells that are above the standard deviation for all values in the range.
+            <remarks>AboveAverage Excel CF Rule Type</remarks>
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.BelowStdDev">
+            <summary>
+            Highlights cells that are below the standard deviation for all values in the range.
+            </summary>
+            <remarks>AboveAverage Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.Bottom">
+            <summary>
+            Highlights cells whose values fall in the bottom N bracket as specified.
+            </summary>
+            <remarks>Top10 Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.BottomPercent">
+            <summary>
+            Highlights cells whose values fall in the bottom N percent as specified.
+            </summary>
+            <remarks>Top10 Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.Top">
+            <summary>
+            Highlights cells whose values fall in the top N bracket as specified.
+            </summary>
+            <remarks>Top10 Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.TopPercent">
+            <summary>
+            Highlights cells whose values fall in the top N percent as specified.
+            </summary>
+            <remarks>Top10 Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.Between">
+            <summary>
+            Highlights cells in the range between the given two formulas.
+            </summary>
+            <remarks>CellIs Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.ContainsBlanks">
+            <summary>
+            Highlights cells that are completely blank.
+            </summary>
+            <remarks>
+            Equivalent of using LEN(TRIM()). This means that if the cell contains only
+            characters that TRIM() would remove, then it is considered blank. An empty cell
+            is also considered blank.
+            </remarks>
+            <remarks>ContainsBlanks Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.ContainsErrors">
+            <summary>
+            Highlights cells with formula errors.
+            </summary>
+            <remarks>
+            Equivalent to using ISERROR() sheet function to determine if there is
+            a formula error.
+            </remarks>
+            <remarks>ContainsErrors Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.Equal">
+            <summary>
+            Highlights cells equal to the given formula.
+            </summary>
+            <remarks>CellIs Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.Expression">
+            <summary>
+            This rule contains a formula to evaluate. When the formula result is true, the cell is highlighted.
+            </summary>
+            <remarks>Expression Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.GreaterThan">
+            <summary>
+            Highlights cells greater than the given formula.
+            </summary>
+            <remarks>CellIs Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.GreaterThanOrEqual">
+            <summary>
+            Highlights cells greater than or equal the given formula.
+            </summary>
+            <remarks>CellIs Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.LessThan">
+            <summary>
+            Highlights cells less than the given formula.
+            </summary>
+            <remarks>CellIs Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.LessThanOrEqual">
+            <summary>
+            Highlights cells less than or equal the given formula.
+            </summary>
+            <remarks>CellIs Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.NotBetween">
+            <summary>
+            Highlights cells outside the range in given two formulas.
+            </summary>
+            <remarks>CellIs Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.NotContainsBlanks">
+            <summary>
+            Highlights cells that are not blank.
+            </summary>
+            <remarks>
+            Equivalent of using LEN(TRIM()). This means that if the cell contains only
+            characters that TRIM() would remove, then it is considered blank. An empty cell
+            is also considered blank.
+            </remarks>
+            <remarks>NotContainsBlanks Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.NotContainsErrors">
+            <summary>
+            Highlights cells without formula errors.
+            </summary>
+            <remarks>
+            Equivalent to using ISERROR() sheet function to determine if there is a
+            formula error.
+            </remarks>
+            <remarks>NotContainsErrors Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.NotEqual">
+            <summary>
+                .
+            </summary>
+            <remarks>CellIs Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.ThreeColorScale">
+            <summary>
+            Three Color Scale (Low, Middle and High Color Scale)
+            </summary>
+            <remarks>ColorScale Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.TwoColorScale">
+            <summary>
+            Two Color Scale (Low and High Color Scale)
+            </summary>
+            <remarks>ColorScale Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.ThreeIconSet">
+            <summary>
+            This conditional formatting rule applies a 3 set icons to cells according
+            to their values.
+            </summary>
+            <remarks>IconSet Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.FourIconSet">
+            <summary>
+            This conditional formatting rule applies a 4 set icons to cells according
+            to their values.
+            </summary>
+            <remarks>IconSet Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.FiveIconSet">
+            <summary>
+            This conditional formatting rule applies a 5 set icons to cells according
+            to their values.
+            </summary>
+            <remarks>IconSet Excel CF Rule Type</remarks>
+        </member>
+        <member name="F:OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType.DataBar">
+            <summary>
+            This conditional formatting rule displays a gradated data bar in the range of cells.
+            </summary>
+            <remarks>DataBar Excel CF Rule Type</remarks>
+        </member>
         <member name="T:OfficeOpenXml.ConditionalFormatting.ExcelConditionalFormattingHelper">
             <summary>
             Conditional formatting helper
@@ -21201,6 +21401,26 @@
             Tiles are flipped vertically.
             </summary>
         </member>
+        <member name="T:OfficeOpenXml.Drawing.PictureLocation">
+            <summary>
+            Options for how to link a picture
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.Drawing.PictureLocation.Embed">
+            <summary>
+            Copy and Embed the image within the workbook
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.Drawing.PictureLocation.Link">
+            <summary>
+            Collect the image from the link
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.Drawing.PictureLocation.LinkAndEmbed">
+            <summary>
+            Copy and Embed the image and add a link
+            </summary>
+        </member>
         <member name="T:OfficeOpenXml.Drawing.ExcelChartAsType">
             <summary>
             Provides easy access to convert the drawing to a it's typed ExcelChart class.
@@ -21647,6 +21867,16 @@
             Will adjust the position and size of the drawing according to changes in font of rows and to the Normal style.
             This method will be called before save, so use it only if you need the coordinates of the drawing.
             </summary>
+        </member>
+        <member name="M:OfficeOpenXml.Drawing.ExcelDrawing.Copy(OfficeOpenXml.ExcelWorksheet,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Copies the drawing to the supplied worksheets. The copy will be positioned using the <paramref name="row"/> and <paramref name="col"/> parameters
+            </summary>
+            <param name="worksheet">The worksheet where the drawing will be placed.</param>
+            <param name="row">The top row where the drawing will be placed.</param>
+            <param name="col">The left column where the drawing will be placed.</param>
+            <param name="rowOffset">Row offset in pixels from the row start positions. int.MinValue </param>
+            <param name="colOffset">Column offset in pixels fromp the column start position</param>
         </member>
         <member name="T:OfficeOpenXml.Drawing.ExcelDrawingAsType">
             <summary>
@@ -22780,21 +23010,42 @@
             <param name="ChartType">Type of chart</param>
             <returns>The chart</returns>    
         </member>
-        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPicture(System.String,System.IO.FileInfo)">
+        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPicture(System.String,System.String,OfficeOpenXml.Drawing.PictureLocation)">
+            <summary>
+            Adds a picture to the worksheet
+            </summary>
+            <param name="Name">The name of the drawing object</param>
+            <param name="ImagePath">The path to the image file</param>
+            <param name="Location">Location to access the image from</param>
+            <returns>A picture object</returns>
+        </member>
+        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPicture(System.String,System.String,OfficeOpenXml.ExcelHyperLink,OfficeOpenXml.Drawing.PictureLocation)">
+            <summary>
+            Adds a picture to the worksheet
+            </summary>
+            <param name="Name">The name of the drawing object</param>
+            <param name="ImagePath">The path to the image file</param>
+            <param name="Hyperlink">Picture Hyperlink</param>
+            <param name="Location">Location to access the image from</param>
+            <returns>A picture object</returns>
+        </member>
+        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPicture(System.String,System.IO.FileInfo,OfficeOpenXml.Drawing.PictureLocation)">
             <summary>
             Adds a picture to the worksheet
             </summary>
             <param name="Name"></param>
             <param name="ImageFile">The image file</param>
+            <param name="Location">Location to access the image from</param>
             <returns>A picture object</returns>
         </member>
-        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPicture(System.String,System.IO.FileInfo,System.Uri)">
+        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPicture(System.String,System.IO.FileInfo,System.Uri,OfficeOpenXml.Drawing.PictureLocation)">
             <summary>
             Adds a picture to the worksheet
             </summary>
             <param name="Name"></param>
             <param name="ImageFile">The image file</param>
             <param name="Hyperlink">Picture Hyperlink</param>
+            <param name="Location">Location to access the image from</param>
             <returns>A picture object</returns>
         </member>
         <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPicture(System.String,System.IO.Stream)">
@@ -22833,38 +23084,42 @@
             <param name="Hyperlink">Picture Hyperlink</param>
             <returns>A picture object</returns>
         </member>
-        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPictureAsync(System.String,System.IO.FileInfo)">
+        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPictureAsync(System.String,System.IO.FileInfo,OfficeOpenXml.Drawing.PictureLocation)">
             <summary>
             Adds a picture to the worksheet
             </summary>
             <param name="Name"></param>
             <param name="ImageFile">The image file</param>
+            <param name="Location">Location to access the image from</param>
             <returns>A picture object</returns>
         </member>
-        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPictureAsync(System.String,System.IO.FileInfo,System.Uri)">
+        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPictureAsync(System.String,System.IO.FileInfo,System.Uri,OfficeOpenXml.Drawing.PictureLocation)">
             <summary>
             Adds a picture to the worksheet
             </summary>
             <param name="Name"></param>
             <param name="ImageFile">The image file</param>
             <param name="Hyperlink">Picture Hyperlink</param>
+            <param name="Location">Location to access the image from</param>
             <returns>A picture object</returns>
         </member>
-        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPictureAsync(System.String,System.String)">
+        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPictureAsync(System.String,System.String,OfficeOpenXml.Drawing.PictureLocation)">
             <summary>
             Adds a picture to the worksheet
             </summary>
             <param name="Name"></param>
             <param name="ImagePath">The path to the image file</param>
+            <param name="Location">Location to access the image from</param>
             <returns>A picture object</returns>
         </member>
-        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPictureAsync(System.String,System.String,System.Uri)">
+        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPictureAsync(System.String,System.String,System.Uri,OfficeOpenXml.Drawing.PictureLocation)">
             <summary>
             Adds a picture to the worksheet
             </summary>
             <param name="Name"></param>
             <param name="ImagePath">The path to the image file</param>
             <param name="Hyperlink">Picture Hyperlink</param>
+            <param name="Location">Location to access the image from</param>
             <returns>A picture object</returns>
         </member>
         <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPictureAsync(System.String,System.IO.Stream)">
@@ -22901,23 +23156,6 @@
             <param name="pictureStream">An stream image.</param>
             <param name="pictureType">The type of image. A null value means that EPPlus will identify the type of image automatically.</param>
             <param name="Hyperlink">The Picture Hyperlink</param>
-            <returns>A picture object</returns>
-        </member>
-        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPicture(System.String,System.String)">
-            <summary>
-            Adds a picture to the worksheet
-            </summary>
-            <param name="Name">The name of the drawing object</param>
-            <param name="ImagePath">The path to the image file</param>
-            <returns>A picture object</returns>
-        </member>
-        <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddPicture(System.String,System.String,OfficeOpenXml.ExcelHyperLink)">
-            <summary>
-            Adds a picture to the worksheet
-            </summary>
-            <param name="Name">The name of the drawing object</param>
-            <param name="ImagePath">The path to the image file</param>
-            <param name="Hyperlink">Picture Hyperlink</param>
             <returns>A picture object</returns>
         </member>
         <member name="M:OfficeOpenXml.Drawing.ExcelDrawings.AddChartFromTemplate(System.IO.FileInfo,System.String)">
@@ -27385,7 +27623,9 @@
         </member>
         <member name="P:OfficeOpenXml.ExcelColumn.Collapsed">
             <summary>
-            If the column is collapsed in outline mode
+            If the column is collapsed in outline mode. 
+            Setting this property will not hide the children. 
+            Use the <see cref="M:OfficeOpenXml.ExcelRangeColumn.CollapseChildren(System.Boolean)" /> or <see cref="M:OfficeOpenXml.ExcelRangeColumn.SetVisibleOutlineLevel(System.Int32,System.Boolean)"/> methods to collapse and hide columns/rows via the <see cref="P:OfficeOpenXml.ExcelWorksheet.Columns"/> collection.
             </summary>
         </member>
         <member name="P:OfficeOpenXml.ExcelColumn.OutlineLevel">
@@ -30089,7 +30329,12 @@
             Creates an array-formula.
             </summary>
             <param name="ArrayFormula">The formula</param>
-            <param name="isDynamic">If the array formula is dynamic. In most cases this is determined by the calculation when calculating the formula, so it is not be necessary to set this flag if you calculate the range. Setting this argument to true will only add the dynamic array formula cell meta data flag to the range.</param>
+            <param name="isDynamic">If the array formula is dynamic. 
+            Setting this argument to true will only add the dynamic array formula cell meta data flag to the formula. 
+            If you calculate the formula it is not be necessary to set this flag. If you set this flag, you are responsible to set the correct range for the dynamic array formula, so in most cases calculating is a better approach.
+            If you calculate the formula this flag will be overwritten with the value the EPPlus decides for the formula.
+            Also see <see cref="M:OfficeOpenXml.CalculationExtension.Calculate(OfficeOpenXml.ExcelWorkbook)" />, <seealso cref="M:OfficeOpenXml.CalculationExtension.Calculate(OfficeOpenXml.ExcelWorksheet)"/>, <seealso cref="M:OfficeOpenXml.CalculationExtension.Calculate(OfficeOpenXml.ExcelRangeBase)"/>
+            </param>
         </member>
         <member name="P:OfficeOpenXml.ExcelRangeBase.FormulaRange">
             <summary>
@@ -31676,7 +31921,9 @@
         </member>
         <member name="P:OfficeOpenXml.ExcelRow.Collapsed">
             <summary>
-            If outline level is set this tells that the row is collapsed
+            If outline level is set this tells that the row is collapsed.
+            Setting this property will not hide the children. 
+            Use the <see cref="M:OfficeOpenXml.ExcelRangeRow.CollapseChildren(System.Boolean)" /> or <see cref="M:OfficeOpenXml.ExcelRangeRow.SetVisibleOutlineLevel(System.Int32,System.Boolean)"/> methods to collapse and hide columns/rows via the <see cref="P:OfficeOpenXml.ExcelWorksheet.Rows"/> collection. 
             </summary>
         </member>
         <member name="P:OfficeOpenXml.ExcelRow.OutlineLevel">
@@ -32671,8 +32918,8 @@
         </member>
         <member name="P:OfficeOpenXml.ExcelWorkbook.MaxFontWidth">
             <summary>
-            Max font width for the workbook
-            <remarks>This method uses GDI. If you use Azure or another environment that does not support GDI, you have to set this value manually if you don't use the standard Calibri font</remarks>
+            Max font width for the workbook, used in the calculation of column widths.
+            <remarks>This property uses the static <see cref="F:OfficeOpenXml.FontSize.FontWidths"></see> dictionary to get the max font width /></remarks>
             </summary>
         </member>
         <member name="P:OfficeOpenXml.ExcelWorkbook.Protection">
@@ -36019,6 +36266,12 @@
         <member name="P:OfficeOpenXml.Export.ToDataTable.ToDataTableOptions.DataIsTransposed">
             <summary>
             Set to true if the worksheet is contains transposed data.
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.Export.ToDataTable.ToDataTableOptions.AllowDuplicateColumnNames">
+            <summary>
+            If true, EPPlus will prepend duplicate column names from the exported worksheet with a number (2,3,4,..n).
+            If false, EPPlus will throw an <see cref="T:System.InvalidOperationException" /> when processing a duplicate column name. Default value is false.
             </summary>
         </member>
         <member name="M:OfficeOpenXml.Export.ToDataTable.ToDataTableOptions.SetPrimaryKey(System.String[])">
@@ -40955,6 +41208,11 @@
             If the function is allowed in a pivot table calculated field
             </summary>
         </member>
+        <member name="P:OfficeOpenXml.FormulaParsing.Excel.Functions.Statistical.ModeDotMult.ParametersInfo">
+            <summary>
+            Reference Parameters do not need to be follows in the dependency chain.
+            </summary>
+        </member>
         <member name="T:OfficeOpenXml.FormulaParsing.Excel.Functions.RoundingMethod">
             <summary>
             Rounding method
@@ -40968,11 +41226,6 @@
         <member name="F:OfficeOpenXml.FormulaParsing.Excel.Functions.RoundingMethod.Floor">
             <summary>
             Round decimal number to int using Math.Floor
-            </summary>
-        </member>
-        <member name="P:OfficeOpenXml.FormulaParsing.Excel.Functions.Statistical.ModeDotMult.ParametersInfo">
-            <summary>
-            Reference Parameters do not need to be follows in the dependency chain.
             </summary>
         </member>
         <member name="T:OfficeOpenXml.FormulaParsing.Excel.Functions.Text.Text">
@@ -41455,6 +41708,11 @@
             The result is a dynamic array formula.
             </summary>
         </member>
+        <member name="F:OfficeOpenXml.FormulaParsing.FormulaExpressions.CompileResultType.DynamicArray_AlwaysSetCellAsDynamic">
+            <summary>
+            The result is a dynamic array formula. Even if the result is nested in another function that the cell should be marked as dynamic.
+            </summary>
+        </member>
         <member name="T:OfficeOpenXml.FormulaParsing.FormulaExpressions.CompileResultBase">
             <summary>
             CompileResultBase
@@ -41633,6 +41891,15 @@
             Indicates that the result the function should be created as a dynamic array result.
             </summary>
         </member>
+        <member name="M:OfficeOpenXml.FormulaParsing.FormulaExpressions.DynamicArrayCompileResult.#ctor(System.Object,OfficeOpenXml.FormulaParsing.FormulaExpressions.DataType,OfficeOpenXml.FormulaParsing.LexicalAnalysis.FormulaRangeAddress,OfficeOpenXml.FormulaParsing.FormulaExpressions.CompileResultType)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="result"></param>
+            <param name="dataType"></param>
+            <param name="address"></param>
+            <param name="resultType"></param>
+        </member>
         <member name="M:OfficeOpenXml.FormulaParsing.FormulaExpressions.DynamicArrayCompileResult.#ctor(System.Object,OfficeOpenXml.FormulaParsing.FormulaExpressions.DataType,OfficeOpenXml.FormulaParsing.LexicalAnalysis.FormulaRangeAddress)">
             <summary>
             Constructor
@@ -41774,6 +42041,11 @@
             <param name="children"></param>
             <param name="context"></param>
             <returns></returns>
+        </member>
+        <member name="T:OfficeOpenXml.FormulaParsing.FormulaExpressions.MultiRangeExpression">
+            <summary>
+            This class represents a range that contains more than one address, where the ranges are separated by a comma.
+            </summary>
         </member>
         <member name="T:OfficeOpenXml.FormulaParsing.FormulaParser">
             <summary>
@@ -42109,16 +42381,6 @@
             Reload
             </summary>
         </member>
-        <member name="T:OfficeOpenXml.FormulaParsing.IParsingLifetimeEventHandler">
-            <summary>
-            Parsing lifetime event handler
-            </summary>
-        </member>
-        <member name="M:OfficeOpenXml.FormulaParsing.IParsingLifetimeEventHandler.ParsingCompleted">
-            <summary>
-            Parsing completed
-            </summary>
-        </member>
         <member name="T:OfficeOpenXml.FormulaParsing.IRangeInfo">
             <summary>
             Information about a specific range used by the formula parser.
@@ -42207,6 +42469,11 @@
         <member name="P:OfficeOpenXml.FormulaParsing.IAddressInfo.Address">
             <summary>
             The address.
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.FormulaParsing.IAddressInfo.Addresses">
+            <summary>
+            If the address contains commaseparated addresses, this array contains the individual addresses.
             </summary>
         </member>
         <member name="P:OfficeOpenXml.FormulaParsing.LexicalAnalysis.SharedFormula.TokenAddresses">
@@ -42388,6 +42655,11 @@
         <member name="P:OfficeOpenXml.FormulaParsing.LexicalAnalysis.FormulaRangeAddress.Address">
             <summary>
             Address
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.FormulaParsing.LexicalAnalysis.FormulaRangeAddress.Addresses">
+            <summary>
+            If the address contains multiple comma separated addresses, the individual addresses are stored here.
             </summary>
         </member>
         <member name="T:OfficeOpenXml.FormulaParsing.LexicalAnalysis.FormulaTableAddress">
@@ -43098,81 +43370,6 @@
             The worksheet where the current formula is located.
             </summary>
         </member>
-        <member name="T:OfficeOpenXml.FormulaParsing.ParsingScope">
-            <summary>
-            Represents a parsing of a single input or workbook addrses.
-            </summary>
-        </member>
-        <member name="M:OfficeOpenXml.FormulaParsing.ParsingScope.#ctor(OfficeOpenXml.FormulaParsing.ParsingScopes,OfficeOpenXml.FormulaParsing.LexicalAnalysis.FormulaRangeAddress)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="parsingScopes"></param>
-            <param name="address"></param>
-        </member>
-        <member name="M:OfficeOpenXml.FormulaParsing.ParsingScope.#ctor(OfficeOpenXml.FormulaParsing.ParsingScopes,OfficeOpenXml.FormulaParsing.ParsingScope,OfficeOpenXml.FormulaParsing.LexicalAnalysis.FormulaRangeAddress)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="parsingScopes"></param>
-            <param name="parent"></param>
-            <param name="address"></param>
-        </member>
-        <member name="P:OfficeOpenXml.FormulaParsing.ParsingScope.ScopeId">
-            <summary>
-            Id of the scope.
-            </summary>
-        </member>
-        <member name="P:OfficeOpenXml.FormulaParsing.ParsingScope.Parent">
-            <summary>
-            The calling scope.
-            </summary>
-        </member>
-        <member name="P:OfficeOpenXml.FormulaParsing.ParsingScope.Address">
-            <summary>
-            The address of the cell currently beeing parsed.
-            </summary>
-        </member>
-        <member name="P:OfficeOpenXml.FormulaParsing.ParsingScope.IsSubtotal">
-            <summary>
-            True if the current scope is a Subtotal function being executed.
-            </summary>
-        </member>
-        <member name="M:OfficeOpenXml.FormulaParsing.ParsingScope.Dispose">
-            <summary>
-            Disposes this instance
-            </summary>
-        </member>
-        <member name="T:OfficeOpenXml.FormulaParsing.ParsingScopes">
-            <summary>
-            This class implements a stack on which instances of <see cref="T:OfficeOpenXml.FormulaParsing.ParsingScope"/>
-            are put. Each ParsingScope represents the parsing of an address in the workbook.
-            </summary>
-        </member>
-        <member name="M:OfficeOpenXml.FormulaParsing.ParsingScopes.#ctor(OfficeOpenXml.FormulaParsing.IParsingLifetimeEventHandler)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="lifetimeEventHandler">An instance of a <see cref="T:OfficeOpenXml.FormulaParsing.IParsingLifetimeEventHandler"/></param>
-        </member>
-        <member name="M:OfficeOpenXml.FormulaParsing.ParsingScopes.NewScope(OfficeOpenXml.FormulaParsing.LexicalAnalysis.FormulaRangeAddress)">
-            <summary>
-            Creates a new <see cref="T:OfficeOpenXml.FormulaParsing.ParsingScope"/> and puts it on top of the stack.
-            </summary>
-            <param name="address"></param>
-            <returns></returns>
-        </member>
-        <member name="P:OfficeOpenXml.FormulaParsing.ParsingScopes.Current">
-            <summary>
-            The current parsing scope.
-            </summary>
-        </member>
-        <member name="M:OfficeOpenXml.FormulaParsing.ParsingScopes.KillScope(OfficeOpenXml.FormulaParsing.ParsingScope)">
-            <summary>
-            Removes the current scope, setting the calling scope to current.
-            </summary>
-            <param name="parsingScope"></param>
-        </member>
         <member name="T:OfficeOpenXml.FormulaParsing.PrecisionAndRoundingStrategy">
             <summary>
             Represent strategies for handling precision and rounding of float/double values when calculating formulas.
@@ -43355,6 +43552,11 @@
         <member name="P:OfficeOpenXml.FormulaParsing.Ranges.EpplusExcelExternalRangeInfo.Address">
             <summary>
             The address of the range
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.FormulaParsing.Ranges.EpplusExcelExternalRangeInfo.Addresses">
+            <summary>
+            If the address contains multiple comma separated addresses, the individual addresses are stored here.
             </summary>
         </member>
         <member name="M:OfficeOpenXml.FormulaParsing.Ranges.EpplusExcelExternalRangeInfo.GetValue(System.Int32,System.Int32)">
@@ -43557,6 +43759,11 @@
         <member name="P:OfficeOpenXml.FormulaParsing.Ranges.InMemoryRange.Current">
             <summary>
             Current
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.FormulaParsing.Ranges.InMemoryRange.Addresses">
+            <summary>
+            The addresses for the range, if more than one.
             </summary>
         </member>
         <member name="M:OfficeOpenXml.FormulaParsing.Ranges.InMemoryRange.Dispose">
@@ -43918,8 +44125,14 @@
         </member>
         <member name="P:OfficeOpenXml.FormulaParsing.Ranges.RangeInfo.Address">
             <summary>
-            Address of the range
+            The first address of the range
             </summary>
+        </member>
+        <member name="P:OfficeOpenXml.FormulaParsing.Ranges.RangeInfo.Addresses">
+            
+             <summary>
+             If the address contains more the one address (i.e A1:A2,A4), this array contains all addresses
+             </summary>
         </member>
         <member name="M:OfficeOpenXml.FormulaParsing.Ranges.RangeInfo.GetValue(System.Int32,System.Int32)">
             <summary>
@@ -44449,7 +44662,7 @@
         </member>
         <member name="T:OfficeOpenXml.NumberFormatToTextArgs">
             <summary>
-            Numberformat settings used in the <see cref="!:"/>
+            Numberformat settings used in the <see cref="P:OfficeOpenXml.ExcelWorkbook.NumberFormatToTextHandler"/>
             </summary>
         </member>
         <member name="P:OfficeOpenXml.NumberFormatToTextArgs.Worksheet">
@@ -67271,6 +67484,14 @@
             </example>
             </summary>
         </member>
+        <member name="P:OfficeOpenXml.Table.ExcelTableColumn.IsCalculatedFormulaArray">
+            <summary>
+            If the calculated formula is an array formula. 
+            This property will be set if the formula calculation evaluate the formula as an array formula. 
+            See <see cref="M:OfficeOpenXml.CalculationExtension.Calculate(OfficeOpenXml.ExcelWorkbook)"/>        
+            </summary>
+            <exception cref="T:System.InvalidOperationException">If the <see cref="P:OfficeOpenXml.Table.ExcelTableColumn.CalculatedColumnFormula"></see> is null or empty.</exception>
+        </member>
         <member name="P:OfficeOpenXml.Table.ExcelTableColumn.Table">
             <summary>
             The <see cref="T:OfficeOpenXml.Table.ExcelTable"/> containing the table column
@@ -67420,6 +67641,51 @@
             <param name="key"></param>
             <param name="colFieldsStart">Where row fields end and colfields start in the key</param>
             <returns></returns>
+        </member>
+        <member name="T:OfficeOpenXml.Table.PivotTable.ConditionScope">
+            <summary>
+            The scope of the pivot table conditional formatting rule
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.Table.PivotTable.ConditionScope.Data">
+            <summary>
+            The conditional formatting is applied to the selected data fields.
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.Table.PivotTable.ConditionScope.Field">
+            <summary>
+            The conditional formatting is applied to the selected PivotTable field intersections.
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.Table.PivotTable.ConditionScope.Selection">
+            <summary>
+            The conditional formatting is applied to the selected data fields.
+            </summary>
+        </member>
+        <member name="T:OfficeOpenXml.Table.PivotTable.ConditionType">
+            <summary>
+            Conditional Formatting Evaluation Type
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.Table.PivotTable.ConditionType.None">
+            <summary>
+            The conditional formatting is not evaluated
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.Table.PivotTable.ConditionType.All">
+            <summary>
+            The Top N conditional formatting is evaluated across the entire scope range.
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.Table.PivotTable.ConditionType.Row">
+            <summary>
+            The Top N conditional formatting is evaluated for each row§.
+            </summary>
+        </member>
+        <member name="F:OfficeOpenXml.Table.PivotTable.ConditionType.Column">
+            <summary>
+            The Top N conditional formatting is evaluated for each column.
+            </summary>
         </member>
         <member name="T:OfficeOpenXml.Table.PivotTable.DataFieldFunctions">
             <summary>
@@ -68653,6 +68919,12 @@
             <param name="obj">The object</param>
             <returns>True if the obj is null</returns>
         </member>
+        <member name="M:OfficeOpenXml.Table.PivotTable.PivotNull.GetHashCode">
+            <summary>
+            The hash value for the object 
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:OfficeOpenXml.Table.PivotTable.PivotNull.GetHashCode(OfficeOpenXml.Table.PivotTable.PivotNull)">
             <summary>
             The hash value for the object 
@@ -69047,6 +69319,11 @@
             <summary>
             If the pivot tables value row is visible or not. 
             This property only applies when <see cref="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTable.GridDropZones"/> is set to false.
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTable.ConditionalFormattings">
+            <summary>
+            A collection of Conditional Formatting's to apply to the pivot table.
             </summary>
         </member>
         <member name="T:OfficeOpenXml.Table.PivotTable.ExcelPivotTableCacheField">
@@ -69468,6 +69745,16 @@
         <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableField.Outline">
             <summary>
             A boolean that indicates whether the items in this field should be shown in Outline form
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableField.InsertBlankRow">
+            <summary>
+            A boolean that indicates whether a blank row should be inserted after each item.
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableField.RepeatItemLabels">
+            <summary>
+            A boolean that indicates whether the item labels should repeat or not.
             </summary>
         </member>
         <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableField.SubtotalTop">
@@ -70123,14 +70410,90 @@
             Defines sorting for a pivot table area within a pivot table.
             </summary>
         </member>
-        <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotAreaAutoSort.Conditions">
+        <member name="T:OfficeOpenXml.Table.PivotTable.ExcelPivotTableAreaConditionalFormatting">
             <summary>
-            Conditions for the auto sort scope. Conditions can be set for specific data fields. Specify labels, data grand totals and more.
+            Defines an area for conditional formatting within a pivot table.
             </summary>
+        </member>
+        <member name="T:OfficeOpenXml.Table.PivotTable.ExcelPivotTableAreaConditionalFormattingCollection">
+            <summary>
+            A collection of pivot areas used for conditional formatting
+            </summary>
+        </member>
+        <member name="M:OfficeOpenXml.Table.PivotTable.ExcelPivotTableAreaConditionalFormattingCollection.Add(OfficeOpenXml.Table.PivotTable.ExcelPivotTableDataField[])">
+            <summary>
+            Adds a new area for the one or more data fields
+            </summary>
+            <param name="fields">The data field(s) where the conditional formatting should be applied. If no fields are supplied all the pivot tables data fields will be added to the area</param>
+            <returns>The pivot area for the conditional formatting</returns>
+        </member>
+        <member name="M:OfficeOpenXml.Table.PivotTable.ExcelPivotTableAreaConditionalFormattingCollection.Remove(OfficeOpenXml.Table.PivotTable.ExcelPivotTableAreaConditionalFormatting)">
+            <summary>
+            /// Removes the the <paramref name="item"/> from the collection 
+            </summary>
+            <param name="item">The item to remove.</param>
+        </member>
+        <member name="M:OfficeOpenXml.Table.PivotTable.ExcelPivotTableAreaConditionalFormattingCollection.RemoveAt(System.Int32)">
+            <summary>
+            Removes the <see cref="T:OfficeOpenXml.Table.PivotTable.ExcelPivotTableAreaStyle"/> at the <paramref name="index"/>
+            </summary>
+            <param name="index">The zero-based index in the collction to remove</param>
+        </member>
+        <member name="T:OfficeOpenXml.Table.PivotTable.ExcelPivotTableConditionalFormatting">
+            <summary>
+            Defines a pivot table area of selection used for styling.
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableConditionalFormatting.Areas">
+            <summary>
+            A collection of conditions for the conditional formattings. Conditions can be set for specific row-, column- or data fields. Specify labels, data grand totals and more.
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableConditionalFormatting.ConditionalFormatting">
+            <summary>
+            Access to the style property for the pivot area
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableConditionalFormatting.Priority">
+            <summary>
+            The priority of the pivot table conditional formatting rule that should be matched in the worksheet.
+            If this value differs from the <see cref="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableConditionalFormatting.ConditionalFormatting"/> priority, the later will be used when saved.
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableConditionalFormatting.Type">
+            <summary>
+            The condition type of the pivot table conditional formatting rule. Default is None.
+            This property only apply to condional formattings for above/below -average, -stdev amd top or bottom.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">If setting this property to Row or Column when having an unsupported conditional formatting rule.</exception>
+        </member>
+        <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableConditionalFormatting.Scope">
+            <summary>
+            The scope of the pivot table conditional formatting rule. Default is Selection.
+            </summary>
+        </member>
+        <member name="T:OfficeOpenXml.Table.PivotTable.ExcelPivotTableConditionalFormattingCollection">
+            <summary>
+            A collection of pivot areas used for styling a pivot table.
+            </summary>
+        </member>
+        <member name="M:OfficeOpenXml.Table.PivotTable.ExcelPivotTableConditionalFormattingCollection.Add(OfficeOpenXml.ConditionalFormatting.eExcelPivotTableConditionalFormattingRuleType,OfficeOpenXml.Table.PivotTable.ExcelPivotTableDataField[])">
+            <summary>
+            Adds a conditional formatting pivot area for the pivot tables data field(cf).
+            Note that only conditional formattings for data is support. Conditional formattings for Lables, data buttons and other pivot areas must be added using the <see cref="P:OfficeOpenXml.ExcelWorksheet.ConditionalFormatting" /> collection.
+            </summary>
+            <param name="ruleType">The type of conditional formatting rule</param>
+            <param name="fields">The data field(cf) in the pivot table to apply the rule. If no data field is provided, all data field in the collection will be added to the area.The area will be added to the <see cref="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableConditionalFormatting.Areas" /> collection</param>
+            <returns>The rule</returns>
         </member>
         <member name="T:OfficeOpenXml.Table.PivotTable.ExcelPivotArea">
             <summary>
             Defines a pivot table area of selection used for different purposes.
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotArea.Conditions">
+            <summary>
+            Conditions for the pivot table. Conditions can be set for specific row-, column- or data fields. Specify labels, data grand totals and more.
             </summary>
         </member>
         <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotArea.FieldIndex">
@@ -70402,17 +70765,18 @@
         </member>
         <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotAreaStyleConditions.DataFields">
             <summary>
-            The data field that the conditions will apply to. 
+            The data field that the conditions will apply too. 
             </summary>
+        </member>
+        <member name="M:OfficeOpenXml.Table.PivotTable.ExcelPivotAreaStyleConditions.UpdateXml">
+            <summary>
+            Updates the xml. Returns false if all conditions are deleted and the items should be removed.
+            </summary>
+            <returns>Returns false if the items should be deleted.</returns>
         </member>
         <member name="T:OfficeOpenXml.Table.PivotTable.ExcelPivotTableAreaStyle">
             <summary>
             Defines a pivot table area of selection used for styling.
-            </summary>
-        </member>
-        <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableAreaStyle.Conditions">
-            <summary>
-            Conditions for the pivot table. Conditions can be set for specific row-, column- or data fields. Specify labels, data grand totals and more.
             </summary>
         </member>
         <member name="P:OfficeOpenXml.Table.PivotTable.ExcelPivotTableAreaStyle.Style">
@@ -72135,6 +72499,7 @@
             </summary>
             <param name="xml">The xml to search</param>
             <param name="element">The element</param>
+            <param name="prefix">The namespace prefix, if any</param>
             <param name="returnStartPos">If the position before the start element is returned. If false the end of the end element is returned.</param>
             <param name="ix">The index</param>
             <returns>The position of the element in the input xml</returns>

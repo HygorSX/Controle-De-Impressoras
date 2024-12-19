@@ -154,5 +154,74 @@ namespace Controle_De_Impressoras.Models
                 return updatedPrinters;
             }
         }
+
+
+        public static List<ErroImpressora> RecuperarErrosImpressoras()
+        {
+            using (var context = new PrintersContext())  // Usando o contexto de banco de dados
+            {
+                var query = context.ErrosImpressoras
+                                   .Select(ei => new ErroImpressora
+                                   {
+                                       Id = ei.Id,
+                                       InstituicaoId = ei.InstituicaoId,
+                                       Marca = ei.Marca,
+                                       Modelo = ei.Modelo,
+                                       Ip = ei.Ip,
+                                       Patrimonio = ei.Patrimonio,
+                                       Secretaria = ei.Secretaria,
+                                       AbrSecretaria = ei.AbrSecretaria,
+                                       Depto = ei.Depto,
+                                       Localizacao = ei.Localizacao,
+                                       Motivo = ei.Motivo
+                                   })
+                                   .ToList(); // Recupera os dados da tabela e converte para lista
+
+                return query;
+            }
+        }
+        public static List<DadosRelatorioModel> DadosRelatorio(DateTime? dataInicio, DateTime? dataFim)
+        {
+            using (var context = new PrintersContext())
+            {
+                // Se dataInicio ou dataFim forem nulos, consideramos todas as datas
+                if (!dataInicio.HasValue) dataInicio = DateTime.MinValue;
+                if (!dataFim.HasValue) dataFim = DateTime.MaxValue;
+
+                // Consulta para filtrar os dados com base nas datas
+                var query = from psl in context.PrinterStatusLogs
+                            join pm in context.Printers
+                            on psl.PrinterId equals pm.Id
+                            where psl.DataHoraDeBusca >= dataInicio && psl.DataHoraDeBusca <= dataFim
+                            orderby psl.DataHoraDeBusca descending
+                            select new DadosRelatorioModel
+                            {
+                                DataHoraDeBusca = psl.DataHoraDeBusca,
+                                Patrimonio = pm.Patrimonio,
+                                Modelo = pm.DeviceModel,
+                                Secretaria = pm.Secretaria,
+                                Depto = pm.Depto,
+                                InstituicaoId = pm.InstituicaoId,
+                                ColorMono = pm.Tipo,
+                                ImpressoesTotais = psl.QuantidadeImpressaoTotal,
+                                PorcentagemBlack = psl.PorcentagemBlack,
+                                PorcentagemCyan = psl.PorcentagemCyan,
+                                PorcentagemYellow = psl.PorcentagemYellow,
+                                PorcentagemMagenta = psl.PorcentagemMagenta,
+                                UnidadeImagem = psl.PorcentagemUnidadeImagem,
+                                Fusor = psl.PorcentagemFusor,
+                                Belt = psl.PorcentagemBelt,
+                                KitManutencao = psl.PorcentagemKitManutencao
+                            };
+
+                // Retorna a lista filtrada
+                return query.ToList();
+            }
+        }
+
+
+
+
+
     }
 }
