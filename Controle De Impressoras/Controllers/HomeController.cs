@@ -52,6 +52,7 @@ namespace Controle_De_Impressoras.Controllers
                     (i.PorcentagemYellow < 10 && i.Tipo == "COLOR")).ToList();
             }
 
+            // Filtra as secretarias únicas
             var secretarias = impressoras
                 .Where(i => !string.IsNullOrEmpty(i.AbrSecretaria))  // Filtra impressoras que possuem uma secretaria
                 .Select(i => i.AbrSecretaria)  // Seleciona apenas o campo 'AbrSecretaria'
@@ -61,6 +62,17 @@ namespace Controle_De_Impressoras.Controllers
 
             // Passa as secretarias para a ViewBag
             ViewBag.Secretarias = secretarias;
+
+            // Filtra os modelos únicos, da mesma forma que fizemos com os departamentos
+            var modelos = impressoras
+                .Where(i => !string.IsNullOrEmpty(i.PrinterModel))  // Filtra impressoras que possuem um modelo
+                .Select(i => i.PrinterModel)  // Seleciona o campo 'Modelo'
+                .Distinct()  // Garante que os modelos sejam únicos
+                .OrderBy(m => m)  // Ordena os modelos em ordem alfabética
+                .ToList();
+
+            // Passa os modelos para a ViewBag
+            ViewBag.Modelos = modelos;
 
             // Obtém os departamentos para a secretaria selecionada, similar ao que foi feito nos relatórios
             List<string> departamentos = new List<string>();
@@ -111,17 +123,20 @@ namespace Controle_De_Impressoras.Controllers
                 ).ToList();
             }
 
+            // Aplica o filtro de modelo se fornecido
+            if (!string.IsNullOrEmpty(modelo))
+            {
+                impressoras = impressoras.Where(i => string.Equals(i.PrinterModel, modelo, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
             // Passa o total de impressoras para a ViewBag
             ViewBag.TotalImpressoras = impressoras.Count();
 
             // Passa os parâmetros para manter os filtros aplicados
             ViewBag.Tipo = tipo;
             ViewBag.Marca = marca;
-            ViewBag.Modelo = modelo;
-            if (patrimonio != 0)
-            {
-                ViewBag.Patrimonio = patrimonio;
-            }
+            if (!string.IsNullOrEmpty(modelo)) ViewBag.Modelo = modelo;
+            if (patrimonio != 0) ViewBag.Patrimonio = patrimonio;
             ViewBag.TintaBaixa = tintaBaixa;
             ViewBag.InstituicaoId = instituicaoId;
             ViewBag.ApenasOffline = apenasOffline;
@@ -131,6 +146,7 @@ namespace Controle_De_Impressoras.Controllers
 
             return View(impressoras);
         }
+
 
 
 
@@ -307,7 +323,7 @@ namespace Controle_De_Impressoras.Controllers
                 errosImpressoras = errosImpressoras.Where(e => e.Ip.Contains(Ip));
 
             if (!string.IsNullOrEmpty(AbrSecretaria))
-                errosImpressoras = errosImpressoras.Where(e => e.AbrSecretaria.Contains(AbrSecretaria));
+                errosImpressoras = errosImpressoras.Where(e => e.AbrSecretaria == AbrSecretaria);
 
             if (!string.IsNullOrEmpty(Depto))
                 errosImpressoras = errosImpressoras.Where(e => e.Depto.Contains(Depto));
@@ -334,27 +350,41 @@ namespace Controle_De_Impressoras.Controllers
             return View(resultado);
         }
 
-        public ActionResult DadosRelatorio(DateTime? dataInicio, DateTime? dataFim)
+        public ActionResult DadosRelatorio(DateTime? dataInicio, DateTime? dataFim, string secretaria, string depto, int? instituicaoId)
         {
+            // Definindo valores padrão para dataInicio e dataFim, caso sejam nulos
             if (!dataInicio.HasValue) dataInicio = DateTime.MinValue;
             if (!dataFim.HasValue) dataFim = DateTime.MaxValue;
 
-            List<DadosRelatorioModel> relatorio = PrintersModel.DadosRelatorio(dataInicio, dataFim);
+            // Chamando o método para obter os dados do relatório
+            List<DadosRelatorioModel> relatorio = PrintersModel.DadosRelatorio(dataInicio, dataFim, secretaria, depto, instituicaoId);
+
+            // Passando os filtros e os dados para a view
+            ViewBag.DataInicio = dataInicio;
+            ViewBag.DataFim = dataFim;
+            ViewBag.Secretaria = secretaria;
+            ViewBag.Depto = depto;
+            ViewBag.InstituicaoId = instituicaoId;
+
+            // Retorna a view com os dados do relatório
             return View(relatorio);
         }
 
-        public ActionResult DownloadRelatorio(DateTime? dataInicio, DateTime? dataFim)
+
+        public ActionResult DownloadRelatorio(DateTime? dataInicio, DateTime? dataFim, string secretaria, string depto, int? instituicaoId)
         {
+            // Definindo valores padrão para dataInicio e dataFim, caso sejam nulos
             if (!dataInicio.HasValue) dataInicio = DateTime.MinValue;
             if (!dataFim.HasValue) dataFim = DateTime.MaxValue;
 
-            List<DadosRelatorioModel> relatorio = PrintersModel.DadosRelatorio(dataInicio, dataFim);
+            // Chamando o método para obter os dados do relatório
+            List<DadosRelatorioModel> relatorio = PrintersModel.DadosRelatorio(dataInicio, dataFim, secretaria, depto, instituicaoId);
 
             using (var workbook = new XLWorkbook())
             {
                 var worksheet = workbook.Worksheets.Add("Relatório");
 
-                // Adiciona os cabeçalhos
+                // Cabeçalhos do Excel
                 worksheet.Cell(1, 1).Value = "Data e Hora de Busca";
                 worksheet.Cell(1, 2).Value = "Patrimônio";
                 worksheet.Cell(1, 3).Value = "Modelo";
@@ -372,7 +402,7 @@ namespace Controle_De_Impressoras.Controllers
                 worksheet.Cell(1, 15).Value = "% Kit Manutenção";
                 worksheet.Cell(1, 16).Value = "Instituição";
 
-                // Adiciona os dados
+                // Dados no Excel
                 for (int i = 0; i < relatorio.Count; i++)
                 {
                     var item = relatorio[i];
@@ -394,22 +424,23 @@ namespace Controle_De_Impressoras.Controllers
                     worksheet.Cell(i + 2, 16).Value = item.InstituicaoId;
                 }
 
-                worksheet.Columns().AdjustToContents();
+                worksheet.Columns().AdjustToContents();  // Ajusta as colunas
 
+                // Criar o arquivo para download
                 using (var stream = new MemoryStream())
                 {
                     workbook.SaveAs(stream);
-                    stream.Flush();  // Assegura que todos os dados foram escritos no stream
-                    stream.Position = 0;  // Reposiciona para o início do stream antes de enviá-lo
+                    stream.Flush();
+                    stream.Position = 0;  // Move o ponteiro do stream para o início
 
                     string excelName = $"RelatorioImpressoras-{DateTime.Now:yyyyMMddHHmmss}.xlsx";
 
                     // Definir cabeçalhos de resposta HTTP para o download correto
-                    Response.Clear();  // Limpa quaisquer dados de resposta anteriores
+                    Response.Clear();
                     Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     Response.AddHeader("Content-Disposition", $"attachment; filename={excelName}");
-                    Response.BinaryWrite(stream.ToArray()); // Escreve o conteúdo do arquivo Excel no corpo da resposta
-                    Response.End(); // Finaliza a resposta
+                    Response.BinaryWrite(stream.ToArray());
+                    Response.End();
 
                     return new EmptyResult();  // Retorna um resultado vazio após o download
                 }

@@ -156,6 +156,11 @@
         overflow: hidden; /* Caso o texto nas opções seja maior, ele não irá ultrapassar */
     }
 
+    .filtro .form-select[name="modelo"] {
+        width: 150px; /* Define a largura fixa para a caixa */
+        overflow: hidden; /* Caso o texto nas opções seja maior, ele não irá ultrapassar */
+    }
+
 </style>
 <main>
     <section>
@@ -180,7 +185,7 @@
                 </div>
                 <div class="filtro">
                     <label class="text-filter">Marca:</label>
-                    <select class="form-select" name="marca" onchange="this.form.submit()">
+                    <select class="form-select" name="marca" onchange="this.form.submit()" oninput="clearOtherFiltersB()">
                         <option value="" @(string.IsNullOrEmpty(ViewBag.Marca) ? "selected" : "")></option>
                         <option value="Brother" @(ViewBag.Marca == "Brother" ? "selected" : "")>Brother</option>
                         <option value="Canon" @(ViewBag.Marca == "Canon" ? "selected" : "")>Canon</option>
@@ -193,10 +198,18 @@
                         <option value="Zebra" @(ViewBag.Marca == "Zebra" ? "selected" : "")>Zebra</option>
                     </select>
                 </div>
+
                 <div class="filtro">
                     <label class="text-filter">Modelo:</label>
-                    <input class="form-control" type="search" name="modelo" placeholder="Pesquisar" value="@ViewBag.Modelo">
+                    <select class="form-select" name="modelo" onchange="this.form.submit()">
+                        <option value="" @(string.IsNullOrEmpty(ViewBag.Modelo?.ToString()) ? "selected" : "")>Todos</option>
+                        @foreach (var modelo in ViewBag.Modelos)
+                        {
+                            <option value="@modelo" @(ViewBag.Modelo == modelo ? "selected" : "")>@modelo</option>
+                        }
+                    </select>
                 </div>
+
                 <div class="filtro">
                     <label class="text-filter">Patrimônio:</label>
                     <input class="form-control" type="search" name="patrimonio" placeholder="Pesquisar" value="@ViewBag.Patrimonio" oninput="clearOtherFilters()">
@@ -264,6 +277,17 @@
                     document.querySelector('[name="localizacao"]').value = "";
                 }
             }
+
+
+            function clearOtherFiltersB() {
+                var patrimonioValue = document.querySelector('[name="marca"]').value;
+
+                // Se o campo de patrimônio tiver algum valor, limpa todos os outros campos
+                if (patrimonioValue.trim() !== "") {
+                    // Limpa os campos de filtro
+                    document.querySelector('[name="modelo"]').value = "";
+                }
+            }
         </script>
 
 
@@ -312,7 +336,7 @@
                     {
                         <div class="containerImpressoras">
                             <div class="header">
-                                <img src="~/Imagens/Impressoras/@(item.DeviceManufacturer + ".png")" alt="Alternate Text" class="img_impressoras" />
+                                <img src="~/Imagens/Impressoras/@(item.PrinterModel + ".png")" alt="Alternate Text" class="img_impressoras" />
                                 <p style="margin-left: 2rem;">@item.DataHoraDeBusca</p>
                             </div>
 

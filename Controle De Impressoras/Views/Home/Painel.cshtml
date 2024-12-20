@@ -485,7 +485,7 @@
 
 
                     <div style="display: flex; justify-content: center; align-items: center;">
-                        <img src="~/Imagens/Impressoras/@(impressoras.DeviceManufacturer + ".png")" class="impressora" alt="impressora">
+                        <img src="~/Imagens/Impressoras/@(impressoras.PrinterModel + ".png")" class="impressora" alt="impressora">
                     </div>
                     <div class="container-capacidade" style="padding-top: 30px">
                         @if (impressoras.Tipo == "MONO")
@@ -1025,7 +1025,7 @@
 
         const imgImpressoras = document.getElementById('printerImage');
         if (imgImpressoras) {
-            imgImpressoras.src = `/Imagens/Impressoras/${deviceManufacturer}.png`;
+            imgImpressoras.src = `/Imagens/Impressoras/${printerModel}.png`;
         } else {
             console.error("Elemento 'printerImage' não encontrado.");
         }

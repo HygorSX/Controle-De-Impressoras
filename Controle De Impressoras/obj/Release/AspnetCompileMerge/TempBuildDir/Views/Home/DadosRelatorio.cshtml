@@ -50,25 +50,44 @@
         <h2 class="text-center">Relatório de Impressoras</h2>
 
         <div class="filtros">
-            <form id="filtroForm" method="get" action="@Url.Action("DownloadRelatorio", "Home")" class="mb-4">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="dataInicio">Data Início</label>
-                        <input type="date" id="dataInicio" name="dataInicio" class="form-control" value="@Request.QueryString["dataInicio"]" />
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="dataFim">Data Fim</label>
-                        <input type="date" id="dataFim" name="dataFim" class="form-control" value="@Request.QueryString["dataFim"]" />
-                    </div>
-                </div>
-
-                <div id="btn-filter">
-                    <button type="submit" class="btn btn-outline-primary" id="filtrarRelatorioBtn">
-                        Baixar Relatório <i class="bi bi-file-earmark-excel"></i>
-                    </button>
-                </div>
-            </form>
+    <form id="filtroForm" method="get" action="@Url.Action("DownloadRelatorio", "Home")" class="mb-4">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="dataInicio">Data Início</label>
+                <input type="date" id="dataInicio" name="dataInicio" class="form-control" value="@Request.QueryString["dataInicio"]" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="dataFim">Data Fim</label>
+                <input type="date" id="dataFim" name="dataFim" class="form-control" value="@Request.QueryString["dataFim"]" />
+            </div>
         </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="secretaria">Secretaria</label>
+                <input type="text" id="secretaria" name="secretaria" class="form-control" value="@Request.QueryString["secretaria"]" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="depto">Depto</label>
+                <input type="text" id="depto" name="depto" class="form-control" value="@Request.QueryString["depto"]" />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="instituicaoId">Instituição</label>
+                <input type="number" id="instituicaoId" name="instituicaoId" class="form-control" value="@Request.QueryString["instituicaoId"]" />
+            </div>
+        </div>
+
+        <div id="btn-filter">
+            <button type="submit" class="btn btn-outline-primary" id="filtrarRelatorioBtn">
+                Baixar Relatório <i class="bi bi-file-earmark-excel"></i>
+            </button>
+        </div>
+    </form>
+</div>
+
     </div>
 
 </body>

@@ -180,7 +180,7 @@ namespace Controle_De_Impressoras.Models
                 return query;
             }
         }
-        public static List<DadosRelatorioModel> DadosRelatorio(DateTime? dataInicio, DateTime? dataFim)
+        public static List<DadosRelatorioModel> DadosRelatorio(DateTime? dataInicio, DateTime? dataFim, string secretaria, string depto, int? instituicaoId)
         {
             using (var context = new PrintersContext())
             {
@@ -188,19 +188,23 @@ namespace Controle_De_Impressoras.Models
                 if (!dataInicio.HasValue) dataInicio = DateTime.MinValue;
                 if (!dataFim.HasValue) dataFim = DateTime.MaxValue;
 
-                // Consulta para filtrar os dados com base nas datas
+                // Consulta para filtrar os dados com base nas datas e nos novos filtros
                 var query = from psl in context.PrinterStatusLogs
                             join pm in context.Printers
                             on psl.PrinterId equals pm.Id
                             where psl.DataHoraDeBusca >= dataInicio && psl.DataHoraDeBusca <= dataFim
+                            // Filtros adicionais
+                            && (string.IsNullOrEmpty(secretaria) || pm.Secretaria.Contains(secretaria))
+                            && (string.IsNullOrEmpty(depto) || pm.Secretaria.Contains(depto)) // Assumindo que "Depto" seja em "Secretaria"
+                            && (!instituicaoId.HasValue || pm.InstituicaoId == instituicaoId)
                             orderby psl.DataHoraDeBusca descending
                             select new DadosRelatorioModel
                             {
                                 DataHoraDeBusca = psl.DataHoraDeBusca,
                                 Patrimonio = pm.Patrimonio,
                                 Modelo = pm.DeviceModel,
-                                Secretaria = pm.Secretaria,
-                                Depto = pm.Depto,
+                                Secretaria = pm.AbrSecretaria,
+                                Depto = pm.Depto, // Aqui você pode ajustar se a propriedade de "Depto" for diferente.
                                 InstituicaoId = pm.InstituicaoId,
                                 ColorMono = pm.Tipo,
                                 ImpressoesTotais = psl.QuantidadeImpressaoTotal,
@@ -218,6 +222,7 @@ namespace Controle_De_Impressoras.Models
                 return query.ToList();
             }
         }
+
 
 
 
